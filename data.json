@@ -576,5 +576,83 @@
       "Chain"
     ],
     "addedAt": "2026-03-23"
+  },
+  {
+    "id": "c_1774281838421_zlp2",
+    "anime": "One piece",
+    "sceneType": "Action",
+    "character": "Zoro",
+    "name": "Zoro flying/dashing towards king",
+    "thumbnail": "https://cdn.discordapp.com/attachments/1105458244828278789/1485670160441413802/F4FDA215-990F-4403-9ECF-1E0F5C8E0E03.png?ex=69c2b5a8&is=69c16428&hm=ecf84efe8d726729f8bfac0e4ea1ce6d5f0aca8c8f2f188835a8e84ed4a97dab&",
+    "discordLink": "https://www.sakugabooru.com/data/ee4c93f97e03455dff5ea78c1ed8db41.mp4",
+    "tags": [
+      "Dash"
+    ],
+    "addedAt": "2026-03-23"
+  },
+  {
+    "id": "c_1774281941150_fipt",
+    "anime": "One piece",
+    "sceneType": "Action",
+    "character": "Nusjuro",
+    "name": "Nusjuro swings sword and slashes",
+    "thumbnail": "https://cdn.discordapp.com/attachments/1105458244828278789/1485670513484239079/87B36E9A-5B8C-4705-B08F-86DC5E661F53.png?ex=69c2b5fc&is=69c1647c&hm=c3fe7dfcc8ae57f159614a6e09d15a0f24b4e2aefc96a172cccc2739864401b1&",
+    "discordLink": "https://www.sakugabooru.com/data/4f2cb3fab3696fb6c5c7b1f36a0c9059.mp4",
+    "tags": [
+      "Sword"
+    ],
+    "addedAt": "2026-03-23"
+  },
+  {
+    "id": "c_1774282027235_dyli",
+    "anime": "Jujutsu Kaisen",
+    "sceneType": "Action",
+    "character": "Hiromi",
+    "name": "Itadri throwing hammer towards Hiromi",
+    "thumbnail": "https://cdn.discordapp.com/attachments/1105458244828278789/1485670935590867169/F38E560E-9173-4ED2-A65F-FCDE30D7EB59.png?ex=69c2b661&is=69c164e1&hm=ce8f1a792c88f6cf0435fa0a32189f8ccd71832fb83b87ac44812f3ce1f62170&",
+    "discordLink": "https://www.sakugabooru.com/data/630377763bac23c822c64d3357a1dc6e.mp4",
+    "tags": [
+      "Hammer"
+    ],
+    "addedAt": "2026-03-23"
+  },
+  {
+    "id": "c_1774282097995_uqg7",
+    "anime": "Kekkai sensen",
+    "sceneType": "Action",
+    "character": "unknown",
+    "name": "Guy running through green slime",
+    "thumbnail": "https://cdn.discordapp.com/attachments/1105458244828278789/1485671337828814920/7EE998E6-7A38-44E5-B557-FF1639FA301A.png?ex=69c2b6c1&is=69c16541&hm=fa885a1a1e75a5b30b674b9795c827d49432c8c49eef546dc29085be26a12c31&",
+    "discordLink": "https://www.sakugabooru.com/data/eacf693ddb0c5cc3a8bbbef108f2f1b1.mp4",
+    "tags": [
+      "Running"
+    ],
+    "addedAt": "2026-03-23"
+  },
+  {
+    "id": "c_1774282351411_k7b2",
+    "anime": "Frieren",
+    "sceneType": "Action",
+    "character": "Stark",
+    "name": "Stark sliding and fighting dragon using axe",
+    "thumbnail": "https://cdn.discordapp.com/attachments/1105458244828278789/1485672376212525147/57FCF705-64B7-49F2-B378-11CE3A3BED3E.png?ex=69c2b7b8&is=69c16638&hm=61b2f726e220ff7611b3f2b7bc594a3fc44ee7b37653c605c8995175c314457c&",
+    "discordLink": "https://www.sakugabooru.com/data/68f2a292b0ebb04475f27f789c231893.mp4",
+    "tags": [
+      "Sliding"
+    ],
+    "addedAt": "2026-03-23"
+  },
+  {
+    "id": "c_1774282465258_k35l",
+    "anime": "My hero academia",
+    "sceneType": "Action",
+    "character": "Deku",
+    "name": "Deku spinning and kicking",
+    "thumbnail": "https://cdn.discordapp.com/attachments/1105458244828278789/1485672884889456691/51165ED7-3EC2-4263-98B4-90E6EED57584.png?ex=69c2b832&is=69c166b2&hm=c8d9f264f3051a965ff658cd0df178cd3ec01f13697ec93dac076acecd2e2e13&",
+    "discordLink": "https://www.sakugabooru.com/data/26d17257636f4eb1a51719df78eaa89b.mp4",
+    "tags": [
+      "Spinning"
+    ],
+    "addedAt": "2026-03-23"
   }
 ]
