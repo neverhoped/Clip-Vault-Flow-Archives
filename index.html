@@ -16,7 +16,7 @@
     --border-subtle: rgba(255,255,255,0.06);
     --border-medium: rgba(255,255,255,0.1);
     --border-active: rgba(210, 170, 100, 0.4);
-    --accent: #0400f5;
+    --accent: #5396d4;
     --accent-dim: rgba(212, 168, 83, 0.15);
     --accent-glow: rgba(212, 168, 83, 0.08);
     --text-100: #f0ece4;
@@ -82,7 +82,7 @@
   .folder:hover::after { opacity: 1; }
 
   .folder-preview { width: 100%; height: 80px; display: flex; gap: 2px; overflow: hidden; background: var(--bg-surface); }
-  .folder-preview img { flex: 1; min-width: 0; height: 100%; object-fit: cover; display: block; filter: brightness(0.7) saturate(0.8); transition: filter 0.2s; }
+  .folder-preview img { flex: 1; min-width: 0; height: 100%; object-fit: cover; display: block; filter: brightness(0.7) saturate(0); transition: filter 0.2s; }
   .folder:hover .folder-preview img { filter: brightness(0.85) saturate(1); }
   .folder-preview-empty { flex: 1; height: 100%; background: var(--bg-surface); display: flex; align-items: center; justify-content: center; }
   .folder-preview-empty svg { width: 20px; height: 20px; color: var(--text-400); opacity: 0.3; }
@@ -159,7 +159,7 @@
   @keyframes itemIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
   #bgSlideshow { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
-  .bg-img { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; filter: blur(5px) saturate(0.3) brightness(0.18); transition: opacity 4s ease-in-out; pointer-events: none; }
+  .bg-img { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; filter: blur(15px) saturate(0) brightness(0.18); transition: opacity 4s ease-in-out; pointer-events: none; }
   .bg-img.active { opacity: 1; }
 
   /* ── RANDOM BUTTON ── */
@@ -233,7 +233,7 @@
   /* ── LAST UPDATED ── */
   .last-updated {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.80rem;
+    font-size: 0.58rem;
     color: var(--text-400);
     letter-spacing: 0.03em;
     padding-left: 2px;
@@ -297,7 +297,16 @@
 
 <main class="content">
   <div class="admin-panel" id="adminPanel">
-    <div class="admin-heading">ADD NEW CLIP</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.1rem;padding-bottom:0.6rem;border-bottom:1px solid var(--border-subtle);">
+      <div class="admin-heading" style="margin:0;padding:0;border:0;">ADD NEW CLIP</div>
+      <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:0.62rem;font-weight:500;color:var(--text-300);letter-spacing:0.06em;">
+        <span>QUICK MODE</span>
+        <input type="checkbox" id="quickMode" style="accent-color:var(--accent);cursor:pointer;">
+      </label>
+    </div>
+    <div id="quickModeHint" style="display:none;font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--accent);margin-bottom:0.7rem;letter-spacing:0.03em;">
+      Anime, Scene Type, Character &amp; Tags stay filled after adding — only clear Name, Thumbnail &amp; Link.
+    </div>
     <div class="form-grid">
       <div class="field"><label>Anime</label><input id="inp-anime" placeholder="e.g. Attack on Titan"></div>
       <div class="field"><label>Scene Type</label><input id="inp-scene" placeholder="e.g. Action, Sad, Funny"></div>
@@ -308,15 +317,26 @@
     </div>
     <div class="form-grid">
       <div class="field"><label>Thumbnail URL</label><input id="inp-thumb" placeholder="https://i.imgur.com/..."></div>
-      <div class="field"><label>Discord Message Link</label><input id="inp-link" placeholder="https://discord.com/channels/..."></div>
+      <div class="field"><label>Clip / Discord Link</label><input id="inp-link" placeholder="https://... (video or Discord link)"></div>
     </div>
     <div class="form-grid full">
       <div class="field"><label>Tags (comma-separated)</label><input id="inp-tags" placeholder="e.g. punch, rage, epic, season 4"></div>
     </div>
     <div class="form-actions">
       <button class="btn-primary" onclick="addClip()">ADD CLIP</button>
+      <button class="btn-ghost" onclick="toggleBulkPaste()">BULK PASTE JSON</button>
       <button class="btn-ghost" onclick="exportData()">EXPORT JSON</button>
       <button class="btn-ghost" onclick="importData()">IMPORT JSON</button>
+    </div>
+    <div id="bulkPasteArea" style="display:none;margin-top:1rem;">
+      <div class="field">
+        <label>Paste JSON array of clips</label>
+        <textarea id="bulkJson" style="width:100%;min-height:120px;padding:0.6rem 0.75rem;background:var(--bg-base);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-100);font-family:'IBM Plex Mono',monospace;font-size:0.75rem;outline:none;resize:vertical;" placeholder='[{"anime":"...","sceneType":"...","character":"...","name":"...","thumbnail":"","discordLink":"https://...","tags":["tag1","tag2"]}]'></textarea>
+      </div>
+      <div style="display:flex;gap:0.5rem;margin-top:0.5rem;">
+        <button class="btn-primary" onclick="bulkAdd()">ADD ALL</button>
+        <button class="btn-cancel" onclick="toggleBulkPaste()">CANCEL</button>
+      </div>
     </div>
   </div>
   <div id="main"></div>
@@ -581,6 +601,11 @@
     document.body.classList.toggle('admin-active', adminOpen);
   }
 
+  // Quick mode toggle
+  document.getElementById('quickMode').addEventListener('change', function() {
+    document.getElementById('quickModeHint').style.display = this.checked ? 'block' : 'none';
+  });
+
   function addClip() {
     const anime = document.getElementById('inp-anime').value.trim();
     const scene = document.getElementById('inp-scene').value.trim();
@@ -591,9 +616,52 @@
     const tagsStr = document.getElementById('inp-tags').value.trim();
     if (!anime || !scene || !character || !name || !link) { toast('Fill in all required fields', 'error'); return; }
     clips.push({ id: 'c_' + Date.now() + '_' + Math.random().toString(36).slice(2,6), anime, sceneType: scene, character, name, thumbnail: thumb, discordLink: link, tags: tagsStr ? tagsStr.split(',').map(t => t.trim()).filter(Boolean) : [], addedAt: new Date().toISOString().split('T')[0] });
-    ['inp-anime','inp-scene','inp-character','inp-name','inp-thumb','inp-link','inp-tags'].forEach(id => document.getElementById(id).value = '');
+
+    const quick = document.getElementById('quickMode').checked;
+    if (quick) {
+      // Only clear name, thumbnail, and link — keep anime, scene, character, tags
+      ['inp-name','inp-thumb','inp-link'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('inp-name').focus();
+    } else {
+      ['inp-anime','inp-scene','inp-character','inp-name','inp-thumb','inp-link','inp-tags'].forEach(id => document.getElementById(id).value = '');
+    }
+
     toast('Clip added — export JSON to save', 'success');
     render();
+  }
+
+  function toggleBulkPaste() {
+    const el = document.getElementById('bulkPasteArea');
+    el.style.display = el.style.display === 'none' ? 'block' : 'none';
+  }
+
+  function bulkAdd() {
+    const raw = document.getElementById('bulkJson').value.trim();
+    if (!raw) { toast('Paste some JSON first', 'error'); return; }
+    try {
+      const arr = JSON.parse(raw);
+      if (!Array.isArray(arr)) { toast('Must be a JSON array', 'error'); return; }
+      let added = 0;
+      arr.forEach(c => {
+        if (!c.name && !c.discordLink) return; // skip empties
+        clips.push({
+          id: 'c_' + Date.now() + '_' + Math.random().toString(36).slice(2,6),
+          anime: c.anime || 'Unknown',
+          sceneType: c.sceneType || 'Unknown',
+          character: c.character || 'Unknown',
+          name: c.name || 'Untitled',
+          thumbnail: c.thumbnail || '',
+          discordLink: c.discordLink || '',
+          tags: Array.isArray(c.tags) ? c.tags : [],
+          addedAt: c.addedAt || new Date().toISOString().split('T')[0]
+        });
+        added++;
+      });
+      document.getElementById('bulkJson').value = '';
+      toggleBulkPaste();
+      toast(`Added ${added} clips — export JSON to save`, 'success');
+      render();
+    } catch { toast('Invalid JSON — check your syntax', 'error'); }
   }
 
   function deleteClip(id) {
