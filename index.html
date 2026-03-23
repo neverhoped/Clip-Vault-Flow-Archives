@@ -135,6 +135,26 @@
   .btn-manage:hover { color: var(--accent); border-color: var(--border-active); background: var(--accent-glow); }
   .btn-manage.active { color: var(--accent); border-color: var(--accent); background: var(--accent-dim); }
 
+  .btn-coffee {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--bg-base);
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0.4rem 0.9rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-decoration: none;
+  }
+
+  .btn-coffee:hover {
+    filter: brightness(1.15);
+    box-shadow: 0 2px 12px rgba(212, 168, 83, 0.25);
+  }
+
   .search-row { padding: 0.75rem 0 0.6rem; display: flex; gap: 0.75rem; align-items: center; }
 
   .search-field { flex: 1; position: relative; }
@@ -545,6 +565,7 @@
     </div>
     <div class="header-actions">
       <span class="stat-pill" id="stats"></span>
+      <a href="https://buymeacoffee.com/xayvis" target="_blank" rel="noopener" class="btn-coffee">BUY ME A COFFEE</a>
       <button class="btn-manage" id="manageBtn" onclick="toggleAdmin()">MANAGE</button>
     </div>
   </div>
