@@ -420,5 +420,57 @@
       "Chain"
     ],
     "addedAt": "2026-03-23"
+  },
+  {
+    "id": "c_1774277889364_ftso",
+    "anime": "Erased",
+    "sceneType": "Racing",
+    "character": "Satoru",
+    "name": "Guy ice skating",
+    "thumbnail": "https://cdn.discordapp.com/attachments/1105458244828278786/1484192580139880508/image.png?ex=69c29b8e&is=69c14a0e&hm=95279a5fb61f4ed9980cd0b8caaf7331a67afed594828941bedefbc062ca2ac6&",
+    "discordLink": "https://www.sakugabooru.com/data/258d1061600e310c345e90e9edb5d515.mp4",
+    "tags": [
+      "Skating"
+    ],
+    "addedAt": "2026-03-23"
+  },
+  {
+    "id": "c_1774278101992_tgzs",
+    "anime": "Danmachi",
+    "sceneType": "Action",
+    "character": "Blonde girl",
+    "name": "Blonde girl getting sliced and then runs",
+    "thumbnail": "https://cdn.discordapp.com/attachments/1105458244828278789/1485654346187276492/1886911C-0501-4D3E-8D3D-B8D331419039.png?ex=69c2a6ee&is=69c1556e&hm=09beac8d002f4dd33986c1efc637fb73052521444dab92b43b863c6d93eef9d2&",
+    "discordLink": "https://cdn.discordapp.com/attachments/1105458244828278786/1484037092127412285/dungeon_ni_deai.mp4?ex=69c20abe&is=69c0b93e&hm=6790c7d877efdc639bfdc4b5ffbca600b2cbce38a24b8de3a0b853e9a83e22db&",
+    "tags": [
+      "Slice"
+    ],
+    "addedAt": "2026-03-23"
+  },
+  {
+    "id": "c_1774278231899_bzkc",
+    "anime": "Death note",
+    "sceneType": "Action",
+    "character": "Touta",
+    "name": "Touta shooting light while camera zooms on him",
+    "thumbnail": "https://cdn.discordapp.com/attachments/1105458244828278789/1485654917027729448/367B6EFF-EEB0-4B1E-BA4F-1C1B3B2404A9.png?ex=69c2a776&is=69c155f6&hm=d3fec96a262d826f92c592fa35612db6a44cd009e8559db121974cdf4f984421&",
+    "discordLink": "https://cdn.discordapp.com/attachments/1105458244828278786/1483504116926906519/light_yagamishot.mp4?ex=69c2149f&is=69c0c31f&hm=3f76d9888e88e33eed268030cb094e0c32bd89658069aba56fce937169f3fff0&",
+    "tags": [
+      "Shooting"
+    ],
+    "addedAt": "2026-03-23"
+  },
+  {
+    "id": "c_1774278339265_h489",
+    "anime": "Demon slayer",
+    "sceneType": "Action",
+    "character": "Mitsuri",
+    "name": "Mitsuri dashing around",
+    "thumbnail": "https://cdn.discordapp.com/attachments/1105458244828278789/1485655358629347411/9AB6EAE7-23B3-4884-96DF-48B699995E2D.png?ex=69c2a7df&is=69c1565f&hm=be0e2c8ce36138417d10de0870b986def76ecefa99ec5d602f7ce00767eef247&",
+    "discordLink": "https://cdn.discordapp.com/attachments/1105458244828278786/1483391068492922930/DemonSlayer_Muichiro_Dash_2.mp4?ex=69c25416&is=69c10296&hm=50ab0f0a4d02bd03b03adddd02c867726b81df7cb23fcd40689ee7ae891f7f84&",
+    "tags": [
+      "Dash"
+    ],
+    "addedAt": "2026-03-23"
   }
 ]
