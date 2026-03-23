@@ -587,6 +587,8 @@
 <input type="file" id="importFile" accept=".json" style="display:none" onchange="handleImport(event)">
 
 <script>
+  const STORAGE_KEY = 'clipvault_data';
+
   const SAMPLE_DATA = [
     { id:'c1', anime:'Attack on Titan', sceneType:'Action', character:'Eren', name:'Eren punches titan', thumbnail:'', discordLink:'https://discord.com/channels/example/1/1', tags:['punch','rage','titan','season 1'], addedAt:'2026-03-20' },
     { id:'c2', anime:'Attack on Titan', sceneType:'Action', character:'Levi', name:'Levi spinning slash', thumbnail:'', discordLink:'https://discord.com/channels/example/1/2', tags:['spin','blade','clean','season 3'], addedAt:'2026-03-21' },
@@ -594,24 +596,32 @@
     { id:'c4', anime:'Jujutsu Kaisen', sceneType:'Sad', character:'Itadori', name:'Itadori cries over Junpei', thumbnail:'', discordLink:'https://discord.com/channels/example/2/2', tags:['cry','emotional','junpei','season 1'], addedAt:'2026-03-22' },
   ];
 
+  async function load() {
+    try {
+      const res = await fetch('./data.json?v=' + Date.now(), { cache: 'no-store' });
+      if (!res.ok) throw new Error('Failed to load data.json');
+      const data = await res.json();
+
+      if (Array.isArray(data)) return data;
+      if (data && Array.isArray(data.clips)) return data.clips;
+
+      throw new Error('data.json must be an array or { clips: [...] }');
+    } catch (err) {
+      console.error(err);
+      return [...SAMPLE_DATA];
+    }
+  }
+
+  function save(d) {
+    // no-op on purpose
+    // keeps add/delete/import working locally in memory
+    // but shared updates still come from data.json in GitHub
+  }
+
   let clips = [];
   let path = [];
   let adminOpen = false;
   let searchQ = '';
-
-  async function loadSharedData() {
-    try {
-      const res = await fetch('data.json?v=' + Date.now(), { cache: 'no-store' });
-      if (!res.ok) throw new Error('Failed to load data.json');
-      clips = await res.json();
-      if (!Array.isArray(clips)) throw new Error('data.json is not an array');
-    } catch (e) {
-      console.error(e);
-      clips = [...SAMPLE_DATA];
-      toast('Could not load data.json', 'error');
-    }
-    render();
-  }
 
   function esc(s) {
     if (!s) return '';
@@ -623,7 +633,7 @@
   function groupBy(arr, key) {
     const m = {};
     arr.forEach(c => {
-      const k = c[key];
+      const k = c[key] || 'Unknown';
       m[k] = (m[k] || 0) + 1;
     });
     return Object.entries(m).sort((a, b) => a[0].localeCompare(b[0]));
@@ -651,10 +661,10 @@
 
   function updateBreadcrumb() {
     const el = document.getElementById('breadcrumb');
-    let h = `<span class="bc-item ${path.length === 0 ? 'current' : ''}" onclick="nav(0)">All</span>`;
-    path.forEach((p, i) => {
+    let h = `<span class="bc-item ${path.length===0?'current':''}" onclick="nav(0)">All</span>`;
+    path.forEach((p,i) => {
       h += `<span class="bc-sep">/</span>`;
-      h += `<span class="bc-item ${i === path.length - 1 ? 'current' : ''}" onclick="nav(${i + 1})">${esc(p)}</span>`;
+      h += `<span class="bc-item ${i===path.length-1?'current':''}" onclick="nav(${i+1})">${esc(p)}</span>`;
     });
     el.innerHTML = h;
   }
@@ -685,7 +695,7 @@
     if (d === 0) {
       const items = groupBy(clips, 'anime');
       if (!items.length) {
-        main.innerHTML = emptyHtml('No clips yet', 'Upload or import clip data to begin.');
+        main.innerHTML = emptyHtml('No clips yet','Open the Manage panel to add your first clip.');
         return;
       }
       main.innerHTML = sectionLabel('Series', items.length) + folderGridHtml(items, 0);
@@ -712,10 +722,10 @@
 
   function folderGridHtml(items, depth) {
     return `<div class="folder-grid">${items.map(([name, count]) => `
-      <div class="folder" onclick="openDir('${esc(name)}')">
+      <div class="folder" onclick="openDir(${JSON.stringify(name)})">
         <div class="folder-icon">${folderIcon(depth)}</div>
         <div class="folder-name">${esc(name)}</div>
-        <div class="folder-count">${count} clip${count !== 1 ? 's' : ''}</div>
+        <div class="folder-count">${count} clip${count!==1?'s':''}</div>
       </div>`).join('')}</div>`;
   }
 
@@ -737,9 +747,9 @@
             <div class="clip-play-indicator">${icons.play}</div>
           </div>
           <div class="clip-body">
-            <div class="clip-title">${esc(c.name)}</div>
+            <div class="clip-title">${esc(c.name || '')}</div>
             <div class="clip-tags">${tags.map(t => `<span class="clip-tag">${esc(t)}</span>`).join('')}</div>
-            ${showPath ? `<div class="clip-path">${esc(c.anime)} / ${esc(c.sceneType)} / ${esc(c.character)}</div>` : ''}
+            ${showPath ? `<div class="clip-path">${esc(c.anime || '')} / ${esc(c.sceneType || '')} / ${esc(c.character || '')}</div>` : ''}
             <div class="clip-date">${esc(c.addedAt || '')}</div>
           </div>
         </a>
@@ -798,7 +808,7 @@
     }
 
     clips.push({
-      id: 'c_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+      id: 'c_' + Date.now() + '_' + Math.random().toString(36).slice(2,6),
       anime,
       sceneType: scene,
       character,
@@ -809,17 +819,20 @@
       addedAt: new Date().toISOString().split('T')[0]
     });
 
+    save(clips);
+
     ['inp-anime','inp-scene','inp-character','inp-name','inp-thumb','inp-link','inp-tags']
       .forEach(id => document.getElementById(id).value = '');
 
-    toast('Clip added locally — export JSON to save changes', 'success');
+    toast('Clip added locally — export JSON to save permanently', 'success');
     render();
   }
 
   function deleteClip(id) {
     if (!confirm('Delete this clip?')) return;
     clips = clips.filter(c => c.id !== id);
-    toast('Clip removed locally — export JSON to save changes', 'success');
+    save(clips);
+    toast('Clip removed locally — export JSON to save permanently', 'success');
     render();
   }
 
@@ -830,7 +843,7 @@
     a.download = 'data.json';
     a.click();
     URL.revokeObjectURL(a.href);
-    toast('Exported JSON file', 'success');
+    toast('Exported to file', 'success');
   }
 
   function importData() {
@@ -840,13 +853,15 @@
   function handleImport(e) {
     const file = e.target.files[0];
     if (!file) return;
-
     const r = new FileReader();
     r.onload = function(ev) {
       try {
         const d = JSON.parse(ev.target.result);
-        if (Array.isArray(d)) {
-          clips = d;
+        const imported = Array.isArray(d) ? d : (d && Array.isArray(d.clips) ? d.clips : null);
+
+        if (imported) {
+          clips = imported;
+          save(clips);
           path = [];
           searchQ = '';
           document.getElementById('search').value = '';
@@ -859,7 +874,6 @@
         toast('Invalid JSON file', 'error');
       }
     };
-
     r.readAsText(file);
     e.target.value = '';
   }
@@ -872,7 +886,6 @@
   function toast(msg, type) {
     const old = document.querySelector('.toast');
     if (old) old.remove();
-
     const t = document.createElement('div');
     t.className = 'toast ' + (type || '');
     t.textContent = msg;
@@ -880,7 +893,11 @@
     setTimeout(() => t.remove(), 3000);
   }
 
-  loadSharedData();
-</script>
+  load().then(data => {
+    clips = data;
+    render();
+  });
+</script>  
+
 </body>
 </html>
