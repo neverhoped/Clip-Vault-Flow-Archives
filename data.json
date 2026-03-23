@@ -654,5 +654,57 @@
       "Spinning"
     ],
     "addedAt": "2026-03-23"
+  },
+  {
+    "id": "c_1774282655808_z1md",
+    "anime": "Kizumonogatari",
+    "sceneType": "Action",
+    "character": "Koyomi",
+    "name": "Koyomi lighting on fire",
+    "thumbnail": "https://cdn.discordapp.com/attachments/1105458244828278789/1485673430362882108/535DA712-B85E-4BD1-8EB3-A3D31623B8F7.png?ex=69c2b8b4&is=69c16734&hm=98a51eb5b2d9b1733b9c88c72c4f5c09cd32ea95d7e59b0efe9870616db4f822&",
+    "discordLink": "https://www.sakugabooru.com/data/6d3f7418fd841bb0f3d0d574b2b01c89.mp4",
+    "tags": [
+      "Fire"
+    ],
+    "addedAt": "2026-03-23"
+  },
+  {
+    "id": "c_1774282742020_7myw",
+    "anime": "One piece",
+    "sceneType": "Action",
+    "character": "Zoro",
+    "name": "Zoro running and dashing towards king",
+    "thumbnail": "https://cdn.discordapp.com/attachments/1105458244828278789/1485674025664647209/BB4D1CA4-58F3-49DE-91E5-72FBDDDC8CEB.png?ex=69c2b942&is=69c167c2&hm=631084f33fd9fb89d0464388469c1335a6143a830a80b332ae1f3629f98970c9&",
+    "discordLink": "https://www.sakugabooru.com/data/2d4adc8e59c9796c284459e4481cb5c9.mp4",
+    "tags": [
+      "Sword"
+    ],
+    "addedAt": "2026-03-23"
+  },
+  {
+    "id": "c_1774282874806_yob6",
+    "anime": "Jujutsu Kaisen",
+    "sceneType": "Action",
+    "character": "Mahoraga",
+    "name": "Zoom on mahoraga and fighting sukuna",
+    "thumbnail": "https://cdn.discordapp.com/attachments/1105458244828278789/1485674592893796434/0EC5AFD0-6908-4B2F-9152-0AFD5570B517.png?ex=69c2b9c9&is=69c16849&hm=6b8fec26b809feee762619f3e8d84bd32f917b16bfd8797d559a8accd614010d&",
+    "discordLink": "https://www.sakugabooru.com/data/12d655926dc87a75dea9136e03458006.mp4",
+    "tags": [
+      "Fighting"
+    ],
+    "addedAt": "2026-03-23"
+  },
+  {
+    "id": "c_1774283103442_v8xt",
+    "anime": "One piece",
+    "sceneType": "Action",
+    "character": "S-Hawk",
+    "name": "S-Hawk looking right left with good camera movement",
+    "thumbnail": "https://cdn.discordapp.com/attachments/1105458244828278789/1485675178829811942/70E57D59-62F0-4401-A342-D9E82BB3DA14.png?ex=69c2ba55&is=69c168d5&hm=ed9ea418888cc57dcaf58c59ae6ebfd379c973659c140929906e9df8ec549072&",
+    "discordLink": "https://www.sakugabooru.com/data/a2990c4401da1fe26c8da802b0c468d7.mp4",
+    "tags": [
+      "Camera"
+    ],
+    "addedAt": "2026-03-23"
   }
 ]
