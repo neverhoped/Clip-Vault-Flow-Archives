@@ -26,5 +26,47 @@
       "Dash"
     ],
     "addedAt": "2026-03-23"
+  },
+  {
+    "id": "c_1774271901015_yoa5",
+    "anime": "One piece",
+    "sceneType": "Action, Explosion",
+    "character": "Garp",
+    "name": "Garp blows up the city",
+    "thumbnail": "https://media.discordapp.net/attachments/1105458244828278786/1485393908820344973/image.png?ex=69c25d21&is=69c10ba1&hm=26ee16ac8f3ca24348f51e0a1b45dcf9bcbc0eff87f7c00d7f11809468645769&=&format=webp&quality=lossless",
+    "discordLink": "https://www.sakugabooru.com/data/ebe79a2f9f595b33615776c571043afa.mp4",
+    "tags": [
+      "Explosion"
+    ],
+    "addedAt": "2026-03-23"
+  },
+  {
+    "id": "c_1774271997163_zjwb",
+    "anime": "7 deadly sins",
+    "sceneType": "Action, Sword, Slashing",
+    "character": "Meliodas",
+    "name": "Meliodas slashes",
+    "thumbnail": "https://media.discordapp.net/attachments/1105458244828278786/1485051672584781995/Skjermbilde_2026-03-21_171950.png?ex=69c26fe5&is=69c11e65&hm=a5e52263e11af6f237aaffe249fa813180c9c1154e207d374591a245bb61739b&=&format=webp&quality=lossless",
+    "discordLink": "https://www.sakugabooru.com/data/c10a42609607194815cff61eb0290ff3.mp4",
+    "tags": [
+      "Sword",
+      "Slash"
+    ],
+    "addedAt": "2026-03-23"
+  },
+  {
+    "id": "c_1774272066913_qv0y",
+    "anime": "One piece",
+    "sceneType": "Action, Slicing, Dashing, Sword",
+    "character": "Zoro",
+    "name": "Zoro speed blitz",
+    "thumbnail": "https://media.discordapp.net/attachments/1105458244828278786/1485110099486834899/image.png?ex=69c1fd8f&is=69c0ac0f&hm=940d555a562b0203eaf73a16a4c0f117e94f7deeb89419b121abd06b87f1768d&=&format=webp&quality=lossless",
+    "discordLink": "https://www.sakugabooru.com/data/7f4db72f8f85e6daf43d6cf4535a982b.mp4",
+    "tags": [
+      "Sword",
+      "Dash",
+      "Blitz"
+    ],
+    "addedAt": "2026-03-23"
   }
 ]
