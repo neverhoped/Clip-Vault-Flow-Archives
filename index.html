@@ -542,6 +542,54 @@
     .clip-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
     .form-grid { grid-template-columns: 1fr; }
     .logo-sub { display: none; }
+    .btn-coffee { display: none; }
+  }
+
+  /* ── DISCORD BUTTON ── */
+  .btn-discord {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-200);
+    transition: all 0.15s;
+    text-decoration: none;
+  }
+
+  .btn-discord svg { width: 18px; height: 18px; }
+
+  .btn-discord:hover {
+    color: #5865F2;
+    border-color: rgba(88, 101, 242, 0.4);
+    background: rgba(88, 101, 242, 0.08);
+    box-shadow: 0 2px 12px rgba(88, 101, 242, 0.15);
+  }
+
+  /* ── BACKGROUND SLIDESHOW ── */
+  #bgSlideshow {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  #bgSlideshow .bg-thumb {
+    position: absolute;
+    object-fit: cover;
+    border-radius: 8px;
+    opacity: 0;
+    filter: blur(1px) saturate(0.4) brightness(0.3);
+    transition: opacity 3s ease-in-out;
+    pointer-events: none;
+  }
+
+  #bgSlideshow .bg-thumb.visible {
+    opacity: 0.12;
   }
 </style>
 </head>
@@ -555,7 +603,11 @@
   <symbol id="ico-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
   <symbol id="ico-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></symbol>
   <symbol id="ico-empty" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></symbol>
+  <symbol id="ico-discord" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.947 2.418-2.157 2.418z"/></symbol>
 </svg>
+
+<!-- Background thumbnail slideshow -->
+<div id="bgSlideshow"></div>
 
 <header class="header">
   <div class="header-bar">
@@ -567,6 +619,7 @@
     <div class="header-actions">
       <span class="stat-pill" id="stats"></span>
       <a href="https://buymeacoffee.com/xayvis" target="_blank" rel="noopener" class="btn-coffee">BUY ME A COFFEE</a>
+      <a href="https://discord.gg/6qNtYym7dD" target="_blank" rel="noopener" class="btn-discord" title="Join our Discord"><svg><use href="#ico-discord"/></svg></a>
       <button class="btn-manage" id="manageBtn" onclick="toggleAdmin()">MANAGE</button>
     </div>
   </div>
@@ -900,6 +953,115 @@
     document.body.appendChild(t);
     setTimeout(() => t.remove(), 3000);
   }
+
+  // ── BACKGROUND THUMBNAIL SLIDESHOW ──
+  const bgContainer = document.getElementById('bgSlideshow');
+  let bgSlots = [];
+  const BG_SLOT_COUNT = 5;
+  const BG_CYCLE_MS = 4000;
+
+  function initBgSlideshow() {
+    // Collect all thumbnails that have URLs
+    const thumbs = clips
+      .map(c => c.thumbnail)
+      .filter(t => t && t.startsWith('http'));
+
+    if (thumbs.length === 0) return;
+
+    // Clear previous
+    bgContainer.innerHTML = '';
+    bgSlots = [];
+
+    // Create image slots at random positions
+    for (let i = 0; i < BG_SLOT_COUNT; i++) {
+      const img = document.createElement('img');
+      img.className = 'bg-thumb';
+      img.alt = '';
+      img.loading = 'lazy';
+      // Random size between 200-400px
+      const size = 200 + Math.random() * 200;
+      img.style.width = size + 'px';
+      img.style.height = (size * 0.5625) + 'px'; // 16:9
+      // Random position
+      img.style.left = (Math.random() * 80 + 5) + '%';
+      img.style.top = (Math.random() * 80 + 5) + '%';
+      img.style.transform = 'translate(-50%, -50%) rotate(' + (Math.random() * 10 - 5) + 'deg)';
+      bgContainer.appendChild(img);
+      bgSlots.push(img);
+    }
+
+    // Shuffle helper
+    function shuffle(arr) {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    let currentSlot = 0;
+    let shuffled = shuffle(thumbs);
+    let thumbIdx = 0;
+
+    function cycleNext() {
+      const slot = bgSlots[currentSlot];
+
+      // Fade out
+      slot.classList.remove('visible');
+
+      setTimeout(() => {
+        // Pick next thumb
+        const url = shuffled[thumbIdx];
+        thumbIdx++;
+        if (thumbIdx >= shuffled.length) {
+          shuffled = shuffle(thumbs);
+          thumbIdx = 0;
+        }
+
+        // Reposition randomly
+        slot.style.left = (Math.random() * 80 + 5) + '%';
+        slot.style.top = (Math.random() * 80 + 5) + '%';
+        slot.style.transform = 'translate(-50%, -50%) rotate(' + (Math.random() * 10 - 5) + 'deg)';
+
+        slot.src = url;
+        slot.onload = () => { slot.classList.add('visible'); };
+        slot.onerror = () => { slot.classList.remove('visible'); };
+      }, 1500); // Wait for fade out before swapping
+
+      currentSlot = (currentSlot + 1) % BG_SLOT_COUNT;
+    }
+
+    // Stagger initial appearance
+    bgSlots.forEach((slot, i) => {
+      setTimeout(() => {
+        const url = shuffled[thumbIdx];
+        thumbIdx++;
+        if (thumbIdx >= shuffled.length) {
+          shuffled = shuffle(thumbs);
+          thumbIdx = 0;
+        }
+        slot.src = url;
+        slot.onload = () => { slot.classList.add('visible'); };
+      }, i * 1200);
+    });
+
+    // Start cycling after initial stagger
+    setTimeout(() => {
+      setInterval(cycleNext, BG_CYCLE_MS);
+    }, BG_SLOT_COUNT * 1200 + 2000);
+  }
+
+  // Patch render to init slideshow after first data load
+  const _origRender = render;
+  let bgInitialized = false;
+  render = function() {
+    _origRender();
+    if (!bgInitialized && clips.length > 0) {
+      bgInitialized = true;
+      initBgSlideshow();
+    }
+  };
 
   loadSharedData();
 </script>
