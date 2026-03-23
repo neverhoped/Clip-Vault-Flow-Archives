@@ -472,5 +472,44 @@
       "Dash"
     ],
     "addedAt": "2026-03-23"
+  },
+  {
+    "id": "c_1774278418576_uyvf",
+    "anime": "IDK",
+    "sceneType": "Action",
+    "character": "IDK",
+    "name": "Guy reloading gun and catching bullet",
+    "thumbnail": "https://cdn.discordapp.com/attachments/1105458244828278789/1485655924038307890/724562AD-8047-47A8-9F97-63702B810EC9.png?ex=69c2a866&is=69c156e6&hm=1e795d82cbacf6d26cbaaff690f57e8f1b0b7c29c604bcf77163a225975f488e&",
+    "discordLink": "https://cdn.discordapp.com/attachments/1105458244828278786/1483327575475617803/6f4059758fc8b5adfbcff9b3d230243f.mov?ex=69c218f4&is=69c0c774&hm=b5e366682c17dc02866ff079829d68be340dd1d8a430a10cc42f9847c56344e5&",
+    "tags": [
+      "Gun"
+    ],
+    "addedAt": "2026-03-23"
+  },
+  {
+    "id": "c_1774278484517_h5rd",
+    "anime": "Naruto",
+    "sceneType": "Action",
+    "character": "Sasuke",
+    "name": "Sasuke spins his sword with lightning",
+    "thumbnail": "https://media.discordapp.net/attachments/1105458244828278786/1483223958600814652/fasdgffgfb.PNG?ex=69c26134&is=69c10fb4&hm=f09d33b5077895abde640ed138513d9afdb44e363180a9ca67192badcedb6f68&=&format=webp&quality=lossless",
+    "discordLink": "https://cdn.discordapp.com/attachments/1105458244828278786/1483227517413359739/Comp_1_1.mp4?ex=69c26485&is=69c11305&hm=78e38a560ca805de6e86d081369e27ca43891b26acb0e280824611bd1adf60e3&",
+    "tags": [
+      "Sword"
+    ],
+    "addedAt": "2026-03-23"
+  },
+  {
+    "id": "c_1774278545422_b8u6",
+    "anime": "Castlevania",
+    "sceneType": "Action",
+    "character": "IDK",
+    "name": "Guy punches while fist lights up blue",
+    "thumbnail": "https://cdn.discordapp.com/attachments/1105458244828278789/1485656392294600777/A7749037-23F5-4E85-AC9A-32BBA051819B.png?ex=69c2a8d6&is=69c15756&hm=824da1cc99e251f4a9350964dae0fda183f2e75158000e386ca8cebbd00402c5&",
+    "discordLink": "https://cdn.discordapp.com/attachments/1105458244828278786/1483210050691403826/e23a69c1aceffeb2e4a3666642ec6eb6.mov?ex=69c25440&is=69c102c0&hm=cccd8d0386b4c683af1049169e86c979ea8f5c872e29487062bf3c0e25c1c564&",
+    "tags": [
+      "Punch"
+    ],
+    "addedAt": "2026-03-23"
   }
 ]
