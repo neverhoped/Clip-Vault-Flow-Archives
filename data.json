@@ -511,5 +511,70 @@
       "Punch"
     ],
     "addedAt": "2026-03-23"
+  },
+  {
+    "id": "c_1774278740106_3tec",
+    "anime": "Valorant",
+    "sceneType": "Action",
+    "character": "Jett",
+    "name": "Jett spins with her daggers",
+    "thumbnail": "https://media.discordapp.net/attachments/1105458244828278786/1483192895648567631/image.png?ex=69c24446&is=69c0f2c6&hm=8192b2c4e9a643d1ca206ccfdca02becf130350e08a70f6f157748cb240e1a45&=&format=webp&quality=lossless",
+    "discordLink": "https://cdn.discordapp.com/attachments/1105458244828278786/1483193799701172417/ScreenRecording_03-16-2026_15-00-59_1.mov?ex=69c2451e&is=69c0f39e&hm=3d472a014b662b6046d7d77eb53271991cadb90ebd53e0b73177720f269f07d9&",
+    "tags": [
+      "Spin"
+    ],
+    "addedAt": "2026-03-23"
+  },
+  {
+    "id": "c_1774278818025_339t",
+    "anime": "Jujutsu Kaisen",
+    "sceneType": "Action",
+    "character": "Riko",
+    "name": "Riko gets shot in her head by toji",
+    "thumbnail": "https://media.discordapp.net/attachments/1105458244828278786/1483166434904379412/IMG_5164.png?ex=69c22ba1&is=69c0da21&hm=88f9bc82e7896a8a2ab222d62e13df5bf6dd7a93069ef8e7c69495d9b4b467d4&=&format=webp&quality=lossless",
+    "discordLink": "https://cdn.discordapp.com/attachments/1105458244828278786/1483171834655543517/riko.mov?ex=69c230a9&is=69c0df29&hm=8df35a02ca19b9ea679cfc90e2e63bf23cd209d9bea7443034ac208e49613dd9&",
+    "tags": [
+      "Gun"
+    ],
+    "addedAt": "2026-03-23"
+  },
+  {
+    "id": "c_1774278858812_x0mg",
+    "anime": "Demon slayer",
+    "sceneType": "Action",
+    "character": "Tanjiro",
+    "name": "Tanjiro slashes something with his sword",
+    "thumbnail": "https://media.discordapp.net/attachments/1105458244828278786/1483166434636071063/IMG_5165.png?ex=69c22ba1&is=69c0da21&hm=929e3ab2bc12f2a30ecc2c9bed11e1d3c27f5a31d02ada78fe365aa50d48be1b&=&format=webp&quality=lossless",
+    "discordLink": "https://cdn.discordapp.com/attachments/1105458244828278786/1483167699638161578/tanjirobadass.mp4?ex=69c22ccf&is=69c0db4f&hm=b43cdae974b8acce7b97cfd6dee801868733e3d535992e2170334bb1b8882dd4&",
+    "tags": [
+      "Sword"
+    ],
+    "addedAt": "2026-03-23"
+  },
+  {
+    "id": "c_1774278934640_kl8p",
+    "anime": "IDK",
+    "sceneType": "Action",
+    "character": "IDK",
+    "name": "Guy running, jumping and landing",
+    "thumbnail": "https://cdn.discordapp.com/attachments/1105458244828278789/1485658029318733824/829B4BE6-AE92-4177-8EB8-D42DE0D3D6FF.png?ex=69c2aa5c&is=69c158dc&hm=4bb2536bb05c522b98ac684a0fb39ef5fcb0937bc42a3a85b0aaf3ee1e7830d2&",
+    "discordLink": "https://cdn.discordapp.com/attachments/1105458244828278786/1483161221468524644/sunset_parkour.mp4?ex=69c226c7&is=69c0d547&hm=2c1c3f93c8dd4a0387b0fd0474c3e17d7b867d605cc39eb2e86145cca1cc2da8&",
+    "tags": [
+      "Running"
+    ],
+    "addedAt": "2026-03-23"
+  },
+  {
+    "id": "c_1774278999657_06yj",
+    "anime": "One punch man",
+    "sceneType": "Action",
+    "character": "Garou",
+    "name": "Garou his leg getting chained",
+    "thumbnail": "https://cdn.discordapp.com/attachments/1105458244828278789/1485658320672133190/9E154097-E4CE-4239-A529-C56425DDF7FC.png?ex=69c2aaa1&is=69c15921&hm=0e15049f45afc18e13bfa044b9101afe98a908fd45403751d8f93697d9d99368&",
+    "discordLink": "https://cdn.discordapp.com/attachments/1105458244828278786/1483143821989511168/garou_chain.mp4?ex=69c21692&is=69c0c512&hm=04cbe628468a3f99a7f83894f128670e3bec4dc94d01a556d7bc4c85fbb7e8f1&",
+    "tags": [
+      "Chain"
+    ],
+    "addedAt": "2026-03-23"
   }
 ]
