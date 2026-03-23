@@ -596,10 +596,19 @@
     { id:'c4', anime:'Jujutsu Kaisen', sceneType:'Sad', character:'Itadori', name:'Itadori cries over Junpei', thumbnail:'', discordLink:'https://discord.com/channels/example/2/2', tags:['cry','emotional','junpei','season 1'], addedAt:'2026-03-22' },
   ];
 
-  function load() { const s = localStorage.getItem(STORAGE_KEY); if (s) return JSON.parse(s); save(SAMPLE_DATA); return [...SAMPLE_DATA]; }
-  function save(d) { localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); }
+  let clips = [];
 
-  let clips = load();
+async function loadSharedData() {
+  try {
+    const res = await fetch('data.json?v=' + Date.now());
+    clips = await res.json();
+  } catch (e) {
+    console.error(e);
+    clips = SAMPLE_DATA; // fallback
+  }
+  loadSharedData();
+}
+  
   let path = [];
   let adminOpen = false;
   let searchQ = '';
