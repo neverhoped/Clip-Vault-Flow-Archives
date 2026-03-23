@@ -587,8 +587,6 @@
 <input type="file" id="importFile" accept=".json" style="display:none" onchange="handleImport(event)">
 
 <script>
-  const STORAGE_KEY = 'clipvault_data';
-
   const SAMPLE_DATA = [
     { id:'c1', anime:'Attack on Titan', sceneType:'Action', character:'Eren', name:'Eren punches titan', thumbnail:'', discordLink:'https://discord.com/channels/example/1/1', tags:['punch','rage','titan','season 1'], addedAt:'2026-03-20' },
     { id:'c2', anime:'Attack on Titan', sceneType:'Action', character:'Levi', name:'Levi spinning slash', thumbnail:'', discordLink:'https://discord.com/channels/example/1/2', tags:['spin','blade','clean','season 3'], addedAt:'2026-03-21' },
@@ -597,28 +595,38 @@
   ];
 
   let clips = [];
-
-async function loadSharedData() {
-  try {
-    const res = await fetch('data.json?v=' + Date.now());
-    clips = await res.json();
-  } catch (e) {
-    console.error(e);
-    clips = SAMPLE_DATA; // fallback
-  }
-  loadSharedData();
-}
-  
   let path = [];
   let adminOpen = false;
   let searchQ = '';
 
-  function esc(s) { if (!s) return ''; const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+  async function loadSharedData() {
+    try {
+      const res = await fetch('data.json?v=' + Date.now(), { cache: 'no-store' });
+      if (!res.ok) throw new Error('Failed to load data.json');
+      clips = await res.json();
+      if (!Array.isArray(clips)) throw new Error('data.json is not an array');
+    } catch (e) {
+      console.error(e);
+      clips = [...SAMPLE_DATA];
+      toast('Could not load data.json', 'error');
+    }
+    render();
+  }
+
+  function esc(s) {
+    if (!s) return '';
+    const d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+  }
 
   function groupBy(arr, key) {
     const m = {};
-    arr.forEach(c => { const k = c[key]; m[k] = (m[k]||0)+1; });
-    return Object.entries(m).sort((a,b) => a[0].localeCompare(b[0]));
+    arr.forEach(c => {
+      const k = c[key];
+      m[k] = (m[k] || 0) + 1;
+    });
+    return Object.entries(m).sort((a, b) => a[0].localeCompare(b[0]));
   }
 
   const icons = {
@@ -637,22 +645,31 @@ async function loadSharedData() {
   }
 
   function updateStats() {
-    const ac = new Set(clips.map(c=>c.anime)).size;
+    const ac = new Set(clips.map(c => c.anime)).size;
     document.getElementById('stats').innerHTML = `<strong>${clips.length}</strong> clips &middot; <strong>${ac}</strong> series`;
   }
 
   function updateBreadcrumb() {
     const el = document.getElementById('breadcrumb');
-    let h = `<span class="bc-item ${path.length===0?'current':''}" onclick="nav(0)">All</span>`;
-    path.forEach((p,i) => {
+    let h = `<span class="bc-item ${path.length === 0 ? 'current' : ''}" onclick="nav(0)">All</span>`;
+    path.forEach((p, i) => {
       h += `<span class="bc-sep">/</span>`;
-      h += `<span class="bc-item ${i===path.length-1?'current':''}" onclick="nav(${i+1})">${esc(p)}</span>`;
+      h += `<span class="bc-item ${i === path.length - 1 ? 'current' : ''}" onclick="nav(${i + 1})">${esc(p)}</span>`;
     });
     el.innerHTML = h;
   }
 
-  function nav(depth) { path = path.slice(0, depth); searchQ = ''; document.getElementById('search').value = ''; render(); }
-  function openDir(name) { path.push(name); render(); }
+  function nav(depth) {
+    path = path.slice(0, depth);
+    searchQ = '';
+    document.getElementById('search').value = '';
+    render();
+  }
+
+  function openDir(name) {
+    path.push(name);
+    render();
+  }
 
   function render() {
     updateStats();
@@ -660,11 +677,17 @@ async function loadSharedData() {
     const main = document.getElementById('main');
     const d = path.length;
 
-    if (searchQ) { renderSearch(main); return; }
+    if (searchQ) {
+      renderSearch(main);
+      return;
+    }
 
     if (d === 0) {
       const items = groupBy(clips, 'anime');
-      if (!items.length) { main.innerHTML = emptyHtml('No clips yet','Open the Manage panel to add your first clip.'); return; }
+      if (!items.length) {
+        main.innerHTML = emptyHtml('No clips yet', 'Upload or import clip data to begin.');
+        return;
+      }
       main.innerHTML = sectionLabel('Series', items.length) + folderGridHtml(items, 0);
     } else if (d === 1) {
       const filtered = clips.filter(c => c.anime === path[0]);
@@ -692,7 +715,7 @@ async function loadSharedData() {
       <div class="folder" onclick="openDir('${esc(name)}')">
         <div class="folder-icon">${folderIcon(depth)}</div>
         <div class="folder-name">${esc(name)}</div>
-        <div class="folder-count">${count} clip${count!==1?'s':''}</div>
+        <div class="folder-count">${count} clip${count !== 1 ? 's' : ''}</div>
       </div>`).join('')}</div>`;
   }
 
@@ -701,10 +724,11 @@ async function loadSharedData() {
   }
 
   function clipCardHtml(c, showPath) {
+    const tags = Array.isArray(c.tags) ? c.tags : [];
     return `
       <div class="clip-wrapper">
         <button class="clip-delete-btn" onclick="event.stopPropagation();deleteClip('${c.id}')">DELETE</button>
-        <a class="clip-card" href="${esc(c.discordLink)}" target="_blank" rel="noopener">
+        <a class="clip-card" href="${esc(c.discordLink || '#')}" target="_blank" rel="noopener">
           <div class="clip-thumb-wrap">
             ${c.thumbnail
               ? `<img src="${esc(c.thumbnail)}" alt="${esc(c.name)}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
@@ -714,9 +738,9 @@ async function loadSharedData() {
           </div>
           <div class="clip-body">
             <div class="clip-title">${esc(c.name)}</div>
-            <div class="clip-tags">${c.tags.map(t => `<span class="clip-tag">${esc(t)}</span>`).join('')}</div>
+            <div class="clip-tags">${tags.map(t => `<span class="clip-tag">${esc(t)}</span>`).join('')}</div>
             ${showPath ? `<div class="clip-path">${esc(c.anime)} / ${esc(c.sceneType)} / ${esc(c.character)}</div>` : ''}
-            <div class="clip-date">${esc(c.addedAt||'')}</div>
+            <div class="clip-date">${esc(c.addedAt || '')}</div>
           </div>
         </a>
       </div>`;
@@ -725,14 +749,17 @@ async function loadSharedData() {
   function renderSearch(main) {
     const q = searchQ.toLowerCase();
     const results = clips.filter(c =>
-      c.name.toLowerCase().includes(q) ||
-      c.anime.toLowerCase().includes(q) ||
-      c.character.toLowerCase().includes(q) ||
-      c.sceneType.toLowerCase().includes(q) ||
-      c.tags.some(t => t.toLowerCase().includes(q))
+      (c.name || '').toLowerCase().includes(q) ||
+      (c.anime || '').toLowerCase().includes(q) ||
+      (c.character || '').toLowerCase().includes(q) ||
+      (c.sceneType || '').toLowerCase().includes(q) ||
+      (Array.isArray(c.tags) && c.tags.some(t => (t || '').toLowerCase().includes(q)))
     );
 
-    if (!results.length) { main.innerHTML = emptyHtml('No matches', `Nothing found for "${esc(searchQ)}".`); return; }
+    if (!results.length) {
+      main.innerHTML = emptyHtml('No matches', `Nothing found for "${esc(searchQ)}".`);
+      return;
+    }
 
     main.innerHTML = sectionLabel('Results', results.length) +
       `<div class="clip-grid">${results.map(c => clipCardHtml(c, true)).join('')}</div>`;
@@ -766,30 +793,33 @@ async function loadSharedData() {
     const tagsStr = document.getElementById('inp-tags').value.trim();
 
     if (!anime || !scene || !character || !name || !link) {
-      toast('Fill in all required fields', 'error'); return;
+      toast('Fill in all required fields', 'error');
+      return;
     }
 
     clips.push({
-      id: 'c_' + Date.now() + '_' + Math.random().toString(36).slice(2,6),
-      anime, sceneType: scene, character, name,
-      thumbnail: thumb, discordLink: link,
-      tags: tagsStr ? tagsStr.split(',').map(t=>t.trim()).filter(Boolean) : [],
+      id: 'c_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+      anime,
+      sceneType: scene,
+      character,
+      name,
+      thumbnail: thumb,
+      discordLink: link,
+      tags: tagsStr ? tagsStr.split(',').map(t => t.trim()).filter(Boolean) : [],
       addedAt: new Date().toISOString().split('T')[0]
     });
-    save(clips);
 
     ['inp-anime','inp-scene','inp-character','inp-name','inp-thumb','inp-link','inp-tags']
       .forEach(id => document.getElementById(id).value = '');
 
-    toast('Clip added successfully', 'success');
+    toast('Clip added locally — export JSON to save changes', 'success');
     render();
   }
 
   function deleteClip(id) {
     if (!confirm('Delete this clip?')) return;
     clips = clips.filter(c => c.id !== id);
-    save(clips);
-    toast('Clip removed', 'success');
+    toast('Clip removed locally — export JSON to save changes', 'success');
     render();
   }
 
@@ -797,42 +827,60 @@ async function loadSharedData() {
     const blob = new Blob([JSON.stringify(clips, null, 2)], { type: 'application/json' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = 'clipvault_export.json';
+    a.download = 'data.json';
     a.click();
     URL.revokeObjectURL(a.href);
-    toast('Exported to file', 'success');
+    toast('Exported JSON file', 'success');
   }
 
-  function importData() { document.getElementById('importFile').click(); }
+  function importData() {
+    document.getElementById('importFile').click();
+  }
 
   function handleImport(e) {
     const file = e.target.files[0];
     if (!file) return;
+
     const r = new FileReader();
     r.onload = function(ev) {
       try {
         const d = JSON.parse(ev.target.result);
-        if (Array.isArray(d)) { clips = d; save(clips); path = []; toast(`Imported ${clips.length} clips`, 'success'); render(); }
-        else toast('Invalid format', 'error');
-      } catch { toast('Invalid JSON file', 'error'); }
+        if (Array.isArray(d)) {
+          clips = d;
+          path = [];
+          searchQ = '';
+          document.getElementById('search').value = '';
+          toast(`Imported ${clips.length} clips`, 'success');
+          render();
+        } else {
+          toast('Invalid format', 'error');
+        }
+      } catch {
+        toast('Invalid JSON file', 'error');
+      }
     };
+
     r.readAsText(file);
     e.target.value = '';
   }
 
-  function handleSearch(v) { searchQ = v.trim(); render(); }
+  function handleSearch(v) {
+    searchQ = v.trim();
+    render();
+  }
 
   function toast(msg, type) {
     const old = document.querySelector('.toast');
     if (old) old.remove();
+
     const t = document.createElement('div');
-    t.className = 'toast ' + (type||'');
+    t.className = 'toast ' + (type || '');
     t.textContent = msg;
     document.body.appendChild(t);
     setTimeout(() => t.remove(), 3000);
   }
 
-  render();
+  loadSharedData();
 </script>
 </body>
 </html>
