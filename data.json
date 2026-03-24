@@ -946,5 +946,73 @@
       "Flying"
     ],
     "addedAt": "2026-03-24"
+  },
+  {
+    "id": "c_1774352986857_ahxy",
+    "anime": "Naruto",
+    "sceneType": "Action",
+    "character": "Madara",
+    "name": "Madara dropping on a guy and jumping back up",
+    "thumbnail": "https://i.imgur.com/tl5Qzj2.png",
+    "discordLink": "https://www.sakugabooru.com/data/54cad5cfd831a34e5e99d2178984f9bb.mp4",
+    "tags": [
+      "Fall",
+      "Punch"
+    ],
+    "addedAt": "2026-03-24"
+  },
+  {
+    "id": "c_1774353132262_f8em",
+    "anime": "Naruto",
+    "sceneType": "Action",
+    "character": "Obito",
+    "name": "Obito goes insane and summons green tool to fight",
+    "thumbnail": "https://i.imgur.com/C5eJxJi.png",
+    "discordLink": "https://www.sakugabooru.com/data/757f6dcf279f2626b4d99cd88c2c4976.mp4",
+    "tags": [
+      "Hand",
+      "Tool"
+    ],
+    "addedAt": "2026-03-24"
+  },
+  {
+    "id": "c_1774353236515_whw1",
+    "anime": "Naruto",
+    "sceneType": "Action",
+    "character": "Sasuke",
+    "name": "Sasuke uses wire strings",
+    "thumbnail": "https://i.imgur.com/Nn9UPYF.png",
+    "discordLink": "https://www.sakugabooru.com/data/2b9d7ac414ab1f8bc27f54287a8a3240.mp4",
+    "tags": [
+      "Hand",
+      "Tool"
+    ],
+    "addedAt": "2026-03-24"
+  },
+  {
+    "id": "c_1774353328804_v1hg",
+    "anime": "Naruto",
+    "sceneType": "Action",
+    "character": "Naruto",
+    "name": "Naruto dodges metal stuff",
+    "thumbnail": "https://i.imgur.com/AkmbjT8.png",
+    "discordLink": "https://www.sakugabooru.com/data/df6073fc29125c7420455b7d57b14c66.mp4",
+    "tags": [
+      "Flying"
+    ],
+    "addedAt": "2026-03-24"
+  },
+  {
+    "id": "c_1774353427292_f5r4",
+    "anime": "Naruto",
+    "sceneType": "Action",
+    "character": "Naruto",
+    "name": "Naruto goes through fire",
+    "thumbnail": "https://i.imgur.com/6Lj3HzQ.png",
+    "discordLink": "https://www.sakugabooru.com/data/d9a51bcc485a912ef8166bd7d612208e.mp4",
+    "tags": [
+      "Fire"
+    ],
+    "addedAt": "2026-03-24"
   }
 ]
