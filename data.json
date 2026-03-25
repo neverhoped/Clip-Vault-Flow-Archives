@@ -1342,5 +1342,74 @@
       "Punch"
     ],
     "addedAt": "2026-03-25"
+  },
+  {
+    "id": "c_1774480804581_7qct",
+    "anime": "Kizumonogatari",
+    "sceneType": "Action",
+    "character": "Koyomi",
+    "name": "Koyomi punching down with blood",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/76.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/bab21203f77313a664fe8f3b27e84832.mp4",
+    "tags": [
+      "Punch",
+      "Blood"
+    ],
+    "addedAt": "2026-03-25"
+  },
+  {
+    "id": "c_1774480914628_6rn6",
+    "anime": "Kizumonogatari",
+    "sceneType": "Action",
+    "character": "Koyomi",
+    "name": "Koyomi dashing around with lightning",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/77.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/a3a9a229d8caee5bc52dde821b1f16b5.mp4",
+    "tags": [
+      "Dash",
+      "Running"
+    ],
+    "addedAt": "2026-03-25"
+  },
+  {
+    "id": "c_1774481056643_ttg0",
+    "anime": "Kizumonogatari",
+    "sceneType": "Action",
+    "character": "Koyomi",
+    "name": "Koyomi intro clip",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/78.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/f721f7b12f8c48c4e4a070e208b92d47.mp4",
+    "tags": [
+      "Intro"
+    ],
+    "addedAt": "2026-03-25"
+  },
+  {
+    "id": "c_1774481302956_5w94",
+    "anime": "7 deadly sins",
+    "sceneType": "Action",
+    "character": "Derieri",
+    "name": "Derieri punching Meliodas and jumping",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/79.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/ce94b23e87b793cd36845613910ababa.mp4",
+    "tags": [
+      "Punch",
+      "Jumping"
+    ],
+    "addedAt": "2026-03-25"
+  },
+  {
+    "id": "c_1774481571858_dwim",
+    "anime": "Bleach",
+    "sceneType": "Action",
+    "character": "Yamamoto",
+    "name": "Yamamoto dashing after explosion",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/80.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/c91de55012f4c93c10adbabb3303a105.mp4",
+    "tags": [
+      "Dash",
+      "Explosion"
+    ],
+    "addedAt": "2026-03-25"
   }
 ]
