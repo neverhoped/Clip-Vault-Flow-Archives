@@ -5,8 +5,8 @@
     "sceneType": "Action, Shooting",
     "character": "Shinra",
     "name": "Shinra shoots gun",
-    "thumbnail": "https://media.discordapp.net/attachments/1105458244828278786/1485495561825161439/Screenshot_2026_0323_095755.jpg?ex=69c2130d&is=69c0c18d&hm=a018618cb085ffa577273ada9aded1b652676fb348c27ae7d82fb6d055415d55&=&format=webp",
-    "discordLink": "https://cdn.discordapp.com/attachments/1105458244828278786/1485617064885358652/b9d0cee342fcd686e6f75fe9ee453594.mp4?ex=69c28435&is=69c132b5&hm=863b63c28fb02bc32a7ce6a15670ae4714497f9a0f8777c4de40ed462a13fdff&",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/shinra.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/b9d0cee342fcd686e6f75fe9ee453594.mp4",
     "tags": [
       "Gun",
       "Shooting"
@@ -232,8 +232,8 @@
     "sceneType": "Action",
     "character": "Benimaru",
     "name": "Benimaru swinging hand with fire",
-    "thumbnail": "https://cdn.discordapp.com/attachments/1105458244828278789/1485645024921387081/8693DA46-CF3F-4D40-ADA1-546B36C274BA.png?ex=69c29e3f&is=69c14cbf&hm=f17987e72dc98166aad5d9fabfd9c9e02a1b2e208835558550d05e9f9917fd58&",
-    "discordLink": "https://cdn.discordapp.com/attachments/1105458244828278786/1484315239184072894/Fire_Force_-_S1E14_35.mp4?ex=69c2650a&is=69c1138a&hm=5ee8aa8f5e1244eadd74fe260c46c7499bbd7adcf8e2be6b786e01c7a3bde013&",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/benimarufire.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/d9209a120448eb7178e8d21615ceec16.mp4",
     "tags": [
       "Fire"
     ],
@@ -336,7 +336,7 @@
     "sceneType": "Action",
     "character": "Muichiro",
     "name": "Muichiro dashes behind sanemi",
-    "thumbnail": "https://media.discordapp.net/attachments/1105458244828278786/1484065262637547530/image.png?ex=69c224fb&is=69c0d37b&hm=934392c9dc02fdbe45d01fffcb8588a2a940dbbac7a11e32a37ae9dfc233f8f2&=&format=webp&quality=lossless",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/muichiroo.png?raw=true",
     "discordLink": "https://www.sakugabooru.com/data/bb3f08509af53208ac9685ec8a6c4e63.mp4",
     "tags": [
       "Dash"
@@ -427,7 +427,7 @@
     "sceneType": "Racing",
     "character": "Satoru",
     "name": "Guy ice skating",
-    "thumbnail": "https://cdn.discordapp.com/attachments/1105458244828278786/1484192580139880508/image.png?ex=69c29b8e&is=69c14a0e&hm=95279a5fb61f4ed9980cd0b8caaf7331a67afed594828941bedefbc062ca2ac6&",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/erased.png?raw=true",
     "discordLink": "https://www.sakugabooru.com/data/258d1061600e310c345e90e9edb5d515.mp4",
     "tags": [
       "Skating"
@@ -453,7 +453,7 @@
     "sceneType": "Action",
     "character": "Touta",
     "name": "Touta shooting light while camera zooms on him",
-    "thumbnail": "https://cdn.discordapp.com/attachments/1105458244828278789/1485654917027729448/367B6EFF-EEB0-4B1E-BA4F-1C1B3B2404A9.png?ex=69c2a776&is=69c155f6&hm=d3fec96a262d826f92c592fa35612db6a44cd009e8559db121974cdf4f984421&",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/deathnotegun.png?raw=true",
     "discordLink": "https://cdn.discordapp.com/attachments/1105458244828278786/1483504116926906519/light_yagamishot.mp4?ex=69c2149f&is=69c0c31f&hm=3f76d9888e88e33eed268030cb094e0c32bd89658069aba56fce937169f3fff0&",
     "tags": [
       "Shooting"
@@ -466,7 +466,7 @@
     "sceneType": "Action",
     "character": "Muichiro",
     "name": "Muichiro dashing around",
-    "thumbnail": "https://cdn.discordapp.com/attachments/1105458244828278789/1485655358629347411/9AB6EAE7-23B3-4884-96DF-48B699995E2D.png?ex=69c2a7df&is=69c1565f&hm=be0e2c8ce36138417d10de0870b986def76ecefa99ec5d602f7ce00767eef247&",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/muichiro2.png?raw=true",
     "discordLink": "https://cdn.discordapp.com/attachments/1105458244828278786/1483391068492922930/DemonSlayer_Muichiro_Dash_2.mp4?ex=69c25416&is=69c10296&hm=50ab0f0a4d02bd03b03adddd02c867726b81df7cb23fcd40689ee7ae891f7f84&",
     "tags": [
       "Dash"
@@ -544,7 +544,7 @@
     "sceneType": "Action",
     "character": "Tanjiro",
     "name": "Tanjiro slashes something with his sword",
-    "thumbnail": "https://i.imgur.com/Vuty1WA.png",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/tanjirobloodcut.png?raw=true",
     "discordLink": "https://www.sakugabooru.com/data/c7bd0aef88f20f97fddce7ee02265a1a.mp4",
     "tags": [
       "Sword"
@@ -769,19 +769,6 @@
     "addedAt": "2026-03-23"
   },
   {
-    "id": "c_1774286037885_eryd",
-    "anime": "Demon slayer",
-    "sceneType": "Action",
-    "character": "Muichiro",
-    "name": "Muichiro moving his sword around",
-    "thumbnail": "https://cdn.discordapp.com/attachments/1406811750904369163/1425162186111586446/image.png?ex=69c2bfb7&is=69c16e37&hm=650c4e459669b32943bab1cb1e37e9ec53e03d5a1985f8007de703ba0f2b4616&",
-    "discordLink": "https://cdn.discordapp.com/attachments/1406811750904369163/1425162223168389232/Demon_Slayer_-_S3E03_64.mp4?ex=69c2bfc0&is=69c16e40&hm=4002436c29ba72d4490fa1174e452a4e6892774da511ea83bd75d72facca555b&",
-    "tags": [
-      "Sword"
-    ],
-    "addedAt": "2026-03-23"
-  },
-  {
     "id": "c_1774286089686_7i62",
     "anime": "Ranking of kings",
     "sceneType": "Action",
@@ -801,8 +788,8 @@
     "sceneType": "Action",
     "character": "unknown",
     "name": "Girl slicing through giant snakes and running on them",
-    "thumbnail": "https://media.discordapp.net/attachments/1406811750904369163/1425160933336027206/image.png?ex=69c2be8c&is=69c16d0c&hm=26d3c7b3a2212c6355e046d2e6c969cb0fa589afcf880f98e1fd98317bf3176b&=&format=webp&quality=lossless",
-    "discordLink": "https://cdn.discordapp.com/attachments/1406811750904369163/1425160974339674122/Fate_Grand_Order_-_Babylonia_-_EP08_12_SHIIVA.mp4?ex=69c2be96&is=69c16d16&hm=a25f8b6bafd6b4db5bc9bfa6b1449e90ae556b9fcf10a5a30d7640ee9d7f66ab&",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/snakes.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/d9cc720bf62ce44e9b83e504af45a855.mp4",
     "tags": [
       "Running",
       "Sword"
@@ -844,7 +831,7 @@
     "sceneType": "Action",
     "character": "Archer",
     "name": "Archer spinning his sword",
-    "thumbnail": "https://i.imgur.com/U2ya4HL.png",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/archerfate.png?raw=true",
     "discordLink": "https://www.sakugabooru.com/data/1511bce7baf34bfd8a2007f768def886.mp4",
     "tags": [
       "Sword",
