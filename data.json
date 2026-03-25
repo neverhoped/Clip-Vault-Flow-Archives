@@ -84,9 +84,9 @@
   },
   {
     "id": "c_1774273481744_e0ap",
-    "anime": "IDK",
+    "anime": "Da wang rao ming",
     "sceneType": "Action",
-    "character": "IDK",
+    "character": "/",
     "name": "Guy spinning dagger/Knife",
     "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/knifedawangrao.png?raw=true",
     "discordLink": "https://www.sakugabooru.com/data/8fb880e3ea76043d4bbfb38c17d681c4.mp4",
@@ -461,9 +461,9 @@
   },
   {
     "id": "c_1774278934640_kl8p",
-    "anime": "IDK",
+    "anime": "Da wang rao ming",
     "sceneType": "Action",
-    "character": "IDK",
+    "character": "/",
     "name": "Guy running, jumping and landing",
     "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/5.png?raw=true",
     "discordLink": "https://cdn.discordapp.com/attachments/1105458244828278786/1483161221468524644/sunset_parkour.mp4?ex=69c226c7&is=69c0d547&hm=2c1c3f93c8dd4a0387b0fd0474c3e17d7b867d605cc39eb2e86145cca1cc2da8&",
@@ -1271,6 +1271,75 @@
     "discordLink": "https://www.sakugabooru.com/data/49c8149debce9f9841e6fe8295c80e7e.mp4",
     "tags": [
       "Zoom"
+    ],
+    "addedAt": "2026-03-25"
+  },
+  {
+    "id": "c_1774479515407_c1c5",
+    "anime": "Jujutsu Kaisen",
+    "sceneType": "Action",
+    "character": "Nobara",
+    "name": "Nobara hand clip",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/71.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/3ba0266a6692ea256c01b7dd2735d706.mp4",
+    "tags": [
+      "Hand"
+    ],
+    "addedAt": "2026-03-25"
+  },
+  {
+    "id": "c_1774479585752_6o3o",
+    "anime": "Frieren",
+    "sceneType": "Action",
+    "character": "Frieren",
+    "name": "Frieren explosion",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/72.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/f7e964369668d8c571cd5a16cb22f453.mp4",
+    "tags": [
+      "Explosion",
+      "Intro"
+    ],
+    "addedAt": "2026-03-25"
+  },
+  {
+    "id": "c_1774479734032_4w4a",
+    "anime": "Frieren",
+    "sceneType": "Action",
+    "character": "Fern",
+    "name": "Fern uses her power",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/73.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/53ae06b8aeb6410d5e522e7ab22d3711.mp4",
+    "tags": [
+      "Liquid",
+      "Movement"
+    ],
+    "addedAt": "2026-03-25"
+  },
+  {
+    "id": "c_1774479911178_jeqk",
+    "anime": "Frieren",
+    "sceneType": "Action",
+    "character": "Linie",
+    "name": "Linie spinning pole with her hand",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/74.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/3f159fd62ec7e12916279fe370116a4d.mp4",
+    "tags": [
+      "Hand",
+      "Pole"
+    ],
+    "addedAt": "2026-03-25"
+  },
+  {
+    "id": "c_1774479997479_j2km",
+    "anime": "Frieren",
+    "sceneType": "Action",
+    "character": "Laufen",
+    "name": "Laufen/girl  drops/falls on monster",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/75.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/33f452fce4b925abcd527295d09ac954.mp4",
+    "tags": [
+      "Falling",
+      "Punch"
     ],
     "addedAt": "2026-03-25"
   }
