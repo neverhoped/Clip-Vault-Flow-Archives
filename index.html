@@ -7,7 +7,7 @@
 <title>Clip Vault</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
+  :root, [data-theme="dark"] {
     --bg-base: #0c0c0e;
     --bg-raised: #131316;
     --bg-surface: #19191e;
@@ -15,10 +15,10 @@
     --bg-overlay: rgba(12, 12, 14, 0.92);
     --border-subtle: rgba(255,255,255,0.06);
     --border-medium: rgba(255,255,255,0.1);
-    --border-active: rgba(210, 170, 100, 0.4);
+    --border-active: rgba(83, 150, 212, 0.4);
     --accent: #5396d4;
-    --accent-dim: rgba(212, 168, 83, 0.15);
-    --accent-glow: rgba(212, 168, 83, 0.08);
+    --accent-dim: rgba(83, 150, 212, 0.15);
+    --accent-glow: rgba(83, 150, 212, 0.08);
     --text-100: #f0ece4;
     --text-200: #b8b4ac;
     --text-300: #7a776f;
@@ -28,6 +28,30 @@
     --radius-sm: 6px;
     --radius-md: 10px;
     --radius-lg: 14px;
+    --canvas-particle: rgba(83, 150, 212, 0.12);
+    --canvas-line: rgba(83, 150, 212, 0.04);
+  }
+
+  [data-theme="light"] {
+    --bg-base: #f4f3f0;
+    --bg-raised: #ffffff;
+    --bg-surface: #eae8e4;
+    --bg-surface-hover: #e0ddd8;
+    --bg-overlay: rgba(244, 243, 240, 0.92);
+    --border-subtle: rgba(0,0,0,0.07);
+    --border-medium: rgba(0,0,0,0.12);
+    --border-active: rgba(40, 100, 160, 0.35);
+    --accent: #2e7cbf;
+    --accent-dim: rgba(46, 124, 191, 0.12);
+    --accent-glow: rgba(46, 124, 191, 0.06);
+    --text-100: #1a1a1a;
+    --text-200: #444440;
+    --text-300: #78756e;
+    --text-400: #a8a49c;
+    --red: #c0564b;
+    --green: #3a9960;
+    --canvas-particle: rgba(46, 124, 191, 0.1);
+    --canvas-line: rgba(46, 124, 191, 0.04);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: var(--bg-base); color: var(--text-100); font-family: 'Outfit', sans-serif; min-height: 100vh; -webkit-font-smoothing: antialiased; }
@@ -158,9 +182,30 @@
   .folder, .clip-wrapper { animation: itemIn 0.3s ease both; }
   @keyframes itemIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-  #bgSlideshow { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
-  .bg-img { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; filter: blur(10px) saturate(0.2) brightness(0.2); transition: opacity 4s ease-in-out; pointer-events: none; }
-  .bg-img.active { opacity: 1; }
+  #bgCanvas { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+
+  /* ── THEME TOGGLE ── */
+  .btn-theme {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px; height: 32px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-200);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .btn-theme svg { width: 16px; height: 16px; }
+  .btn-theme:hover { color: var(--accent); border-color: var(--border-active); background: var(--accent-glow); }
+
+  /* smooth theme transition */
+  body, .header, .folder, .clip-card, .admin-panel, .modal-box, .toast,
+  .btn-manage, .btn-coffee, .btn-discord, .btn-random, .btn-theme,
+  .search-field input, .field input, .tag-bar-pill, .stat-pill {
+    transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  }
 
   /* ── RANDOM BUTTON ── */
   .btn-random {
@@ -267,9 +312,11 @@
   <symbol id="ico-empty" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></symbol>
   <symbol id="ico-edit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></symbol>
   <symbol id="ico-discord" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.947 2.418-2.157 2.418z"/></symbol>
+  <symbol id="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></symbol>
+  <symbol id="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol>
 </svg>
 
-<div id="bgSlideshow"></div>
+<canvas id="bgCanvas"></canvas>
 
 <header class="header">
   <div class="header-bar">
@@ -282,6 +329,7 @@
       <span class="stat-pill" id="stats"></span>
       <a href="https://buymeacoffee.com/xayvis" target="_blank" rel="noopener" class="btn-coffee">BUY ME A COFFEE</a>
       <a href="https://discord.gg/6qNtYym7dD" target="_blank" rel="noopener" class="btn-discord" title="Join our Discord"><svg><use href="#ico-discord"/></svg></a>
+      <button class="btn-theme" id="themeToggle" onclick="toggleTheme()" title="Toggle theme"><svg><use href="#ico-sun"/></svg></button>
       <button class="btn-manage" id="manageBtn" onclick="toggleAdmin()">MANAGE</button>
     </div>
   </div>
@@ -368,7 +416,6 @@
       clips = [...SAMPLE_DATA];
     }
     render();
-    initBgSlideshow();
   }
 
   function esc(s) { if (!s) return ''; const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
@@ -760,43 +807,129 @@
     document.body.appendChild(t); setTimeout(() => t.remove(), 3000);
   }
 
-  // ── BACKGROUND SLIDESHOW (fullscreen crossfade) ──
-  function initBgSlideshow() {
-    const container = document.getElementById('bgSlideshow');
-    const thumbs = clips.map(c => c.thumbnail).filter(t => t && t.startsWith('http'));
-    if (thumbs.length === 0) return;
+  // ── ANIMATED CANVAS BACKGROUND ──
+  const canvas = document.getElementById('bgCanvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let mouse = { x: -999, y: -999 };
+  let animFrame;
 
-    const imgA = document.createElement('img');
-    const imgB = document.createElement('img');
-    imgA.className = 'bg-img'; imgB.className = 'bg-img';
-    imgA.alt = ''; imgB.alt = '';
-    container.appendChild(imgA); container.appendChild(imgB);
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
 
-    let current = imgA, next = imgB, idx = 0;
+  document.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+  document.addEventListener('mouseleave', () => { mouse.x = -999; mouse.y = -999; });
 
-    function shuffle(arr) {
-      const a = [...arr];
-      for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]] = [a[j],a[i]]; }
-      return a;
+  function createParticles() {
+    particles = [];
+    const count = Math.min(Math.floor((canvas.width * canvas.height) / 12000), 120);
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        r: Math.random() * 2 + 1
+      });
+    }
+  }
+  createParticles();
+  window.addEventListener('resize', createParticles);
+
+  function getThemeColors() {
+    const style = getComputedStyle(document.documentElement);
+    return {
+      particle: style.getPropertyValue('--canvas-particle').trim(),
+      line: style.getPropertyValue('--canvas-line').trim()
+    };
+  }
+
+  function drawParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const colors = getThemeColors();
+    const connectDist = 140;
+
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+
+      // Mouse repulsion
+      const dx = p.x - mouse.x;
+      const dy = p.y - mouse.y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < 120 && dist > 0) {
+        const force = (120 - dist) / 120 * 0.8;
+        p.vx += (dx / dist) * force;
+        p.vy += (dy / dist) * force;
+      }
+
+      // Damping
+      p.vx *= 0.98;
+      p.vy *= 0.98;
+
+      // Move
+      p.x += p.vx;
+      p.y += p.vy;
+
+      // Wrap edges
+      if (p.x < -10) p.x = canvas.width + 10;
+      if (p.x > canvas.width + 10) p.x = -10;
+      if (p.y < -10) p.y = canvas.height + 10;
+      if (p.y > canvas.height + 10) p.y = -10;
+
+      // Draw particle
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = colors.particle;
+      ctx.fill();
+
+      // Draw connections
+      for (let j = i + 1; j < particles.length; j++) {
+        const p2 = particles[j];
+        const cdx = p.x - p2.x;
+        const cdy = p.y - p2.y;
+        const cdist = Math.sqrt(cdx*cdx + cdy*cdy);
+        if (cdist < connectDist) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p2.x, p2.y);
+          const alpha = 1 - (cdist / connectDist);
+          ctx.strokeStyle = colors.line.replace(/[\d.]+\)$/, (alpha * 0.08) + ')');
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+      }
     }
 
-    let shuffled = shuffle(thumbs);
-    function nextUrl() { const u = shuffled[idx]; idx++; if (idx >= shuffled.length) { shuffled = shuffle(thumbs); idx = 0; } return u; }
-
-    imgA.src = nextUrl();
-    imgA.onload = () => imgA.classList.add('active');
-
-    setInterval(() => {
-      const url = nextUrl();
-      next.src = url;
-      next.onload = () => {
-        next.classList.add('active');
-        current.classList.remove('active');
-        const tmp = current; current = next; next = tmp;
-      };
-      next.onerror = () => next.classList.remove('active');
-    }, 8000);
+    animFrame = requestAnimationFrame(drawParticles);
   }
+
+  drawParticles();
+
+  // ── THEME TOGGLE ──
+  function getStoredTheme() {
+    try { return localStorage.getItem('cv_theme') || 'dark'; } catch { return 'dark'; }
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    const btn = document.getElementById('themeToggle');
+    btn.innerHTML = theme === 'dark'
+      ? '<svg><use href="#ico-sun"/></svg>'
+      : '<svg><use href="#ico-moon"/></svg>';
+    btn.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+    try { localStorage.setItem('cv_theme', theme); } catch {}
+  }
+
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'dark';
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+  }
+
+  applyTheme(getStoredTheme());
 
   loadSharedData();
 </script>
