@@ -8,9 +8,9 @@ A visual clip library for anime editing communities. Browse, search, and organiz
 
 ## Overview
 
-ClipVault is a static site built for Discord communities that collect and share anime clips. Instead of clips getting lost in chat, they're organized in a browsable library with thumbnails, tags, and direct links.
+ClipVault is a static site built for my Discord Flow Archives that collect and share anime clips. Instead of clips getting lost in chat, they're organized in a browsable library with thumbnails, tags, and direct links.
 
-The site runs entirely on GitHub Pages with no server, database, or build step. All clip data lives in a single `data.json` file.
+All clip data lives in a single `data.json` file. Sakugabooru is used for the clips.
 
 ## Features
 
