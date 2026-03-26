@@ -1,384 +1,455 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="favicon-32.png" type="image/png">
-<title>Flow Archives</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Clip Vault</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root, [data-theme="dark"] {
-    --bg-base: #08090d;
-    --bg-raised: #0f1118;
-    --bg-surface: #161821;
-    --bg-surface-hover: #1e2030;
-    --bg-overlay: rgba(8, 9, 13, 0.93);
-    --border-subtle: rgba(255,255,255,0.07);
-    --border-medium: rgba(255,255,255,0.13);
-    --border-active: rgba(100, 160, 240, 0.5);
-    --accent: #6aadf0;
-    --accent-dim: rgba(106, 173, 240, 0.14);
-    --accent-glow: rgba(106, 173, 240, 0.07);
-    --accent-secondary: #c084fc;
-    --accent-tertiary: #34d399;
-    --text-100: #eeeae4;
-    --text-200: #a09c96;
-    --text-300: #686460;
-    --text-400: #3a3836;
-    --red: #f06060;
-    --green: #4ade80;
-    --radius-sm: 6px;
-    --radius-md: 10px;
-    --radius-lg: 14px;
-    --canvas-dot: rgba(106, 173, 240, 0.2);
-    --canvas-line: rgba(106, 173, 240, 0.04);
-    --glow-1: rgba(106, 173, 240, 0.06);
-    --glow-2: rgba(192, 132, 252, 0.04);
-    --glow-3: rgba(52, 211, 153, 0.03);
-  }
+/* ═══════════════════════════════════════
+   THEME SYSTEM
+   ═══════════════════════════════════════ */
+:root, [data-theme="dark"] {
+  --bg: #06060a;
+  --bg-glass: rgba(14, 14, 22, 0.55);
+  --bg-glass-solid: rgba(14, 14, 22, 0.8);
+  --bg-glass-hover: rgba(22, 22, 36, 0.6);
+  --bg-input: rgba(10, 10, 18, 0.7);
+  --border: rgba(255,255,255,0.08);
+  --border-hover: rgba(255,255,255,0.16);
+  --border-accent: rgba(120, 160, 255, 0.3);
+  --accent: #7ba4f7;
+  --accent-2: #c084fc;
+  --accent-3: #34d399;
+  --accent-soft: rgba(123, 164, 247, 0.12);
+  --accent-glow: rgba(123, 164, 247, 0.06);
+  --text: #e8e6f0;
+  --text-2: #9895a8;
+  --text-3: #5c5970;
+  --text-4: #36343f;
+  --red: #f47272;
+  --green: #4ade80;
+  --glass-blur: 20px;
+  --glass-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  --mesh-1: radial-gradient(ellipse 80% 60% at 10% 20%, rgba(123,164,247,0.08) 0%, transparent 60%);
+  --mesh-2: radial-gradient(ellipse 60% 80% at 85% 75%, rgba(192,132,252,0.06) 0%, transparent 60%);
+  --mesh-3: radial-gradient(ellipse 50% 50% at 50% 10%, rgba(52,211,153,0.04) 0%, transparent 50%);
+  --dot-color: rgba(123, 164, 247, 0.18);
+  --line-color: rgba(123, 164, 247, 0.04);
+}
 
-  [data-theme="light"] {
-    --bg-base: #f6f5f2;
-    --bg-raised: #ffffff;
-    --bg-surface: #eeece7;
-    --bg-surface-hover: #e3e0da;
-    --bg-overlay: rgba(246, 245, 242, 0.93);
-    --border-subtle: rgba(0,0,0,0.07);
-    --border-medium: rgba(0,0,0,0.13);
-    --border-active: rgba(30, 90, 160, 0.4);
-    --accent: #2068b8;
-    --accent-dim: rgba(32, 104, 184, 0.1);
-    --accent-glow: rgba(32, 104, 184, 0.05);
-    --accent-secondary: #8b5cf6;
-    --accent-tertiary: #059669;
-    --text-100: #111110;
-    --text-200: #3d3b36;
-    --text-300: #7a776f;
-    --text-400: #b8b4ac;
-    --red: #dc4040;
-    --green: #16a34a;
-    --canvas-dot: rgba(32, 104, 184, 0.14);
-    --canvas-line: rgba(32, 104, 184, 0.03);
-    --glow-1: rgba(32, 104, 184, 0.05);
-    --glow-2: rgba(139, 92, 246, 0.04);
-    --glow-3: rgba(5, 150, 105, 0.03);
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: var(--bg-base); color: var(--text-100); font-family: 'Outfit', sans-serif; min-height: 100vh; -webkit-font-smoothing: antialiased; }
-  ::selection { background: var(--accent); color: var(--bg-base); }
-  body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 128px 128px; }
+[data-theme="light"] {
+  --bg: #f0eff5;
+  --bg-glass: rgba(255, 255, 255, 0.5);
+  --bg-glass-solid: rgba(255, 255, 255, 0.75);
+  --bg-glass-hover: rgba(255, 255, 255, 0.65);
+  --bg-input: rgba(255, 255, 255, 0.6);
+  --border: rgba(0,0,0,0.08);
+  --border-hover: rgba(0,0,0,0.15);
+  --border-accent: rgba(50, 90, 200, 0.25);
+  --accent: #3b6de8;
+  --accent-2: #8b5cf6;
+  --accent-3: #059669;
+  --accent-soft: rgba(59, 109, 232, 0.1);
+  --accent-glow: rgba(59, 109, 232, 0.05);
+  --text: #111019;
+  --text-2: #555068;
+  --text-3: #8e8aa0;
+  --text-4: #c5c2d0;
+  --red: #e04040;
+  --green: #16a34a;
+  --glass-blur: 24px;
+  --glass-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  --mesh-1: radial-gradient(ellipse 80% 60% at 10% 20%, rgba(59,109,232,0.07) 0%, transparent 60%);
+  --mesh-2: radial-gradient(ellipse 60% 80% at 85% 75%, rgba(139,92,246,0.05) 0%, transparent 60%);
+  --mesh-3: radial-gradient(ellipse 50% 50% at 50% 10%, rgba(5,150,105,0.04) 0%, transparent 50%);
+  --dot-color: rgba(59, 109, 232, 0.12);
+  --line-color: rgba(59, 109, 232, 0.025);
+}
 
-  .header { position: sticky; top: 0; z-index: 100; background: var(--bg-overlay); backdrop-filter: blur(24px) saturate(1.2); border-bottom: 1px solid var(--border-subtle); padding: 0 2.5rem; }
-  .header-bar { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-  .logo { display: flex; align-items: baseline; gap: 0.6rem; }
-  .logo-mark { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.08em; color: var(--text-100); line-height: 1; }
-  .logo-divider { width: 1px; height: 18px; background: var(--border-medium); align-self: center; }
-  .logo-sub { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; font-weight: 500; color: var(--text-300); letter-spacing: 0.12em; text-transform: uppercase; }
-  .header-actions { display: flex; align-items: center; gap: 0.75rem; }
-  .stat-pill { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; font-weight: 500; color: var(--text-300); letter-spacing: 0.04em; padding: 0.35rem 0.7rem; border: 1px solid var(--border-subtle); border-radius: 100px; }
-  .stat-pill strong { color: var(--accent); font-weight: 600; }
+/* ═══════════════════════════════════════
+   BASE
+   ═══════════════════════════════════════ */
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Sora', sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+::selection { background: var(--accent); color: white; }
 
-  .btn-manage { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.06em; color: var(--text-200); background: var(--bg-surface); border: 1px solid var(--border-subtle); padding: 0.4rem 0.9rem; border-radius: var(--radius-sm); cursor: pointer; transition: all 0.15s; }
-  .btn-manage:hover { color: var(--accent); border-color: var(--border-active); background: var(--accent-glow); }
-  .btn-manage.active { color: var(--accent); border-color: var(--accent); background: var(--accent-dim); }
+/* Mesh gradient BG */
+.mesh-bg {
+  position: fixed; inset: 0; z-index: -3; pointer-events: none;
+  background: var(--bg);
+}
+.mesh-bg::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: var(--mesh-1), var(--mesh-2), var(--mesh-3);
+  animation: meshShift 30s ease-in-out infinite alternate;
+}
+@keyframes meshShift {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05) translate(10px, -10px); }
+  100% { opacity: 1; transform: scale(1) translate(-5px, 5px); }
+}
 
-  .btn-coffee { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.06em; color: var(--bg-base); background: var(--accent); border: 1px solid var(--accent); padding: 0.4rem 0.9rem; border-radius: var(--radius-sm); cursor: pointer; transition: all 0.15s; text-decoration: none; }
-  .btn-coffee:hover { filter: brightness(1.15); box-shadow: 0 2px 12px rgba(212, 168, 83, 0.25); }
+/* Noise grain */
+body::after {
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 128px;
+}
 
-  .btn-discord { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: var(--radius-sm); background: var(--bg-surface); border: 1px solid var(--border-subtle); color: var(--text-200); transition: all 0.15s; text-decoration: none; }
-  .btn-discord svg { width: 18px; height: 18px; }
-  .btn-discord:hover { color: #5865F2; border-color: rgba(88, 101, 242, 0.4); background: rgba(88, 101, 242, 0.08); box-shadow: 0 2px 12px rgba(88, 101, 242, 0.15); }
+#bgCanvas { position: fixed; inset: 0; z-index: -2; pointer-events: none; }
 
-  .search-row { padding: 0.75rem 0 0.6rem; display: flex; gap: 0.75rem; align-items: center; }
-  .search-field { flex: 1; position: relative; }
-  .search-field svg { position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%); color: var(--text-400); width: 15px; height: 15px; }
-  .search-field input { width: 100%; padding: 0.6rem 0.9rem 0.6rem 2.5rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-100); font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 400; outline: none; transition: border-color 0.15s, box-shadow 0.15s; }
-  .search-field input:focus { border-color: var(--border-active); box-shadow: 0 0 0 3px var(--accent-glow); }
-  .search-field input::placeholder { color: var(--text-400); font-weight: 300; }
+/* Glass mixin via classes */
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.3);
+  border: 1px solid var(--border);
+  box-shadow: var(--glass-shadow);
+}
 
-  .breadcrumb-row { padding: 0 0 0.75rem; display: flex; align-items: center; gap: 0.25rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; font-weight: 500; }
-  .bc-item { color: var(--text-400); cursor: pointer; padding: 0.2rem 0.4rem; border-radius: 4px; transition: all 0.12s; letter-spacing: 0.02em; }
-  .bc-item:hover { color: var(--accent); background: var(--accent-glow); }
-  .bc-item.current { color: var(--text-200); cursor: default; }
-  .bc-item.current:hover { background: transparent; color: var(--text-200); }
-  .bc-sep { color: var(--text-400); font-size: 0.55rem; user-select: none; }
+/* Smooth theme transition */
+*, *::before, *::after {
+  transition: background 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s, opacity 0.3s;
+}
 
-  .content { padding: 1.75rem 2.5rem 5rem; max-width: 1400px; margin: 0 auto; }
-  #main { transition: opacity 0.2s ease, transform 0.2s ease; }
-  #main.transitioning { opacity: 0; transform: translateY(6px); }
+/* ═══════════════════════════════════════
+   HEADER
+   ═══════════════════════════════════════ */
+.header {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--bg-glass-solid);
+  backdrop-filter: blur(30px) saturate(1.4);
+  -webkit-backdrop-filter: blur(30px) saturate(1.4);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2.5rem;
+}
 
-  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; font-weight: 600; color: var(--text-400); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 1rem; padding-left: 2px; }
+.header-bar { display: flex; align-items: center; justify-content: space-between; height: 60px; }
 
-  .folder-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.7rem; margin-bottom: 2.5rem; }
-  .folder { background: var(--bg-raised); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); cursor: pointer; transition: all 0.18s ease; position: relative; overflow: hidden; }
-  .folder::after { content: ''; position: absolute; left: 0; top: 0; width: 3px; height: 100%; background: linear-gradient(180deg, var(--accent), var(--accent-secondary)); opacity: 0; transition: opacity 0.18s; }
-  .folder:hover { background: var(--bg-surface-hover); border-color: var(--border-medium); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.3), 0 0 16px var(--accent-glow); }
-  .folder:hover::after { opacity: 1; }
+.logo { display: flex; align-items: center; gap: 0.7rem; }
+.logo-mark { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
+.logo-mark span { color: var(--accent); }
+.logo-divider { width: 1px; height: 16px; background: var(--border-hover); }
+.logo-sub { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; font-weight: 500; color: var(--text-3); letter-spacing: 0.1em; text-transform: uppercase; }
 
-  .folder-preview { width: 100%; height: 80px; display: flex; gap: 2px; overflow: hidden; background: var(--bg-surface); }
-  .folder-preview img { flex: 1; min-width: 0; height: 100%; object-fit: cover; display: block; filter: brightness(0.7) saturate(0.3); transition: filter 0.2s; }
-  .folder:hover .folder-preview img { filter: brightness(0.85) saturate(1); }
-  .folder-preview-empty { flex: 1; height: 100%; background: var(--bg-surface); display: flex; align-items: center; justify-content: center; }
-  .folder-preview-empty svg { width: 20px; height: 20px; color: var(--text-400); opacity: 0.3; }
+.header-actions { display: flex; align-items: center; gap: 0.6rem; }
 
-  .folder-info { padding: 0.85rem 1rem; display: flex; align-items: center; justify-content: space-between; }
-  .folder-info-left { min-width: 0; }
-  .folder-icon { width: 24px; height: 24px; border-radius: 5px; background: var(--accent-dim); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .folder-icon svg { width: 12px; height: 12px; color: var(--accent); }
-  .folder-name { font-weight: 600; font-size: 0.88rem; color: var(--text-100); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .folder-count { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; font-weight: 500; color: var(--text-400); letter-spacing: 0.03em; margin-top: 0.1rem; }
+.stat-pill {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; font-weight: 500;
+  color: var(--text-3); padding: 0.3rem 0.65rem;
+  border: 1px solid var(--border); border-radius: 100px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(10px);
+}
+.stat-pill strong { color: var(--accent); }
 
-  .clip-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.75rem; }
-  .clip-wrapper { position: relative; }
-  .clip-action-btns { display: none; position: absolute; top: 8px; right: 8px; z-index: 5; gap: 0.3rem; }
-  .admin-active .clip-action-btns { display: flex; }
-  .clip-btn { font-family: 'IBM Plex Mono', monospace; font-size: 0.58rem; font-weight: 600; background: var(--bg-base); padding: 0.22rem 0.5rem; border-radius: 4px; cursor: pointer; letter-spacing: 0.04em; transition: all 0.12s; line-height: 1.4; }
-  .clip-btn-delete { color: var(--red); border: 1px solid var(--red); }
-  .clip-btn-delete:hover { background: var(--red); color: white; }
-  .clip-btn-edit { color: var(--accent); border: 1px solid var(--accent); }
-  .clip-btn-edit:hover { background: var(--accent); color: var(--bg-base); }
+/* Shared button base */
+.hdr-btn {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; font-weight: 500;
+  letter-spacing: 0.04em; border-radius: 8px; cursor: pointer;
+  transition: all 0.15s ease; text-decoration: none;
+  display: flex; align-items: center; justify-content: center; gap: 0.35rem;
+}
 
-  .clip-card { display: block; background: var(--bg-raised); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); overflow: hidden; text-decoration: none; color: inherit; transition: all 0.18s ease; }
-  .clip-card:hover { border-color: var(--border-medium); transform: translateY(-2px); box-shadow: 0 10px 36px rgba(0,0,0,0.3), 0 0 20px var(--accent-glow); }
-  .clip-thumb-wrap { position: relative; width: 100%; aspect-ratio: 16/9; background: var(--bg-surface); overflow: hidden; }
-  .clip-thumb-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .clip-thumb-wrap video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: none; z-index: 2; }
-  .clip-thumb-wrap.previewing video { display: block; }
-  .clip-thumb-wrap.previewing img { opacity: 0; }
-  .clip-thumb-wrap.previewing .clip-play-indicator { display: none; }
-  .clip-play-indicator { position: absolute; bottom: 8px; right: 8px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,0,0,0.65); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.12); z-index: 3; }
-  .clip-play-indicator svg { width: 10px; height: 10px; color: white; margin-left: 1px; }
+.hdr-btn-ghost {
+  color: var(--text-2); background: var(--bg-glass); border: 1px solid var(--border);
+  padding: 0.38rem 0.8rem;
+  backdrop-filter: blur(10px);
+}
+.hdr-btn-ghost:hover { color: var(--accent); border-color: var(--border-accent); background: var(--accent-soft); }
+.hdr-btn-ghost.active { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
 
-  /* Copy URL button */
-  .clip-copy-btn {
-    position: absolute;
-    bottom: 8px;
-    left: 8px;
-    z-index: 4;
-    width: 28px; height: 28px;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.65);
-    backdrop-filter: blur(6px);
-    border: 1px solid rgba(255,255,255,0.12);
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    transition: all 0.15s;
-    opacity: 0;
-  }
-  .clip-copy-btn svg { width: 12px; height: 12px; color: white; }
-  .clip-thumb-wrap:hover .clip-copy-btn { opacity: 1; }
-  .clip-copy-btn:hover { background: var(--accent); border-color: var(--accent); }
-  .clip-copy-btn.copied { background: var(--green); border-color: var(--green); }
-  .clip-thumb-fallback { width: 100%; aspect-ratio: 16/9; background: var(--bg-surface); display: flex; align-items: center; justify-content: center; }
-  .clip-thumb-fallback svg { width: 28px; height: 28px; color: var(--text-400); opacity: 0.5; }
-  .clip-body { padding: 0.85rem 1rem; }
-  .clip-title { font-weight: 600; font-size: 0.85rem; color: var(--text-100); margin-bottom: 0.4rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .clip-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.45rem; }
-  .clip-tag { font-family: 'IBM Plex Mono', monospace; font-size: 0.58rem; font-weight: 500; color: var(--accent); background: var(--accent-dim); padding: 0.15rem 0.45rem; border-radius: 4px; letter-spacing: 0.03em; }
-  .clip-date { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; color: var(--text-400); }
-  .clip-path { font-family: 'IBM Plex Mono', monospace; font-size: 0.58rem; color: var(--text-400); margin-top: 0.15rem; opacity: 0.7; }
+.hdr-btn-accent {
+  color: white; background: var(--accent); border: 1px solid var(--accent);
+  padding: 0.38rem 0.8rem;
+}
+.hdr-btn-accent:hover { filter: brightness(1.15); box-shadow: 0 4px 16px rgba(123,164,247,0.25); }
 
-  .admin-panel { display: none; background: var(--bg-raised); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 2rem; animation: panelReveal 0.2s ease; }
-  .admin-panel.open { display: block; }
-  @keyframes panelReveal { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
-  .admin-heading { font-family: 'Bebas Neue', sans-serif; font-size: 1.15rem; letter-spacing: 0.06em; color: var(--text-200); margin-bottom: 1.1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border-subtle); }
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin-bottom: 0.7rem; }
-  .form-grid.full { grid-template-columns: 1fr; }
-  .field label { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; font-weight: 600; color: var(--text-400); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.3rem; }
-  .field input { width: 100%; padding: 0.55rem 0.75rem; background: var(--bg-base); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-100); font-family: 'Outfit', sans-serif; font-size: 0.82rem; outline: none; transition: border-color 0.12s; }
-  .field input:focus { border-color: var(--accent); }
-  .field input::placeholder { color: var(--text-400); font-weight: 300; }
-  .form-actions { display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap; }
-  .btn-primary { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.05em; color: var(--bg-base); background: var(--accent); border: none; padding: 0.55rem 1.3rem; border-radius: var(--radius-sm); cursor: pointer; transition: all 0.12s; }
-  .btn-primary:hover { filter: brightness(1.1); box-shadow: 0 4px 16px rgba(212, 168, 83, 0.2); }
-  .btn-ghost { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.04em; color: var(--text-300); background: transparent; border: 1px solid var(--border-subtle); padding: 0.5rem 1rem; border-radius: var(--radius-sm); cursor: pointer; transition: all 0.12s; }
-  .btn-ghost:hover { color: var(--text-200); border-color: var(--border-medium); }
+.hdr-btn-icon {
+  width: 30px; height: 30px; padding: 0;
+  color: var(--text-2); background: var(--bg-glass); border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+}
+.hdr-btn-icon svg { width: 15px; height: 15px; }
+.hdr-btn-icon:hover { color: var(--accent); border-color: var(--border-accent); }
 
-  .modal-overlay { position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; animation: modalFadeIn 0.2s ease; }
-  @keyframes modalFadeIn { from { opacity: 0; } to { opacity: 1; } }
-  .modal-box { background: var(--bg-raised); border: 1px solid var(--border-medium); border-radius: var(--radius-lg); padding: 1.75rem; width: 90%; max-width: 560px; max-height: 90vh; overflow-y: auto; animation: modalSlideIn 0.25s ease; box-shadow: 0 24px 80px rgba(0,0,0,0.5); }
-  @keyframes modalSlideIn { from { opacity: 0; transform: translateY(12px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
-  .modal-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.06em; color: var(--text-100); margin-bottom: 1.2rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border-subtle); }
-  .modal-actions { display: flex; gap: 0.5rem; margin-top: 1rem; justify-content: flex-end; }
-  .btn-cancel { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; font-weight: 500; color: var(--text-300); background: transparent; border: 1px solid var(--border-subtle); padding: 0.5rem 1rem; border-radius: var(--radius-sm); cursor: pointer; transition: all 0.12s; }
-  .btn-cancel:hover { color: var(--text-200); border-color: var(--border-medium); }
+.btn-discord:hover { color: #5865F2 !important; border-color: rgba(88,101,242,0.4) !important; }
 
-  .empty { text-align: center; padding: 5rem 2rem; }
-  .empty svg { width: 40px; height: 40px; color: var(--text-400); opacity: 0.4; margin-bottom: 1rem; }
-  .empty-title { font-weight: 600; font-size: 1rem; color: var(--text-200); margin-bottom: 0.35rem; }
-  .empty-sub { font-size: 0.85rem; color: var(--text-400); font-weight: 300; }
+/* Search row */
+.search-row { padding: 0.6rem 0 0.5rem; display: flex; gap: 0.6rem; align-items: center; }
+.search-field { flex: 1; position: relative; }
+.search-field svg { position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); color: var(--text-3); width: 14px; height: 14px; }
+.search-field input {
+  width: 100%; padding: 0.55rem 0.85rem 0.55rem 2.3rem;
+  background: var(--bg-input); border: 1px solid var(--border); border-radius: 10px;
+  color: var(--text); font-family: 'Sora', sans-serif; font-size: 0.82rem; font-weight: 400;
+  outline: none; backdrop-filter: blur(10px);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.search-field input:focus { border-color: var(--border-accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+.search-field input::placeholder { color: var(--text-4); font-weight: 300; }
 
-  .toast { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--bg-raised); border: 1px solid var(--border-medium); color: var(--text-200); padding: 0.65rem 1.1rem; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 500; z-index: 999; box-shadow: 0 10px 36px rgba(0,0,0,0.45); animation: toastIn 0.25s ease, toastOut 0.25s ease 2.5s forwards; }
-  .toast.success { border-color: var(--green); color: var(--green); }
-  .toast.error { border-color: var(--red); color: var(--red); }
-  @keyframes toastIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes toastOut { from { opacity: 1; } to { opacity: 0; pointer-events: none; } }
+/* Breadcrumbs */
+.breadcrumb-row { padding: 0 0 0.6rem; display: flex; align-items: center; gap: 0.2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 500; }
+.bc-item { color: var(--text-3); cursor: pointer; padding: 0.15rem 0.4rem; border-radius: 5px; transition: all 0.12s; }
+.bc-item:hover { color: var(--accent); background: var(--accent-soft); }
+.bc-item.current { color: var(--text-2); cursor: default; }
+.bc-item.current:hover { background: transparent; color: var(--text-2); }
+.bc-sep { color: var(--text-4); font-size: 0.5rem; user-select: none; }
 
-  .folder, .clip-wrapper { animation: itemIn 0.3s ease both; }
-  @keyframes itemIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+/* ═══════════════════════════════════════
+   CONTENT
+   ═══════════════════════════════════════ */
+.content { padding: 1.5rem 2.5rem 5rem; max-width: 1400px; margin: 0 auto; }
+#main { transition: opacity 0.2s ease, transform 0.2s ease; }
+#main.transitioning { opacity: 0; transform: translateY(6px); }
 
-  #bgCanvas { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+.section-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; font-weight: 600;
+  color: var(--text-3); letter-spacing: 0.14em; text-transform: uppercase;
+  margin-bottom: 0.9rem; padding-left: 2px;
+}
 
-  /* Ambient color glow blobs */
-  #ambientGlow {
-    position: fixed;
-    inset: 0;
-    z-index: -2;
-    pointer-events: none;
-    overflow: hidden;
-  }
+/* ═══════════════════════════════════════
+   FOLDER CARDS (glass)
+   ═══════════════════════════════════════ */
+.folder-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 0.75rem; margin-bottom: 2rem; }
 
-  .glow-blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(120px);
-    animation: glowDrift 25s ease-in-out infinite alternate;
-  }
+.folder {
+  background: var(--bg-glass); backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+  border: 1px solid var(--border); border-radius: 14px;
+  cursor: pointer; overflow: hidden; position: relative;
+  transition: all 0.2s ease;
+}
 
-  .glow-blob:nth-child(1) {
-    width: 500px; height: 500px;
-    background: var(--glow-1);
-    top: -10%; left: -5%;
-    animation-duration: 30s;
-  }
+.folder::before {
+  content: ''; position: absolute; inset: 0; border-radius: 14px;
+  background: linear-gradient(135deg, rgba(123,164,247,0.08) 0%, rgba(192,132,252,0.04) 100%);
+  opacity: 0; transition: opacity 0.2s;
+}
 
-  .glow-blob:nth-child(2) {
-    width: 400px; height: 400px;
-    background: var(--glow-2);
-    bottom: -10%; right: -5%;
-    animation-duration: 22s;
-    animation-delay: -8s;
-  }
+.folder:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25), 0 0 0 1px var(--border-accent);
+}
+.folder:hover::before { opacity: 1; }
 
-  .glow-blob:nth-child(3) {
-    width: 350px; height: 350px;
-    background: var(--glow-3);
-    top: 40%; left: 50%;
-    animation-duration: 28s;
-    animation-delay: -14s;
-  }
+.folder-preview { width: 100%; height: 85px; display: flex; gap: 2px; overflow: hidden; background: rgba(0,0,0,0.2); position: relative; z-index: 1; }
+.folder-preview img { flex: 1; min-width: 0; height: 100%; object-fit: cover; display: block; filter: brightness(0.65) saturate(0.4); transition: filter 0.25s; }
+.folder:hover .folder-preview img { filter: brightness(0.8) saturate(0.9); }
+.folder-preview-empty { flex: 1; height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.15); }
+.folder-preview-empty svg { width: 20px; height: 20px; color: var(--text-4); opacity: 0.4; }
 
-  @keyframes glowDrift {
-    0% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(60px, -40px) scale(1.15); }
-    66% { transform: translate(-40px, 50px) scale(0.9); }
-    100% { transform: translate(30px, -20px) scale(1.05); }
-  }
+.folder-info { padding: 0.8rem 1rem; display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 1; }
+.folder-info-left { min-width: 0; }
+.folder-name { font-weight: 600; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.folder-count { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; font-weight: 500; color: var(--text-3); margin-top: 0.15rem; }
+.folder-icon { width: 26px; height: 26px; border-radius: 7px; background: var(--accent-soft); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.folder-icon svg { width: 12px; height: 12px; color: var(--accent); }
 
-  /* ── THEME TOGGLE ── */
-  .btn-theme {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px; height: 32px;
-    border-radius: var(--radius-sm);
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    color: var(--text-200);
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-  .btn-theme svg { width: 16px; height: 16px; }
-  .btn-theme:hover { color: var(--accent); border-color: var(--border-active); background: var(--accent-glow); }
+/* ═══════════════════════════════════════
+   CLIP CARDS (glass)
+   ═══════════════════════════════════════ */
+.clip-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0.8rem; }
+.clip-wrapper { position: relative; }
 
-  /* smooth theme transition */
-  body, .header, .folder, .clip-card, .admin-panel, .modal-box, .toast,
-  .btn-manage, .btn-coffee, .btn-discord, .btn-random, .btn-theme,
-  .search-field input, .field input, .tag-bar-pill, .stat-pill, .glow-blob {
-    transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
-  }
+.clip-action-btns { display: none; position: absolute; top: 8px; right: 8px; z-index: 5; gap: 0.3rem; }
+.admin-active .clip-action-btns { display: flex; }
+.clip-btn {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; font-weight: 600;
+  padding: 0.2rem 0.5rem; border-radius: 5px; cursor: pointer;
+  letter-spacing: 0.03em; transition: all 0.12s; line-height: 1.4;
+  backdrop-filter: blur(8px);
+}
+.clip-btn-delete { color: var(--red); background: rgba(0,0,0,0.6); border: 1px solid var(--red); }
+.clip-btn-delete:hover { background: var(--red); color: white; }
+.clip-btn-edit { color: var(--accent); background: rgba(0,0,0,0.6); border: 1px solid var(--accent); }
+.clip-btn-edit:hover { background: var(--accent); color: white; }
 
-  /* ── RANDOM BUTTON ── */
-  .btn-random {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.7rem; font-weight: 500;
-    letter-spacing: 0.06em;
-    color: var(--text-200);
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    padding: 0.52rem 0.9rem;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    transition: all 0.15s;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  .btn-random:hover { color: var(--accent); border-color: var(--border-active); background: var(--accent-glow); }
+.clip-card {
+  display: block; background: var(--bg-glass);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+  border: 1px solid var(--border); border-radius: 14px;
+  overflow: hidden; text-decoration: none; color: inherit;
+  transition: all 0.2s ease;
+}
+.clip-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.3), 0 0 0 1px var(--border-accent);
+}
 
-  /* ── TAG FILTER BAR ── */
-  .tag-bar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-    padding: 0.6rem 0 0.2rem;
-  }
+.clip-thumb-wrap { position: relative; width: 100%; aspect-ratio: 16/9; background: rgba(0,0,0,0.3); overflow: hidden; }
+.clip-thumb-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity 0.2s; }
+.clip-thumb-wrap video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: none; z-index: 2; }
+.clip-thumb-wrap.previewing video { display: block; }
+.clip-thumb-wrap.previewing img { opacity: 0; }
+.clip-thumb-wrap.previewing .clip-play-indicator { display: none; }
 
-  .tag-bar-pill {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.6rem; font-weight: 500;
-    letter-spacing: 0.03em;
-    color: var(--text-300);
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    padding: 0.25rem 0.55rem;
-    border-radius: 100px;
-    cursor: pointer;
-    transition: all 0.15s;
-    user-select: none;
-  }
+.clip-play-indicator {
+  position: absolute; bottom: 8px; right: 8px; width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(0,0,0,0.5); backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(255,255,255,0.15); z-index: 3;
+}
+.clip-play-indicator svg { width: 10px; height: 10px; color: white; margin-left: 1px; }
 
-  .tag-bar-pill:hover {
-    color: var(--accent);
-    border-color: var(--border-active);
-    background: var(--accent-glow);
-  }
+.clip-copy-btn {
+  position: absolute; bottom: 8px; left: 8px; z-index: 4;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(0,0,0,0.5); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; opacity: 0; transition: all 0.15s;
+}
+.clip-copy-btn svg { width: 12px; height: 12px; color: white; }
+.clip-thumb-wrap:hover .clip-copy-btn { opacity: 1; }
+.clip-copy-btn:hover { background: var(--accent); border-color: var(--accent); }
+.clip-copy-btn.copied { background: var(--green); border-color: var(--green); }
 
-  .tag-bar-pill.active {
-    color: var(--bg-base);
-    background: var(--accent);
-    border-color: var(--accent);
-  }
+.clip-thumb-fallback { width: 100%; aspect-ratio: 16/9; background: rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; }
+.clip-thumb-fallback svg { width: 26px; height: 26px; color: var(--text-4); opacity: 0.4; }
 
-  .tag-bar-pill.active:hover {
-    filter: brightness(1.1);
-  }
+.clip-body { padding: 0.85rem 1rem; }
+.clip-title { font-weight: 600; font-size: 0.84rem; color: var(--text); margin-bottom: 0.35rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.clip-tags { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-bottom: 0.35rem; }
+.clip-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; font-weight: 500; color: var(--accent); background: var(--accent-soft); padding: 0.12rem 0.4rem; border-radius: 5px; }
+.clip-date { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; color: var(--text-4); }
+.clip-path { font-family: 'JetBrains Mono', monospace; font-size: 0.53rem; color: var(--text-3); margin-top: 0.1rem; }
 
-  .tag-bar-clear {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.58rem; font-weight: 500;
-    color: var(--text-400);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.25rem 0.4rem;
-    transition: color 0.12s;
-  }
+/* ═══════════════════════════════════════
+   ADMIN PANEL (glass)
+   ═══════════════════════════════════════ */
+.admin-panel {
+  display: none; background: var(--bg-glass); backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+  border: 1px solid var(--border); border-radius: 16px;
+  padding: 1.4rem; margin-bottom: 1.5rem;
+  animation: panelIn 0.25s ease;
+}
+.admin-panel.open { display: block; }
+@keyframes panelIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
 
-  .tag-bar-clear:hover { color: var(--red); }
+.admin-heading { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; margin-bottom: 0.65rem; }
+.form-grid.full { grid-template-columns: 1fr; }
+.field label { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; font-weight: 600; color: var(--text-3); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.25rem; }
+.field input, .field textarea {
+  width: 100%; padding: 0.5rem 0.7rem; background: var(--bg-input);
+  border: 1px solid var(--border); border-radius: 8px; color: var(--text);
+  font-family: 'Sora', sans-serif; font-size: 0.8rem; outline: none;
+  backdrop-filter: blur(6px); transition: border-color 0.12s;
+}
+.field input:focus, .field textarea:focus { border-color: var(--accent); }
+.field input::placeholder, .field textarea::placeholder { color: var(--text-4); font-weight: 300; }
 
-  /* ── LAST UPDATED ── */
-  .last-updated {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.58rem;
-    color: var(--text-400);
-    letter-spacing: 0.03em;
-    padding-left: 2px;
-    margin-bottom: 1.25rem;
-  }
+.form-actions { display: flex; gap: 0.45rem; margin-top: 0.7rem; flex-wrap: wrap; }
+.btn-primary {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.04em; color: white; background: var(--accent); border: none;
+  padding: 0.5rem 1.2rem; border-radius: 8px; cursor: pointer; transition: all 0.12s;
+}
+.btn-primary:hover { filter: brightness(1.12); box-shadow: 0 4px 20px var(--accent-glow); }
+.btn-ghost {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 500;
+  color: var(--text-3); background: var(--bg-glass); border: 1px solid var(--border);
+  padding: 0.45rem 0.9rem; border-radius: 8px; cursor: pointer; transition: all 0.12s;
+  backdrop-filter: blur(6px);
+}
+.btn-ghost:hover { color: var(--text-2); border-color: var(--border-hover); }
 
-  @media (max-width: 768px) {
-    .header { padding: 0 1.25rem; }
-    .content { padding: 1.25rem 1.25rem 4rem; }
-    .folder-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
-    .clip-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
-    .form-grid { grid-template-columns: 1fr; }
-    .logo-sub { display: none; }
-    .btn-coffee { display: none; }
-    .stat-pill { display: none; }
-    .folder-preview { height: 60px; }
-    .modal-box { width: 95%; padding: 1.25rem; }
-    .btn-random { padding: 0.52rem 0.6rem; font-size: 0.6rem; }
-  }
+/* ═══════════════════════════════════════
+   MODAL (glass)
+   ═══════════════════════════════════════ */
+.modal-overlay { position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.6); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; animation: fadeIn 0.2s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.modal-box { background: var(--bg-glass-solid); backdrop-filter: blur(30px) saturate(1.3); border: 1px solid var(--border-hover); border-radius: 18px; padding: 1.6rem; width: 90%; max-width: 540px; max-height: 90vh; overflow-y: auto; animation: modalIn 0.25s ease; box-shadow: 0 32px 80px rgba(0,0,0,0.5); }
+@keyframes modalIn { from { opacity: 0; transform: translateY(14px) scale(0.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.modal-title { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 1.1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
+.modal-actions { display: flex; gap: 0.45rem; margin-top: 1rem; justify-content: flex-end; }
+.btn-cancel { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 500; color: var(--text-3); background: transparent; border: 1px solid var(--border); padding: 0.45rem 0.9rem; border-radius: 8px; cursor: pointer; transition: all 0.12s; }
+.btn-cancel:hover { color: var(--text-2); border-color: var(--border-hover); }
+
+/* ═══════════════════════════════════════
+   TAG BAR
+   ═══════════════════════════════════════ */
+.tag-bar { display: flex; flex-wrap: wrap; gap: 0.3rem; padding: 0.5rem 0 0.3rem; }
+.tag-bar-pill {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; font-weight: 500;
+  color: var(--text-3); background: var(--bg-glass); backdrop-filter: blur(8px);
+  border: 1px solid var(--border); padding: 0.22rem 0.5rem; border-radius: 100px;
+  cursor: pointer; transition: all 0.15s; user-select: none;
+}
+.tag-bar-pill:hover { color: var(--accent); border-color: var(--border-accent); background: var(--accent-soft); }
+.tag-bar-pill.active { color: white; background: var(--accent); border-color: var(--accent); }
+.tag-bar-clear { font-family: 'JetBrains Mono', monospace; font-size: 0.53rem; font-weight: 500; color: var(--text-4); background: none; border: none; cursor: pointer; padding: 0.22rem 0.35rem; transition: color 0.12s; }
+.tag-bar-clear:hover { color: var(--red); }
+
+.last-updated { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; color: var(--text-4); padding-left: 2px; margin-bottom: 1rem; }
+
+/* ═══════════════════════════════════════
+   MISC
+   ═══════════════════════════════════════ */
+.empty { text-align: center; padding: 5rem 2rem; }
+.empty svg { width: 36px; height: 36px; color: var(--text-4); opacity: 0.35; margin-bottom: 0.8rem; }
+.empty-title { font-weight: 600; font-size: 0.95rem; color: var(--text-2); margin-bottom: 0.3rem; }
+.empty-sub { font-size: 0.82rem; color: var(--text-3); font-weight: 300; }
+
+.toast {
+  position: fixed; bottom: 1.5rem; right: 1.5rem;
+  background: var(--bg-glass-solid); backdrop-filter: blur(16px);
+  border: 1px solid var(--border-hover); color: var(--text-2);
+  padding: 0.6rem 1rem; border-radius: 10px;
+  font-size: 0.78rem; font-weight: 500; z-index: 999;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  animation: toastIn 0.25s ease, toastOut 0.25s ease 2.5s forwards;
+}
+.toast.success { border-color: var(--green); color: var(--green); }
+.toast.error { border-color: var(--red); color: var(--red); }
+@keyframes toastIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+@keyframes toastOut { from { opacity:1; } to { opacity:0; pointer-events:none; } }
+
+.folder, .clip-wrapper { animation: itemIn 0.35s ease both; }
+@keyframes itemIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+/* Back to top */
+.back-top {
+  position: fixed; bottom: 1.5rem; left: 1.5rem; z-index: 90;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--bg-glass); backdrop-filter: blur(12px);
+  border: 1px solid var(--border); color: var(--text-3);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; opacity: 0; pointer-events: none;
+  transition: all 0.2s ease;
+}
+.back-top svg { width: 16px; height: 16px; }
+.back-top.visible { opacity: 1; pointer-events: auto; }
+.back-top:hover { color: var(--accent); border-color: var(--border-accent); transform: translateY(-2px); }
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════ */
+@media (max-width: 768px) {
+  .header { padding: 0 1rem; }
+  .content { padding: 1rem 1rem 4rem; }
+  .folder-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  .clip-grid { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); }
+  .form-grid { grid-template-columns: 1fr; }
+  .logo-sub, .btn-coffee, .stat-pill { display: none; }
+  .folder-preview { height: 60px; }
+  .modal-box { width: 95%; padding: 1.2rem; }
+  .hdr-btn-ghost span { display: none; }
+}
 </style>
 </head>
 <body>
@@ -397,79 +468,74 @@
   <symbol id="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol>
   <symbol id="ico-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
   <symbol id="ico-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="ico-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></symbol>
 </svg>
 
-<div id="ambientGlow">
-  <div class="glow-blob"></div>
-  <div class="glow-blob"></div>
-  <div class="glow-blob"></div>
-</div>
+<div class="mesh-bg"></div>
 <canvas id="bgCanvas"></canvas>
 
 <header class="header">
   <div class="header-bar">
     <div class="logo">
-      <span class="logo-mark">Flow Archives</span>
+      <span class="logo-mark">Clip<span>Vault</span></span>
       <div class="logo-divider"></div>
-      <span class="logo-sub">Community Clip Library</span>
+      <span class="logo-sub">Flow Archives</span>
     </div>
     <div class="header-actions">
       <span class="stat-pill" id="stats"></span>
-      <a href="https://buymeacoffee.com/xayvis" target="_blank" rel="noopener" class="btn-coffee">BUY ME A COFFEE</a>
-      <a href="https://discord.gg/6qNtYym7dD" target="_blank" rel="noopener" class="btn-discord" title="Join our Discord"><svg><use href="#ico-discord"/></svg></a>
-      <button class="btn-theme" id="themeToggle" onclick="toggleTheme()" title="Toggle theme"><svg><use href="#ico-sun"/></svg></button>
-      <button class="btn-manage" id="manageBtn" onclick="toggleAdmin()">MANAGE</button>
+      <a href="https://buymeacoffee.com/xayvis" target="_blank" rel="noopener" class="hdr-btn hdr-btn-accent btn-coffee"><span>Support</span></a>
+      <a href="https://discord.gg/6qNtYym7dD" target="_blank" rel="noopener" class="hdr-btn hdr-btn-icon btn-discord" title="Discord"><svg><use href="#ico-discord"/></svg></a>
+      <button class="hdr-btn hdr-btn-icon" id="themeToggle" onclick="toggleTheme()" title="Toggle theme"><svg><use href="#ico-sun"/></svg></button>
+      <button class="hdr-btn hdr-btn-ghost" id="manageBtn" onclick="toggleAdmin()"><span>Manage</span></button>
     </div>
   </div>
   <div class="search-row">
     <div class="search-field">
       <svg><use href="#ico-search"/></svg>
-      <input type="text" id="search" placeholder="Search by name, anime, character, or tag..." oninput="handleSearch(this.value)">
+      <input type="text" id="search" placeholder="Search clips..." oninput="handleSearch(this.value)">
     </div>
-    <button class="btn-random" onclick="randomClip()">RANDOM</button>
+    <button class="hdr-btn hdr-btn-ghost" onclick="randomClip()">Random</button>
   </div>
   <div class="breadcrumb-row" id="breadcrumb"></div>
 </header>
 
 <main class="content">
   <div class="admin-panel" id="adminPanel">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.1rem;padding-bottom:0.6rem;border-bottom:1px solid var(--border-subtle);">
-      <div class="admin-heading" style="margin:0;padding:0;border:0;">ADD NEW CLIP</div>
-      <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:0.62rem;font-weight:500;color:var(--text-300);letter-spacing:0.06em;">
-        <span>QUICK MODE</span>
-        <input type="checkbox" id="quickMode" style="accent-color:var(--accent);cursor:pointer;">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div class="admin-heading" style="margin:0;padding:0;border:0">Add Clip</div>
+      <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:0.55rem;font-weight:500;color:var(--text-3)">
+        Quick Mode <input type="checkbox" id="quickMode" style="accent-color:var(--accent);cursor:pointer">
       </label>
     </div>
-    <div id="quickModeHint" style="display:none;font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--accent);margin-bottom:0.7rem;letter-spacing:0.03em;">
-      Anime, Scene Type, Character &amp; Tags stay filled after adding — only clear Name, Thumbnail &amp; Link.
+    <div id="quickModeHint" style="display:none;font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--accent);margin:0.5rem 0 0.2rem">Keeps Anime, Scene, Character & Tags after adding.</div>
+    <div style="height:0.6rem"></div>
+    <div class="form-grid">
+      <div class="field"><label>Anime</label><input id="inp-anime" placeholder="Attack on Titan"></div>
+      <div class="field"><label>Scene Type</label><input id="inp-scene" placeholder="Action, Sad, Funny"></div>
     </div>
     <div class="form-grid">
-      <div class="field"><label>Anime</label><input id="inp-anime" placeholder="e.g. Attack on Titan"></div>
-      <div class="field"><label>Scene Type</label><input id="inp-scene" placeholder="e.g. Action, Sad, Funny"></div>
-    </div>
-    <div class="form-grid">
-      <div class="field"><label>Character</label><input id="inp-character" placeholder="e.g. Eren"></div>
-      <div class="field"><label>Clip Name</label><input id="inp-name" placeholder="e.g. Eren punches titan"></div>
+      <div class="field"><label>Character</label><input id="inp-character" placeholder="Eren"></div>
+      <div class="field"><label>Clip Name</label><input id="inp-name" placeholder="Eren punches titan"></div>
     </div>
     <div class="form-grid">
       <div class="field"><label>Thumbnail URL</label><input id="inp-thumb" placeholder="https://i.imgur.com/..."></div>
-      <div class="field"><label>Clip / Discord Link</label><input id="inp-link" placeholder="https://... (video or Discord link)"></div>
+      <div class="field"><label>Clip / Discord Link</label><input id="inp-link" placeholder="https://..."></div>
     </div>
     <div class="form-grid full">
-      <div class="field"><label>Tags (comma-separated)</label><input id="inp-tags" placeholder="e.g. punch, rage, epic, season 4"></div>
+      <div class="field"><label>Tags</label><input id="inp-tags" placeholder="punch, rage, epic (comma-separated)"></div>
     </div>
     <div class="form-actions">
       <button class="btn-primary" onclick="addClip()">ADD CLIP</button>
-      <button class="btn-ghost" onclick="toggleBulkPaste()">BULK PASTE JSON</button>
-      <button class="btn-ghost" onclick="exportData()">EXPORT JSON</button>
-      <button class="btn-ghost" onclick="importData()">IMPORT JSON</button>
+      <button class="btn-ghost" onclick="toggleBulkPaste()">BULK PASTE</button>
+      <button class="btn-ghost" onclick="exportData()">EXPORT</button>
+      <button class="btn-ghost" onclick="importData()">IMPORT</button>
     </div>
-    <div id="bulkPasteArea" style="display:none;margin-top:1rem;">
+    <div id="bulkPasteArea" style="display:none;margin-top:0.8rem">
       <div class="field">
-        <label>Paste JSON array of clips</label>
-        <textarea id="bulkJson" style="width:100%;min-height:120px;padding:0.6rem 0.75rem;background:var(--bg-base);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-100);font-family:'IBM Plex Mono',monospace;font-size:0.75rem;outline:none;resize:vertical;" placeholder='[{"anime":"...","sceneType":"...","character":"...","name":"...","thumbnail":"","discordLink":"https://...","tags":["tag1","tag2"]}]'></textarea>
+        <label>Paste JSON array</label>
+        <textarea id="bulkJson" style="width:100%;min-height:100px;padding:0.5rem 0.7rem;background:var(--bg-input);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:0.7rem;outline:none;resize:vertical;backdrop-filter:blur(6px)" placeholder='[{"anime":"...","sceneType":"...","character":"...","name":"...","discordLink":"...","tags":[]}]'></textarea>
       </div>
-      <div style="display:flex;gap:0.5rem;margin-top:0.5rem;">
+      <div style="display:flex;gap:0.4rem;margin-top:0.4rem">
         <button class="btn-primary" onclick="bulkAdd()">ADD ALL</button>
         <button class="btn-cancel" onclick="toggleBulkPaste()">CANCEL</button>
       </div>
@@ -481,590 +547,223 @@
 <div id="editModal"></div>
 <input type="file" id="importFile" accept=".json" style="display:none" onchange="handleImport(event)">
 
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg><use href="#ico-up"/></svg>
+</button>
+
 <script>
-  const SAMPLE_DATA = [
-    { id:'c1', anime:'Attack on Titan', sceneType:'Action', character:'Eren', name:'Eren punches titan', thumbnail:'', discordLink:'https://discord.com/channels/example/1/1', tags:['punch','rage'], addedAt:'2026-03-20' },
-  ];
+// ═══════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════
+const SAMPLE_DATA = [{ id:'c1', anime:'Attack on Titan', sceneType:'Action', character:'Eren', name:'Eren punches titan', thumbnail:'', discordLink:'#', tags:['punch','rage'], addedAt:'2026-03-20' }];
 
-  let clips = [];
-  let path = [];
-  let adminOpen = false;
-  let searchQ = '';
-  let activeTag = '';
+let clips = [], path = [], adminOpen = false, searchQ = '', activeTag = '';
 
-  async function loadSharedData() {
-    try {
-      const res = await fetch('./data.json?v=' + Date.now(), { cache: 'no-store' });
-      if (!res.ok) throw new Error('no data.json');
-      const data = await res.json();
-      if (!Array.isArray(data)) throw new Error('bad format');
-      clips = data;
-    } catch (e) {
-      console.error(e);
-      clips = [...SAMPLE_DATA];
-    }
-    render();
+async function loadSharedData() {
+  try {
+    const res = await fetch('./data.json?v=' + Date.now(), { cache: 'no-store' });
+    if (!res.ok) throw 0;
+    const data = await res.json();
+    if (!Array.isArray(data)) throw 0;
+    clips = data;
+  } catch { clips = [...SAMPLE_DATA]; }
+  render();
+}
+
+function esc(s) { if (!s) return ''; const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+function groupBy(arr, key) { const m = {}; arr.forEach(c => { const k = c[key]||'Unknown'; m[k]=(m[k]||0)+1; }); return Object.entries(m).sort((a,b)=>a[0].localeCompare(b[0])); }
+function getPreviewThumbs(f, n) { return f.map(c=>c.thumbnail).filter(t=>t&&t.startsWith('http')).slice(0,n); }
+
+const icons = { folder:'<svg><use href="#ico-folder"/></svg>', film:'<svg><use href="#ico-film"/></svg>', user:'<svg><use href="#ico-user"/></svg>', tag:'<svg><use href="#ico-tag"/></svg>', play:'<svg><use href="#ico-play"/></svg>', empty:'<svg><use href="#ico-empty"/></svg>' };
+function folderIcon(d) { return d===0?icons.film:d===1?icons.tag:icons.user; }
+
+function updateStats() {
+  const ac = new Set(clips.map(c=>c.anime)).size;
+  document.getElementById('stats').innerHTML = `<strong>${clips.length}</strong> clips &middot; <strong>${ac}</strong> series`;
+}
+
+function updateBreadcrumb() {
+  const el = document.getElementById('breadcrumb');
+  let h = `<span class="bc-item ${path.length===0?'current':''}" onclick="nav(0)">All</span>`;
+  path.forEach((p,i)=>{ h+=`<span class="bc-sep">/</span><span class="bc-item ${i===path.length-1?'current':''}" onclick="nav(${i+1})">${esc(p)}</span>`; });
+  el.innerHTML = h;
+}
+
+function transitionTo(fn) { const m=document.getElementById('main'); m.classList.add('transitioning'); setTimeout(()=>{fn();m.classList.remove('transitioning');},180); }
+function nav(d) { path=path.slice(0,d); searchQ=''; activeTag=''; document.getElementById('search').value=''; transitionTo(render); }
+function openDir(n) { path.push(n); transitionTo(render); }
+
+// ═══════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════
+function render() {
+  updateStats(); updateBreadcrumb();
+  const main = document.getElementById('main'), d = path.length;
+  if (searchQ) { renderSearch(main); return; }
+  if (activeTag) {
+    const r = clips.filter(c => Array.isArray(c.tags) && c.tags.some(t=>t.toLowerCase()===activeTag.toLowerCase()));
+    main.innerHTML = tagBarHtml() + sectionLabel(`Tag: ${activeTag}`, r.length) + (r.length ? `<div class="clip-grid">${r.map(c=>clipCardHtml(c,true)).join('')}</div>` : emptyHtml('No clips','Try another tag.'));
+    applyStagger(); document.body.classList.toggle('admin-active',adminOpen); return;
   }
+  if (d===0) { const it=groupBy(clips,'anime'); if(!it.length){main.innerHTML=emptyHtml('No clips yet','Open Manage to add your first clip.');return;} main.innerHTML=lastUpdatedHtml()+tagBarHtml()+sectionLabel('Series',it.length)+folderGridHtml(it,0,()=>true); }
+  else if (d===1) { const it=groupBy(clips.filter(c=>c.anime===path[0]),'sceneType'); main.innerHTML=sectionLabel('Scene Types',it.length)+folderGridHtml(it,1,c=>c.anime===path[0]); }
+  else if (d===2) { const it=groupBy(clips.filter(c=>c.anime===path[0]&&c.sceneType===path[1]),'character'); main.innerHTML=sectionLabel('Characters',it.length)+folderGridHtml(it,2,c=>c.anime===path[0]&&c.sceneType===path[1]); }
+  else if (d===3) { const l=clips.filter(c=>c.anime===path[0]&&c.sceneType===path[1]&&c.character===path[2]); main.innerHTML=sectionLabel('Clips',l.length)+clipGridHtml(l); }
+  applyStagger(); document.body.classList.toggle('admin-active',adminOpen);
+}
 
-  function esc(s) { if (!s) return ''; const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+function lastUpdatedHtml() { if(!clips.length)return''; const d=clips.map(c=>c.addedAt).filter(Boolean).sort(); const l=d[d.length-1]; return l?`<div class="last-updated">Last updated: ${esc(l)}</div>`:''; }
 
-  function groupBy(arr, key) {
-    const m = {};
-    arr.forEach(c => { const k = c[key] || 'Unknown'; m[k] = (m[k]||0)+1; });
-    return Object.entries(m).sort((a,b) => a[0].localeCompare(b[0]));
-  }
+function tagBarHtml() {
+  const m={}; clips.forEach(c=>{if(Array.isArray(c.tags))c.tags.forEach(t=>{const k=t.trim();if(k)m[k]=(m[k]||0)+1;});}); const s=Object.entries(m).sort((a,b)=>b[1]-a[1]).slice(0,20); if(!s.length)return'';
+  let h='<div class="tag-bar">'; s.forEach(([t])=>{const a=activeTag&&activeTag.toLowerCase()===t.toLowerCase(); h+=`<span class="tag-bar-pill${a?' active':''}" onclick="toggleTag('${t.replace(/'/g,"\\'")}')">${esc(t)}</span>`;}); if(activeTag)h+=`<button class="tag-bar-clear" onclick="clearTag()">CLEAR</button>`; return h+'</div>';
+}
 
-  function getPreviewThumbs(filtered, n) {
-    return filtered.map(c => c.thumbnail).filter(t => t && t.startsWith('http')).slice(0, n);
-  }
+function toggleTag(t) { activeTag=(activeTag&&activeTag.toLowerCase()===t.toLowerCase())?'':t; path=[]; searchQ=''; document.getElementById('search').value=''; transitionTo(render); }
+function clearTag() { activeTag=''; transitionTo(render); }
+function sectionLabel(l,c) { return `<div class="section-label">${l} &middot; ${c}</div>`; }
 
-  const icons = {
-    folder: '<svg><use href="#ico-folder"/></svg>',
-    film: '<svg><use href="#ico-film"/></svg>',
-    user: '<svg><use href="#ico-user"/></svg>',
-    tag: '<svg><use href="#ico-tag"/></svg>',
-    play: '<svg><use href="#ico-play"/></svg>',
-    empty: '<svg><use href="#ico-empty"/></svg>',
-    edit: '<svg><use href="#ico-edit"/></svg>',
-  };
+function folderGridHtml(items, depth, pf) {
+  const key = depth===0?'anime':depth===1?'sceneType':'character';
+  return `<div class="folder-grid">${items.map(([name,count])=>{
+    const fc=clips.filter(c=>pf(c)&&c[key]===name), th=getPreviewThumbs(fc,3);
+    const prev=th.length?th.map(t=>`<img src="${esc(t)}" alt="" onerror="this.style.display='none'">`).join(''):`<div class="folder-preview-empty">${icons.film}</div>`;
+    return `<div class="folder" onclick="openDir('${String(name).replace(/'/g,"\\'")}')"><div class="folder-preview">${prev}</div><div class="folder-info"><div class="folder-info-left"><div class="folder-name">${esc(name)}</div><div class="folder-count">${count} clip${count!==1?'s':''}</div></div><div class="folder-icon">${folderIcon(depth)}</div></div></div>`;
+  }).join('')}</div>`;
+}
 
-  function folderIcon(depth) {
-    if (depth === 0) return icons.film;
-    if (depth === 1) return icons.tag;
-    return icons.user;
-  }
+function clipGridHtml(l) { return `<div class="clip-grid">${l.map(c=>clipCardHtml(c)).join('')}</div>`; }
 
-  function updateStats() {
-    const ac = new Set(clips.map(c => c.anime)).size;
-    document.getElementById('stats').innerHTML = `<strong>${clips.length}</strong> clips &middot; <strong>${ac}</strong> series`;
-  }
+function isVideoUrl(u) { return u && (/\.(mp4|webm|mov)(\?|$)/i.test(u) || u.includes('sakugabooru.com/data/')); }
 
-  function updateBreadcrumb() {
-    const el = document.getElementById('breadcrumb');
-    let h = `<span class="bc-item ${path.length===0?'current':''}" onclick="nav(0)">All</span>`;
-    path.forEach((p,i) => {
-      h += `<span class="bc-sep">/</span>`;
-      h += `<span class="bc-item ${i===path.length-1?'current':''}" onclick="nav(${i+1})">${esc(p)}</span>`;
-    });
-    el.innerHTML = h;
-  }
+function clipCardHtml(c, showPath) {
+  const tags=Array.isArray(c.tags)?c.tags:[], link=c.discordLink||'#', hv=isVideoUrl(link);
+  return `<div class="clip-wrapper"><div class="clip-action-btns"><button class="clip-btn clip-btn-edit" onclick="event.stopPropagation();openEditModal('${c.id}')">EDIT</button><button class="clip-btn clip-btn-delete" onclick="event.stopPropagation();deleteClip('${c.id}')">DEL</button></div><a class="clip-card" href="${esc(link)}" target="_blank" rel="noopener"><div class="clip-thumb-wrap" ${hv?`onmouseenter="previewIn(this,'${esc(link)}')" onmouseleave="previewOut(this)"`:''}>
+  ${c.thumbnail?`<img src="${esc(c.thumbnail)}" alt="${esc(c.name)}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="clip-thumb-fallback" style="display:none;position:absolute;inset:0">${icons.film}</div>`:`<div class="clip-thumb-fallback">${icons.film}</div>`}
+  ${hv?'<video muted loop playsinline preload="none"></video>':''}
+  <div class="clip-play-indicator">${icons.play}</div>
+  <button class="clip-copy-btn" onclick="event.preventDefault();event.stopPropagation();copyUrl(this,'${esc(link)}')" title="Copy URL"><svg><use href="#ico-copy"/></svg></button>
+  </div><div class="clip-body"><div class="clip-title">${esc(c.name||'')}</div><div class="clip-tags">${tags.map(t=>`<span class="clip-tag">${esc(t)}</span>`).join('')}</div>${showPath?`<div class="clip-path">${esc(c.anime||'')} / ${esc(c.sceneType||'')} / ${esc(c.character||'')}</div>`:''}<div class="clip-date">${esc(c.addedAt||'')}</div></div></a></div>`;
+}
 
-  function transitionTo(fn) {
-    const main = document.getElementById('main');
-    main.classList.add('transitioning');
-    setTimeout(() => { fn(); main.classList.remove('transitioning'); }, 180);
-  }
+function renderSearch(main) {
+  const q=searchQ.toLowerCase(), r=clips.filter(c=>(c.name||'').toLowerCase().includes(q)||(c.anime||'').toLowerCase().includes(q)||(c.character||'').toLowerCase().includes(q)||(c.sceneType||'').toLowerCase().includes(q)||(Array.isArray(c.tags)&&c.tags.some(t=>(t||'').toLowerCase().includes(q))));
+  if(!r.length){main.innerHTML=emptyHtml('No matches',`Nothing for "${esc(searchQ)}".`);return;}
+  main.innerHTML=sectionLabel('Results',r.length)+`<div class="clip-grid">${r.map(c=>clipCardHtml(c,true)).join('')}</div>`; applyStagger();
+}
 
-  function nav(depth) { path = path.slice(0, depth); searchQ = ''; activeTag = ''; document.getElementById('search').value = ''; transitionTo(render); }
-  function openDir(name) { path.push(name); transitionTo(render); }
+function emptyHtml(t,s) { return `<div class="empty">${icons.empty}<div class="empty-title">${t}</div><div class="empty-sub">${s}</div></div>`; }
+function applyStagger() { document.querySelectorAll('.folder,.clip-wrapper').forEach((el,i)=>{el.style.animationDelay=(i*0.04)+'s';}); }
 
-  function render() {
-    updateStats();
-    updateBreadcrumb();
-    const main = document.getElementById('main');
-    const d = path.length;
+// ═══════════════════════════════════════
+// ADMIN
+// ═══════════════════════════════════════
+function toggleAdmin() { adminOpen=!adminOpen; document.getElementById('adminPanel').classList.toggle('open',adminOpen); document.getElementById('manageBtn').classList.toggle('active',adminOpen); document.body.classList.toggle('admin-active',adminOpen); }
 
-    if (searchQ) { renderSearch(main); return; }
+document.getElementById('quickMode').addEventListener('change', function() { document.getElementById('quickModeHint').style.display=this.checked?'block':'none'; });
 
-    // If a tag filter is active, show filtered clips globally
-    if (activeTag) {
-      const results = clips.filter(c =>
-        Array.isArray(c.tags) && c.tags.some(t => t.toLowerCase() === activeTag.toLowerCase())
-      );
-      main.innerHTML = tagBarHtml() + sectionLabel(`Tag: ${activeTag}`, results.length) +
-        (results.length ? `<div class="clip-grid">${results.map(c => clipCardHtml(c, true)).join('')}</div>` : emptyHtml('No clips with this tag', 'Try another tag.'));
-      applyStagger();
-      document.body.classList.toggle('admin-active', adminOpen);
-      return;
-    }
+function addClip() {
+  const a=document.getElementById('inp-anime').value.trim(),s=document.getElementById('inp-scene').value.trim(),ch=document.getElementById('inp-character').value.trim(),n=document.getElementById('inp-name').value.trim(),th=document.getElementById('inp-thumb').value.trim(),l=document.getElementById('inp-link').value.trim(),tg=document.getElementById('inp-tags').value.trim();
+  if(!a||!s||!ch||!n||!l){toast('Fill required fields','error');return;}
+  clips.push({id:'c_'+Date.now()+'_'+Math.random().toString(36).slice(2,6),anime:a,sceneType:s,character:ch,name:n,thumbnail:th,discordLink:l,tags:tg?tg.split(',').map(t=>t.trim()).filter(Boolean):[],addedAt:new Date().toISOString().split('T')[0]});
+  const q=document.getElementById('quickMode').checked;
+  if(q){['inp-name','inp-thumb','inp-link'].forEach(id=>document.getElementById(id).value='');document.getElementById('inp-name').focus();}
+  else{['inp-anime','inp-scene','inp-character','inp-name','inp-thumb','inp-link','inp-tags'].forEach(id=>document.getElementById(id).value='');}
+  toast('Clip added — export to save','success'); render();
+}
 
-    if (d === 0) {
-      const items = groupBy(clips, 'anime');
-      if (!items.length) { main.innerHTML = emptyHtml('No clips yet', 'Open the Manage panel to add your first clip.'); return; }
-      main.innerHTML = lastUpdatedHtml() + tagBarHtml() + sectionLabel('Series', items.length) + folderGridHtml(items, 0, () => true);
-    } else if (d === 1) {
-      const items = groupBy(clips.filter(c => c.anime === path[0]), 'sceneType');
-      main.innerHTML = sectionLabel('Scene Types', items.length) + folderGridHtml(items, 1, c => c.anime === path[0]);
-    } else if (d === 2) {
-      const items = groupBy(clips.filter(c => c.anime === path[0] && c.sceneType === path[1]), 'character');
-      main.innerHTML = sectionLabel('Characters', items.length) + folderGridHtml(items, 2, c => c.anime === path[0] && c.sceneType === path[1]);
-    } else if (d === 3) {
-      const list = clips.filter(c => c.anime === path[0] && c.sceneType === path[1] && c.character === path[2]);
-      main.innerHTML = sectionLabel('Clips', list.length) + clipGridHtml(list);
-    }
+function toggleBulkPaste(){const el=document.getElementById('bulkPasteArea');el.style.display=el.style.display==='none'?'block':'none';}
 
-    applyStagger();
-    document.body.classList.toggle('admin-active', adminOpen);
-  }
+function bulkAdd(){
+  const raw=document.getElementById('bulkJson').value.trim();if(!raw){toast('Paste JSON first','error');return;}
+  try{const arr=JSON.parse(raw);if(!Array.isArray(arr)){toast('Must be array','error');return;}let n=0;arr.forEach(c=>{if(!c.name&&!c.discordLink)return;clips.push({id:'c_'+Date.now()+'_'+Math.random().toString(36).slice(2,6),anime:c.anime||'Unknown',sceneType:c.sceneType||'Unknown',character:c.character||'Unknown',name:c.name||'Untitled',thumbnail:c.thumbnail||'',discordLink:c.discordLink||'',tags:Array.isArray(c.tags)?c.tags:[],addedAt:c.addedAt||new Date().toISOString().split('T')[0]});n++;});document.getElementById('bulkJson').value='';toggleBulkPaste();toast(`Added ${n} clips`,'success');render();}catch{toast('Invalid JSON','error');}
+}
 
-  function lastUpdatedHtml() {
-    if (!clips.length) return '';
-    const dates = clips.map(c => c.addedAt).filter(Boolean).sort();
-    const latest = dates[dates.length - 1];
-    if (!latest) return '';
-    return `<div class="last-updated">Last updated: ${esc(latest)}</div>`;
-  }
+function deleteClip(id){if(!confirm('Delete?'))return;clips=clips.filter(c=>c.id!==id);toast('Removed — export to save','success');render();}
 
-  function tagBarHtml() {
-    // Collect all unique tags across clips, count them
-    const tagMap = {};
-    clips.forEach(c => {
-      if (Array.isArray(c.tags)) {
-        c.tags.forEach(t => {
-          const key = t.trim();
-          if (key) tagMap[key] = (tagMap[key]||0) + 1;
-        });
-      }
-    });
-    const sorted = Object.entries(tagMap).sort((a,b) => b[1] - a[1]).slice(0, 20);
-    if (!sorted.length) return '';
+function openEditModal(id){
+  const c=clips.find(x=>x.id===id);if(!c)return;const tg=Array.isArray(c.tags)?c.tags.join(', '):'';
+  document.getElementById('editModal').innerHTML=`<div class="modal-overlay" onclick="if(event.target===this)closeEditModal()"><div class="modal-box"><div class="modal-title">Edit Clip</div><div class="form-grid"><div class="field"><label>Anime</label><input id="edit-anime" value="${esc(c.anime||'')}"></div><div class="field"><label>Scene Type</label><input id="edit-scene" value="${esc(c.sceneType||'')}"></div></div><div class="form-grid"><div class="field"><label>Character</label><input id="edit-character" value="${esc(c.character||'')}"></div><div class="field"><label>Name</label><input id="edit-name" value="${esc(c.name||'')}"></div></div><div class="form-grid"><div class="field"><label>Thumbnail</label><input id="edit-thumb" value="${esc(c.thumbnail||'')}"></div><div class="field"><label>Link</label><input id="edit-link" value="${esc(c.discordLink||'')}"></div></div><div class="form-grid full"><div class="field"><label>Tags</label><input id="edit-tags" value="${esc(tg)}"></div></div><div class="modal-actions"><button class="btn-cancel" onclick="closeEditModal()">CANCEL</button><button class="btn-primary" onclick="saveEdit('${id}')">SAVE</button></div></div></div>`;
+}
+function closeEditModal(){document.getElementById('editModal').innerHTML='';}
+function saveEdit(id){
+  const c=clips.find(x=>x.id===id);if(!c)return;
+  const a=document.getElementById('edit-anime').value.trim(),s=document.getElementById('edit-scene').value.trim(),ch=document.getElementById('edit-character').value.trim(),n=document.getElementById('edit-name').value.trim(),th=document.getElementById('edit-thumb').value.trim(),l=document.getElementById('edit-link').value.trim(),tg=document.getElementById('edit-tags').value.trim();
+  if(!a||!s||!ch||!n||!l){toast('Fill required fields','error');return;}
+  c.anime=a;c.sceneType=s;c.character=ch;c.name=n;c.thumbnail=th;c.discordLink=l;c.tags=tg?tg.split(',').map(t=>t.trim()).filter(Boolean):[];
+  closeEditModal();toast('Updated — export to save','success');render();
+}
 
-    let html = '<div class="tag-bar">';
-    sorted.forEach(([tag, count]) => {
-      const isActive = activeTag && activeTag.toLowerCase() === tag.toLowerCase();
-      html += `<span class="tag-bar-pill${isActive ? ' active' : ''}" onclick="toggleTag('${tag.replace(/'/g, "\\'")}')">${esc(tag)}</span>`;
-    });
-    if (activeTag) {
-      html += `<button class="tag-bar-clear" onclick="clearTag()">CLEAR</button>`;
-    }
-    html += '</div>';
-    return html;
-  }
+function exportData(){const b=new Blob([JSON.stringify(clips,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='data.json';a.click();URL.revokeObjectURL(a.href);toast('Exported','success');}
+function importData(){document.getElementById('importFile').click();}
+function handleImport(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=function(ev){try{const d=JSON.parse(ev.target.result);if(Array.isArray(d)){clips=d;path=[];searchQ='';document.getElementById('search').value='';toast(`Imported ${clips.length} clips`,'success');render();}else toast('Bad format','error');}catch{toast('Invalid JSON','error');}};r.readAsText(f);e.target.value='';}
+function handleSearch(v){searchQ=v.trim();activeTag='';render();}
+function randomClip(){const w=clips.filter(c=>c.discordLink&&c.discordLink!=='#');if(!w.length){toast('No clips','error');return;}const c=w[Math.floor(Math.random()*w.length)];window.open(c.discordLink,'_blank');toast(`Random: ${c.name}`,'success');}
 
-  function toggleTag(tag) {
-    if (activeTag && activeTag.toLowerCase() === tag.toLowerCase()) {
-      activeTag = '';
-    } else {
-      activeTag = tag;
-    }
-    path = [];
-    searchQ = '';
-    document.getElementById('search').value = '';
-    transitionTo(render);
-  }
+function toast(msg,type){const old=document.querySelector('.toast');if(old)old.remove();const t=document.createElement('div');t.className='toast '+(type||'');t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),3000);}
 
-  function clearTag() {
-    activeTag = '';
-    transitionTo(render);
-  }
+// ═══════════════════════════════════════
+// VIDEO PREVIEW + COPY
+// ═══════════════════════════════════════
+let previewTimeout;
+function previewIn(w,u){clearTimeout(previewTimeout);const v=w.querySelector('video');if(!v)return;previewTimeout=setTimeout(()=>{if(!v.src||v.src!==u)v.src=u;v.currentTime=0;v.play().catch(()=>{});w.classList.add('previewing');},300);}
+function previewOut(w){clearTimeout(previewTimeout);const v=w.querySelector('video');if(!v)return;w.classList.remove('previewing');v.pause();}
+function copyUrl(btn,u){navigator.clipboard.writeText(u).then(()=>{btn.innerHTML='<svg><use href="#ico-check"/></svg>';btn.classList.add('copied');toast('Copied','success');setTimeout(()=>{btn.innerHTML='<svg><use href="#ico-copy"/></svg>';btn.classList.remove('copied');},1500);}).catch(()=>toast('Failed','error'));}
 
-  function sectionLabel(label, count) {
-    return `<div class="section-label">${label} &middot; ${count}</div>`;
-  }
+// ═══════════════════════════════════════
+// PARTICLE CANVAS
+// ═══════════════════════════════════════
+const canvas=document.getElementById('bgCanvas'),ctx=canvas.getContext('2d');
+let particles=[],mouse={x:-999,y:-999};
 
-  function folderGridHtml(items, depth, parentFilter) {
-    const key = depth === 0 ? 'anime' : depth === 1 ? 'sceneType' : 'character';
-    return `<div class="folder-grid">${items.map(([name, count]) => {
-      const folderClips = clips.filter(c => parentFilter(c) && c[key] === name);
-      const thumbs = getPreviewThumbs(folderClips, 3);
-      const previewHtml = thumbs.length > 0
-        ? thumbs.map(t => `<img src="${esc(t)}" alt="" onerror="this.style.display='none';">`).join('')
-        : `<div class="folder-preview-empty">${icons.film}</div>`;
-      return `
-      <div class="folder" onclick="openDir('${String(name).replace(/'/g, "\\'")}')">
-        <div class="folder-preview">${previewHtml}</div>
-        <div class="folder-info">
-          <div class="folder-info-left">
-            <div class="folder-name">${esc(name)}</div>
-            <div class="folder-count">${count} clip${count!==1?'s':''}</div>
-          </div>
-          <div class="folder-icon">${folderIcon(depth)}</div>
-        </div>
-      </div>`;
-    }).join('')}</div>`;
-  }
+function resizeCanvas(){canvas.width=innerWidth;canvas.height=innerHeight;}
+addEventListener('resize',resizeCanvas); resizeCanvas();
+document.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
+document.addEventListener('mouseleave',()=>{mouse.x=-999;mouse.y=-999;});
 
-  function clipGridHtml(list) {
-    return `<div class="clip-grid">${list.map(c => clipCardHtml(c)).join('')}</div>`;
-  }
+function createParticles(){
+  particles=[];const n=Math.min(Math.floor((canvas.width*canvas.height)/16000),80);
+  for(let i=0;i<n;i++)particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-0.5)*0.25,vy:(Math.random()-0.5)*0.25,r:Math.random()*1.5+0.7});
+}
+createParticles(); addEventListener('resize',createParticles);
 
-  function isVideoUrl(url) {
-    if (!url) return false;
-    return /\.(mp4|webm|mov)(\?|$)/i.test(url) || url.includes('sakugabooru.com/data/');
-  }
-
-  function clipCardHtml(c, showPath) {
-    const tags = Array.isArray(c.tags) ? c.tags : [];
-    const link = c.discordLink || '#';
-    const hasVideo = isVideoUrl(link);
-
-    return `
-      <div class="clip-wrapper">
-        <div class="clip-action-btns">
-          <button class="clip-btn clip-btn-edit" onclick="event.stopPropagation();openEditModal('${c.id}')">EDIT</button>
-          <button class="clip-btn clip-btn-delete" onclick="event.stopPropagation();deleteClip('${c.id}')">DELETE</button>
-        </div>
-        <a class="clip-card" href="${esc(link)}" target="_blank" rel="noopener">
-          <div class="clip-thumb-wrap" ${hasVideo ? `onmouseenter="previewIn(this,'${esc(link)}')" onmouseleave="previewOut(this)"` : ''}>
-            ${c.thumbnail
-              ? `<img src="${esc(c.thumbnail)}" alt="${esc(c.name)}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                 <div class="clip-thumb-fallback" style="display:none;position:absolute;inset:0;">${icons.film}</div>`
-              : `<div class="clip-thumb-fallback">${icons.film}</div>`}
-            ${hasVideo ? `<video muted loop playsinline preload="none"></video>` : ''}
-            <div class="clip-play-indicator">${icons.play}</div>
-            <button class="clip-copy-btn" onclick="event.preventDefault();event.stopPropagation();copyUrl(this,'${esc(link)}')" title="Copy clip URL">
-              <svg><use href="#ico-copy"/></svg>
-            </button>
-          </div>
-          <div class="clip-body">
-            <div class="clip-title">${esc(c.name || '')}</div>
-            <div class="clip-tags">${tags.map(t => `<span class="clip-tag">${esc(t)}</span>`).join('')}</div>
-            ${showPath ? `<div class="clip-path">${esc(c.anime||'')} / ${esc(c.sceneType||'')} / ${esc(c.character||'')}</div>` : ''}
-            <div class="clip-date">${esc(c.addedAt || '')}</div>
-          </div>
-        </a>
-      </div>`;
-  }
-
-  function renderSearch(main) {
-    const q = searchQ.toLowerCase();
-    const results = clips.filter(c =>
-      (c.name||'').toLowerCase().includes(q) ||
-      (c.anime||'').toLowerCase().includes(q) ||
-      (c.character||'').toLowerCase().includes(q) ||
-      (c.sceneType||'').toLowerCase().includes(q) ||
-      (Array.isArray(c.tags) && c.tags.some(t => (t||'').toLowerCase().includes(q)))
-    );
-    if (!results.length) { main.innerHTML = emptyHtml('No matches', `Nothing found for "${esc(searchQ)}".`); return; }
-    main.innerHTML = sectionLabel('Results', results.length) +
-      `<div class="clip-grid">${results.map(c => clipCardHtml(c, true)).join('')}</div>`;
-    applyStagger();
-  }
-
-  function emptyHtml(title, sub) {
-    return `<div class="empty">${icons.empty}<div class="empty-title">${title}</div><div class="empty-sub">${sub}</div></div>`;
-  }
-
-  function applyStagger() {
-    document.querySelectorAll('.folder, .clip-wrapper').forEach((el, i) => {
-      el.style.animationDelay = (i * 0.04) + 's';
-    });
-  }
-
-  function toggleAdmin() {
-    adminOpen = !adminOpen;
-    document.getElementById('adminPanel').classList.toggle('open', adminOpen);
-    document.getElementById('manageBtn').classList.toggle('active', adminOpen);
-    document.body.classList.toggle('admin-active', adminOpen);
-  }
-
-  // Quick mode toggle
-  document.getElementById('quickMode').addEventListener('change', function() {
-    document.getElementById('quickModeHint').style.display = this.checked ? 'block' : 'none';
-  });
-
-  function addClip() {
-    const anime = document.getElementById('inp-anime').value.trim();
-    const scene = document.getElementById('inp-scene').value.trim();
-    const character = document.getElementById('inp-character').value.trim();
-    const name = document.getElementById('inp-name').value.trim();
-    const thumb = document.getElementById('inp-thumb').value.trim();
-    const link = document.getElementById('inp-link').value.trim();
-    const tagsStr = document.getElementById('inp-tags').value.trim();
-    if (!anime || !scene || !character || !name || !link) { toast('Fill in all required fields', 'error'); return; }
-    clips.push({ id: 'c_' + Date.now() + '_' + Math.random().toString(36).slice(2,6), anime, sceneType: scene, character, name, thumbnail: thumb, discordLink: link, tags: tagsStr ? tagsStr.split(',').map(t => t.trim()).filter(Boolean) : [], addedAt: new Date().toISOString().split('T')[0] });
-
-    const quick = document.getElementById('quickMode').checked;
-    if (quick) {
-      // Only clear name, thumbnail, and link — keep anime, scene, character, tags
-      ['inp-name','inp-thumb','inp-link'].forEach(id => document.getElementById(id).value = '');
-      document.getElementById('inp-name').focus();
-    } else {
-      ['inp-anime','inp-scene','inp-character','inp-name','inp-thumb','inp-link','inp-tags'].forEach(id => document.getElementById(id).value = '');
-    }
-
-    toast('Clip added — export JSON to save', 'success');
-    render();
-  }
-
-  function toggleBulkPaste() {
-    const el = document.getElementById('bulkPasteArea');
-    el.style.display = el.style.display === 'none' ? 'block' : 'none';
-  }
-
-  function bulkAdd() {
-    const raw = document.getElementById('bulkJson').value.trim();
-    if (!raw) { toast('Paste some JSON first', 'error'); return; }
-    try {
-      const arr = JSON.parse(raw);
-      if (!Array.isArray(arr)) { toast('Must be a JSON array', 'error'); return; }
-      let added = 0;
-      arr.forEach(c => {
-        if (!c.name && !c.discordLink) return; // skip empties
-        clips.push({
-          id: 'c_' + Date.now() + '_' + Math.random().toString(36).slice(2,6),
-          anime: c.anime || 'Unknown',
-          sceneType: c.sceneType || 'Unknown',
-          character: c.character || 'Unknown',
-          name: c.name || 'Untitled',
-          thumbnail: c.thumbnail || '',
-          discordLink: c.discordLink || '',
-          tags: Array.isArray(c.tags) ? c.tags : [],
-          addedAt: c.addedAt || new Date().toISOString().split('T')[0]
-        });
-        added++;
-      });
-      document.getElementById('bulkJson').value = '';
-      toggleBulkPaste();
-      toast(`Added ${added} clips — export JSON to save`, 'success');
-      render();
-    } catch { toast('Invalid JSON — check your syntax', 'error'); }
-  }
-
-  function deleteClip(id) {
-    if (!confirm('Delete this clip?')) return;
-    clips = clips.filter(c => c.id !== id);
-    toast('Clip removed — export JSON to save', 'success');
-    render();
-  }
-
-  function openEditModal(id) {
-    const clip = clips.find(c => c.id === id);
-    if (!clip) return;
-    const tags = Array.isArray(clip.tags) ? clip.tags.join(', ') : '';
-    document.getElementById('editModal').innerHTML = `
-      <div class="modal-overlay" onclick="if(event.target===this)closeEditModal()">
-        <div class="modal-box">
-          <div class="modal-title">EDIT CLIP</div>
-          <div class="form-grid">
-            <div class="field"><label>Anime</label><input id="edit-anime" value="${esc(clip.anime||'')}"></div>
-            <div class="field"><label>Scene Type</label><input id="edit-scene" value="${esc(clip.sceneType||'')}"></div>
-          </div>
-          <div class="form-grid">
-            <div class="field"><label>Character</label><input id="edit-character" value="${esc(clip.character||'')}"></div>
-            <div class="field"><label>Clip Name</label><input id="edit-name" value="${esc(clip.name||'')}"></div>
-          </div>
-          <div class="form-grid">
-            <div class="field"><label>Thumbnail URL</label><input id="edit-thumb" value="${esc(clip.thumbnail||'')}"></div>
-            <div class="field"><label>Discord Link</label><input id="edit-link" value="${esc(clip.discordLink||'')}"></div>
-          </div>
-          <div class="form-grid full">
-            <div class="field"><label>Tags (comma-separated)</label><input id="edit-tags" value="${esc(tags)}"></div>
-          </div>
-          <div class="modal-actions">
-            <button class="btn-cancel" onclick="closeEditModal()">CANCEL</button>
-            <button class="btn-primary" onclick="saveEdit('${id}')">SAVE CHANGES</button>
-          </div>
-        </div>
-      </div>`;
-  }
-
-  function closeEditModal() { document.getElementById('editModal').innerHTML = ''; }
-
-  function saveEdit(id) {
-    const clip = clips.find(c => c.id === id);
-    if (!clip) return;
-    const anime = document.getElementById('edit-anime').value.trim();
-    const scene = document.getElementById('edit-scene').value.trim();
-    const character = document.getElementById('edit-character').value.trim();
-    const name = document.getElementById('edit-name').value.trim();
-    const thumb = document.getElementById('edit-thumb').value.trim();
-    const link = document.getElementById('edit-link').value.trim();
-    const tagsStr = document.getElementById('edit-tags').value.trim();
-    if (!anime || !scene || !character || !name || !link) { toast('Fill in all required fields', 'error'); return; }
-    clip.anime = anime; clip.sceneType = scene; clip.character = character;
-    clip.name = name; clip.thumbnail = thumb; clip.discordLink = link;
-    clip.tags = tagsStr ? tagsStr.split(',').map(t => t.trim()).filter(Boolean) : [];
-    closeEditModal();
-    toast('Clip updated — export JSON to save', 'success');
-    render();
-  }
-
-  function exportData() {
-    const blob = new Blob([JSON.stringify(clips, null, 2)], { type: 'application/json' });
-    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'data.json'; a.click(); URL.revokeObjectURL(a.href);
-    toast('Exported to file', 'success');
-  }
-
-  function importData() { document.getElementById('importFile').click(); }
-
-  function handleImport(e) {
-    const file = e.target.files[0]; if (!file) return;
-    const r = new FileReader();
-    r.onload = function(ev) {
-      try {
-        const d = JSON.parse(ev.target.result);
-        if (Array.isArray(d)) { clips = d; path = []; searchQ = ''; document.getElementById('search').value = ''; toast(`Imported ${clips.length} clips`, 'success'); render(); }
-        else toast('Invalid format', 'error');
-      } catch { toast('Invalid JSON file', 'error'); }
-    };
-    r.readAsText(file); e.target.value = '';
-  }
-
-  function handleSearch(v) { searchQ = v.trim(); activeTag = ''; render(); }
-
-  function randomClip() {
-    const withLinks = clips.filter(c => c.discordLink && c.discordLink !== '#');
-    if (!withLinks.length) { toast('No clips available', 'error'); return; }
-    const clip = withLinks[Math.floor(Math.random() * withLinks.length)];
-    window.open(clip.discordLink, '_blank');
-    toast(`Random: ${clip.name}`, 'success');
-  }
-
-  function toast(msg, type) {
-    const old = document.querySelector('.toast'); if (old) old.remove();
-    const t = document.createElement('div'); t.className = 'toast ' + (type||''); t.textContent = msg;
-    document.body.appendChild(t); setTimeout(() => t.remove(), 3000);
-  }
-
-  // ── VIDEO PREVIEW ON HOVER ──
-  let previewTimeout;
-  function previewIn(wrap, url) {
-    clearTimeout(previewTimeout);
-    const video = wrap.querySelector('video');
-    if (!video) return;
-    // Small delay so quick mouse passes don't trigger loads
-    previewTimeout = setTimeout(() => {
-      if (!video.src || video.src !== url) {
-        video.src = url;
-      }
-      video.currentTime = 0;
-      video.play().catch(() => {});
-      wrap.classList.add('previewing');
-    }, 300);
-  }
-
-  function previewOut(wrap) {
-    clearTimeout(previewTimeout);
-    const video = wrap.querySelector('video');
-    if (!video) return;
-    wrap.classList.remove('previewing');
-    video.pause();
-  }
-
-  // ── COPY URL ──
-  function copyUrl(btn, url) {
-    navigator.clipboard.writeText(url).then(() => {
-      btn.innerHTML = '<svg><use href="#ico-check"/></svg>';
-      btn.classList.add('copied');
-      toast('URL copied', 'success');
-      setTimeout(() => {
-        btn.innerHTML = '<svg><use href="#ico-copy"/></svg>';
-        btn.classList.remove('copied');
-      }, 1500);
-    }).catch(() => {
-      toast('Failed to copy', 'error');
-    });
-  }
-
-  // ── ANIMATED CANVAS BACKGROUND ──
-  const canvas = document.getElementById('bgCanvas');
-  const ctx = canvas.getContext('2d');
-  let particles = [];
-  let mouse = { x: -999, y: -999 };
-  let animFrame;
-
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-  window.addEventListener('resize', resizeCanvas);
-  resizeCanvas();
-
-  document.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
-  document.addEventListener('mouseleave', () => { mouse.x = -999; mouse.y = -999; });
-
-  function createParticles() {
-    particles = [];
-    const count = Math.min(Math.floor((canvas.width * canvas.height) / 15000), 90);
-    for (let i = 0; i < count; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        r: Math.random() * 1.6 + 0.8
-      });
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  const s=getComputedStyle(document.documentElement);
+  const dc=s.getPropertyValue('--dot-color').trim(),lc=s.getPropertyValue('--line-color').trim();
+  for(let i=0;i<particles.length;i++){
+    const p=particles[i],dx=p.x-mouse.x,dy=p.y-mouse.y,d=Math.sqrt(dx*dx+dy*dy);
+    if(d<100&&d>0){const f=(100-d)/100*0.5;p.vx+=dx/d*f;p.vy+=dy/d*f;}
+    p.vx*=0.988;p.vy*=0.988;p.x+=p.vx;p.y+=p.vy;
+    if(p.x<-10)p.x=canvas.width+10;if(p.x>canvas.width+10)p.x=-10;
+    if(p.y<-10)p.y=canvas.height+10;if(p.y>canvas.height+10)p.y=-10;
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=dc;ctx.fill();
+    for(let j=i+1;j<particles.length;j++){const q=particles[j],cx=p.x-q.x,cy=p.y-q.y,cd=Math.sqrt(cx*cx+cy*cy);
+      if(cd<120){const a=(1-cd/120)*0.05;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle=lc.replace(/[\d.]+\)$/,a+')');ctx.lineWidth=0.6;ctx.stroke();}
     }
   }
-  createParticles();
-  window.addEventListener('resize', createParticles);
+  requestAnimationFrame(draw);
+}
+draw();
 
-  function getThemeColors() {
-    const style = getComputedStyle(document.documentElement);
-    return {
-      dot: style.getPropertyValue('--canvas-dot').trim(),
-      line: style.getPropertyValue('--canvas-line').trim()
-    };
-  }
+// ═══════════════════════════════════════
+// THEME
+// ═══════════════════════════════════════
+function getStoredTheme(){try{return localStorage.getItem('cv_theme')||'dark';}catch{return'dark';}}
+function applyTheme(t){document.documentElement.setAttribute('data-theme',t);const b=document.getElementById('themeToggle');b.innerHTML=t==='dark'?'<svg><use href="#ico-sun"/></svg>':'<svg><use href="#ico-moon"/></svg>';b.title=t==='dark'?'Light mode':'Dark mode';try{localStorage.setItem('cv_theme',t);}catch{}}
+function toggleTheme(){const c=document.documentElement.getAttribute('data-theme')||'dark';applyTheme(c==='dark'?'light':'dark');}
+applyTheme(getStoredTheme());
 
-  function drawParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    const colors = getThemeColors();
-    const connectDist = 130;
+// ═══════════════════════════════════════
+// BACK TO TOP
+// ═══════════════════════════════════════
+const backBtn=document.getElementById('backTop');
+window.addEventListener('scroll',()=>{backBtn.classList.toggle('visible',window.scrollY>300);});
 
-    for (let i = 0; i < particles.length; i++) {
-      const p = particles[i];
-
-      const dx = p.x - mouse.x;
-      const dy = p.y - mouse.y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < 110 && dist > 0) {
-        const force = (110 - dist) / 110 * 0.6;
-        p.vx += (dx / dist) * force;
-        p.vy += (dy / dist) * force;
-      }
-
-      p.vx *= 0.985;
-      p.vy *= 0.985;
-      p.x += p.vx;
-      p.y += p.vy;
-
-      if (p.x < -10) p.x = canvas.width + 10;
-      if (p.x > canvas.width + 10) p.x = -10;
-      if (p.y < -10) p.y = canvas.height + 10;
-      if (p.y > canvas.height + 10) p.y = -10;
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = colors.dot;
-      ctx.fill();
-
-      for (let j = i + 1; j < particles.length; j++) {
-        const p2 = particles[j];
-        const cdx = p.x - p2.x;
-        const cdy = p.y - p2.y;
-        const cdist = Math.sqrt(cdx*cdx + cdy*cdy);
-        if (cdist < connectDist) {
-          const alpha = (1 - cdist / connectDist) * 0.06;
-          ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(p2.x, p2.y);
-          ctx.strokeStyle = colors.line.replace(/[\d.]+\)$/, alpha + ')');
-          ctx.lineWidth = 0.7;
-          ctx.stroke();
-        }
-      }
-    }
-
-    animFrame = requestAnimationFrame(drawParticles);
-  }
-
-  drawParticles();
-
-  // ── THEME TOGGLE ──
-  function getStoredTheme() {
-    try { return localStorage.getItem('cv_theme') || 'dark'; } catch { return 'dark'; }
-  }
-
-  function applyTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    const btn = document.getElementById('themeToggle');
-    btn.innerHTML = theme === 'dark'
-      ? '<svg><use href="#ico-sun"/></svg>'
-      : '<svg><use href="#ico-moon"/></svg>';
-    btn.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
-    try { localStorage.setItem('cv_theme', theme); } catch {}
-  }
-
-  function toggleTheme() {
-    const current = document.documentElement.getAttribute('data-theme') || 'dark';
-    applyTheme(current === 'dark' ? 'light' : 'dark');
-  }
-
-  applyTheme(getStoredTheme());
-
-  loadSharedData();
+// ═══════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════
+loadSharedData();
 </script>
 </body>
 </html>
