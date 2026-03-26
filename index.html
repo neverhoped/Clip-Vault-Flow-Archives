@@ -8,50 +8,60 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root, [data-theme="dark"] {
-    --bg-base: #0c0c0e;
-    --bg-raised: #131316;
-    --bg-surface: #19191e;
-    --bg-surface-hover: #1f1f26;
-    --bg-overlay: rgba(12, 12, 14, 0.92);
-    --border-subtle: rgba(255,255,255,0.06);
-    --border-medium: rgba(255,255,255,0.1);
-    --border-active: rgba(83, 150, 212, 0.4);
-    --accent: #5396d4;
-    --accent-dim: rgba(83, 150, 212, 0.15);
-    --accent-glow: rgba(83, 150, 212, 0.08);
-    --text-100: #f0ece4;
-    --text-200: #b8b4ac;
-    --text-300: #7a776f;
-    --text-400: #4a4842;
-    --red: #c0564b;
-    --green: #5cb07a;
+    --bg-base: #08090d;
+    --bg-raised: #0f1118;
+    --bg-surface: #161821;
+    --bg-surface-hover: #1e2030;
+    --bg-overlay: rgba(8, 9, 13, 0.93);
+    --border-subtle: rgba(255,255,255,0.07);
+    --border-medium: rgba(255,255,255,0.13);
+    --border-active: rgba(100, 160, 240, 0.5);
+    --accent: #6aadf0;
+    --accent-dim: rgba(106, 173, 240, 0.14);
+    --accent-glow: rgba(106, 173, 240, 0.07);
+    --accent-secondary: #c084fc;
+    --accent-tertiary: #34d399;
+    --text-100: #eeeae4;
+    --text-200: #a09c96;
+    --text-300: #686460;
+    --text-400: #3a3836;
+    --red: #f06060;
+    --green: #4ade80;
     --radius-sm: 6px;
     --radius-md: 10px;
     --radius-lg: 14px;
-    --canvas-particle: rgba(83, 150, 212, 0.12);
-    --canvas-line: rgba(83, 150, 212, 0.04);
+    --canvas-dot: rgba(106, 173, 240, 0.2);
+    --canvas-line: rgba(106, 173, 240, 0.04);
+    --glow-1: rgba(106, 173, 240, 0.06);
+    --glow-2: rgba(192, 132, 252, 0.04);
+    --glow-3: rgba(52, 211, 153, 0.03);
   }
 
   [data-theme="light"] {
-    --bg-base: #f4f3f0;
+    --bg-base: #f6f5f2;
     --bg-raised: #ffffff;
-    --bg-surface: #eae8e4;
-    --bg-surface-hover: #e0ddd8;
-    --bg-overlay: rgba(244, 243, 240, 0.92);
+    --bg-surface: #eeece7;
+    --bg-surface-hover: #e3e0da;
+    --bg-overlay: rgba(246, 245, 242, 0.93);
     --border-subtle: rgba(0,0,0,0.07);
-    --border-medium: rgba(0,0,0,0.12);
-    --border-active: rgba(40, 100, 160, 0.35);
-    --accent: #2e7cbf;
-    --accent-dim: rgba(46, 124, 191, 0.12);
-    --accent-glow: rgba(46, 124, 191, 0.06);
-    --text-100: #1a1a1a;
-    --text-200: #444440;
-    --text-300: #78756e;
-    --text-400: #a8a49c;
-    --red: #c0564b;
-    --green: #3a9960;
-    --canvas-particle: rgba(46, 124, 191, 0.1);
-    --canvas-line: rgba(46, 124, 191, 0.04);
+    --border-medium: rgba(0,0,0,0.13);
+    --border-active: rgba(30, 90, 160, 0.4);
+    --accent: #2068b8;
+    --accent-dim: rgba(32, 104, 184, 0.1);
+    --accent-glow: rgba(32, 104, 184, 0.05);
+    --accent-secondary: #8b5cf6;
+    --accent-tertiary: #059669;
+    --text-100: #111110;
+    --text-200: #3d3b36;
+    --text-300: #7a776f;
+    --text-400: #b8b4ac;
+    --red: #dc4040;
+    --green: #16a34a;
+    --canvas-dot: rgba(32, 104, 184, 0.14);
+    --canvas-line: rgba(32, 104, 184, 0.03);
+    --glow-1: rgba(32, 104, 184, 0.05);
+    --glow-2: rgba(139, 92, 246, 0.04);
+    --glow-3: rgba(5, 150, 105, 0.03);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: var(--bg-base); color: var(--text-100); font-family: 'Outfit', sans-serif; min-height: 100vh; -webkit-font-smoothing: antialiased; }
@@ -101,8 +111,8 @@
 
   .folder-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.7rem; margin-bottom: 2.5rem; }
   .folder { background: var(--bg-raised); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); cursor: pointer; transition: all 0.18s ease; position: relative; overflow: hidden; }
-  .folder::after { content: ''; position: absolute; left: 0; top: 0; width: 3px; height: 100%; background: var(--accent); opacity: 0; transition: opacity 0.18s; }
-  .folder:hover { background: var(--bg-surface-hover); border-color: var(--border-medium); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.3); }
+  .folder::after { content: ''; position: absolute; left: 0; top: 0; width: 3px; height: 100%; background: linear-gradient(180deg, var(--accent), var(--accent-secondary)); opacity: 0; transition: opacity 0.18s; }
+  .folder:hover { background: var(--bg-surface-hover); border-color: var(--border-medium); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.3), 0 0 16px var(--accent-glow); }
   .folder:hover::after { opacity: 1; }
 
   .folder-preview { width: 100%; height: 80px; display: flex; gap: 2px; overflow: hidden; background: var(--bg-surface); }
@@ -129,7 +139,7 @@
   .clip-btn-edit:hover { background: var(--accent); color: var(--bg-base); }
 
   .clip-card { display: block; background: var(--bg-raised); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); overflow: hidden; text-decoration: none; color: inherit; transition: all 0.18s ease; }
-  .clip-card:hover { border-color: var(--border-medium); transform: translateY(-2px); box-shadow: 0 10px 36px rgba(0,0,0,0.3); }
+  .clip-card:hover { border-color: var(--border-medium); transform: translateY(-2px); box-shadow: 0 10px 36px rgba(0,0,0,0.3), 0 0 20px var(--accent-glow); }
   .clip-thumb-wrap { position: relative; width: 100%; aspect-ratio: 16/9; background: var(--bg-surface); overflow: hidden; }
   .clip-thumb-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .clip-play-indicator { position: absolute; bottom: 8px; right: 8px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,0,0,0.65); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.12); }
@@ -184,6 +194,52 @@
 
   #bgCanvas { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
 
+  /* Ambient color glow blobs */
+  #ambientGlow {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .glow-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    animation: glowDrift 25s ease-in-out infinite alternate;
+  }
+
+  .glow-blob:nth-child(1) {
+    width: 500px; height: 500px;
+    background: var(--glow-1);
+    top: -10%; left: -5%;
+    animation-duration: 30s;
+  }
+
+  .glow-blob:nth-child(2) {
+    width: 400px; height: 400px;
+    background: var(--glow-2);
+    bottom: -10%; right: -5%;
+    animation-duration: 22s;
+    animation-delay: -8s;
+  }
+
+  .glow-blob:nth-child(3) {
+    width: 350px; height: 350px;
+    background: var(--glow-3);
+    top: 40%; left: 50%;
+    animation-duration: 28s;
+    animation-delay: -14s;
+  }
+
+  @keyframes glowDrift {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(60px, -40px) scale(1.15); }
+    66% { transform: translate(-40px, 50px) scale(0.9); }
+    100% { transform: translate(30px, -20px) scale(1.05); }
+  }
+
   /* ── THEME TOGGLE ── */
   .btn-theme {
     display: flex;
@@ -203,7 +259,7 @@
   /* smooth theme transition */
   body, .header, .folder, .clip-card, .admin-panel, .modal-box, .toast,
   .btn-manage, .btn-coffee, .btn-discord, .btn-random, .btn-theme,
-  .search-field input, .field input, .tag-bar-pill, .stat-pill {
+  .search-field input, .field input, .tag-bar-pill, .stat-pill, .glow-blob {
     transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
   }
 
@@ -316,6 +372,11 @@
   <symbol id="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol>
 </svg>
 
+<div id="ambientGlow">
+  <div class="glow-blob"></div>
+  <div class="glow-blob"></div>
+  <div class="glow-blob"></div>
+</div>
 <canvas id="bgCanvas"></canvas>
 
 <header class="header">
@@ -826,14 +887,14 @@
 
   function createParticles() {
     particles = [];
-    const count = Math.min(Math.floor((canvas.width * canvas.height) / 12000), 120);
+    const count = Math.min(Math.floor((canvas.width * canvas.height) / 15000), 90);
     for (let i = 0; i < count; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-        r: Math.random() * 2 + 1
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        r: Math.random() * 1.6 + 0.8
       });
     }
   }
@@ -843,7 +904,7 @@
   function getThemeColors() {
     const style = getComputedStyle(document.documentElement);
     return {
-      particle: style.getPropertyValue('--canvas-particle').trim(),
+      dot: style.getPropertyValue('--canvas-dot').trim(),
       line: style.getPropertyValue('--canvas-line').trim()
     };
   }
@@ -851,54 +912,47 @@
   function drawParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     const colors = getThemeColors();
-    const connectDist = 140;
+    const connectDist = 130;
 
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
 
-      // Mouse repulsion
       const dx = p.x - mouse.x;
       const dy = p.y - mouse.y;
       const dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < 120 && dist > 0) {
-        const force = (120 - dist) / 120 * 0.8;
+      if (dist < 110 && dist > 0) {
+        const force = (110 - dist) / 110 * 0.6;
         p.vx += (dx / dist) * force;
         p.vy += (dy / dist) * force;
       }
 
-      // Damping
-      p.vx *= 0.98;
-      p.vy *= 0.98;
-
-      // Move
+      p.vx *= 0.985;
+      p.vy *= 0.985;
       p.x += p.vx;
       p.y += p.vy;
 
-      // Wrap edges
       if (p.x < -10) p.x = canvas.width + 10;
       if (p.x > canvas.width + 10) p.x = -10;
       if (p.y < -10) p.y = canvas.height + 10;
       if (p.y > canvas.height + 10) p.y = -10;
 
-      // Draw particle
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = colors.particle;
+      ctx.fillStyle = colors.dot;
       ctx.fill();
 
-      // Draw connections
       for (let j = i + 1; j < particles.length; j++) {
         const p2 = particles[j];
         const cdx = p.x - p2.x;
         const cdy = p.y - p2.y;
         const cdist = Math.sqrt(cdx*cdx + cdy*cdy);
         if (cdist < connectDist) {
+          const alpha = (1 - cdist / connectDist) * 0.06;
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(p2.x, p2.y);
-          const alpha = 1 - (cdist / connectDist);
-          ctx.strokeStyle = colors.line.replace(/[\d.]+\)$/, (alpha * 0.08) + ')');
-          ctx.lineWidth = 0.8;
+          ctx.strokeStyle = colors.line.replace(/[\d.]+\)$/, alpha + ')');
+          ctx.lineWidth = 0.7;
           ctx.stroke();
         }
       }
