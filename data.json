@@ -1425,5 +1425,62 @@
       "Falling"
     ],
     "addedAt": "2026-03-25"
+  },
+  {
+    "id": "c_1774548587117_rxg4",
+    "anime": "False memory",
+    "sceneType": "Action",
+    "character": "/",
+    "name": "Guy dashing/running towards girl while spinning weapon",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/82.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/eb6eb2172e7e5c5a5fbaa4193f8487f5.mp4",
+    "tags": [
+      "Dash",
+      "Running",
+      "Pole"
+    ],
+    "addedAt": "2026-03-26"
+  },
+  {
+    "id": "c_1774548696696_gi4y",
+    "anime": "False memory",
+    "sceneType": "Action",
+    "character": "/",
+    "name": "Guy getting wrapped in chains",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/83.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/f1e72fb557796f940232461d13b5aea3.mp4",
+    "tags": [
+      "Chain",
+      "Flying"
+    ],
+    "addedAt": "2026-03-26"
+  },
+  {
+    "id": "c_1774548778667_djw4",
+    "anime": "False memory",
+    "sceneType": "Action",
+    "character": "/",
+    "name": "Guy slashes through trains",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/84.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/c113e2f8c57cc793282890d1f41079e7.mp4",
+    "tags": [
+      "Sword",
+      "Flying",
+      "Slash"
+    ],
+    "addedAt": "2026-03-26"
+  },
+  {
+    "id": "c_1774548816399_b12v",
+    "anime": "False memory",
+    "sceneType": "Action",
+    "character": "/",
+    "name": "Girl next to a lot of screens",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/85.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/c113e2f8c57cc793282890d1f41079e7.mp4",
+    "tags": [
+      "Intro"
+    ],
+    "addedAt": "2026-03-26"
   }
 ]
