@@ -1539,5 +1539,76 @@
       "Dash"
     ],
     "addedAt": "2026-03-26"
+  },
+  {
+    "id": "c_1774550313890_f2um",
+    "anime": "Lupin iii",
+    "sceneType": "Action",
+    "character": "/",
+    "name": "Guy swings his axe",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/90.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/a1af34cf17de4d15ea416d19009c096a.mp4",
+    "tags": [
+      "Axe",
+      "Sword",
+      "Slash"
+    ],
+    "addedAt": "2026-03-26"
+  },
+  {
+    "id": "c_1774550411239_lv6a",
+    "anime": "Lupin iii",
+    "sceneType": "Action",
+    "character": "/",
+    "name": "Guy twists sword and slashes a guy",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/91.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/1488e438ee0ba9b81bae225081112fcb.mp4",
+    "tags": [
+      "Sword",
+      "Hand",
+      "Slash"
+    ],
+    "addedAt": "2026-03-26"
+  },
+  {
+    "id": "c_1774550687861_l0xq",
+    "anime": "Jujutsu Kaisen",
+    "sceneType": "Action",
+    "character": "Jogo",
+    "name": "Jogo generating fire with his hands",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/92.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/f80714402e1475df492237c8c7e91309.mp4",
+    "tags": [
+      "Hand",
+      "Fire"
+    ],
+    "addedAt": "2026-03-26"
+  },
+  {
+    "id": "c_1774550806882_ta6a",
+    "anime": "Kekkai sensen",
+    "sceneType": "Action",
+    "character": "Car",
+    "name": "Car drifting",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/93.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/15d3b90bbfc30efb57f5edaf0ddc9fc7.mp4",
+    "tags": [
+      "Car"
+    ],
+    "addedAt": "2026-03-26"
+  },
+  {
+    "id": "c_1774550900048_fmrx",
+    "anime": "Kekkai sensen",
+    "sceneType": "Action",
+    "character": "/",
+    "name": "Guy punches rock and it explodes",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/94.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/b785a646aa9babeeff54524b866ceabf.mp4",
+    "tags": [
+      "Punch",
+      "Explosion"
+    ],
+    "addedAt": "2026-03-26"
   }
 ]
