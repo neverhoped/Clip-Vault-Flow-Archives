@@ -1610,5 +1610,87 @@
       "Explosion"
     ],
     "addedAt": "2026-03-26"
+  },
+  {
+    "id": "c_1774551917907_9bw1",
+    "anime": "Boruto",
+    "sceneType": "Action",
+    "character": "Boruto",
+    "name": "Explosion in front of boruto",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/95.png?raw=true",
+    "discordLink": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/94.png?raw=true",
+    "tags": [
+      "Explosion"
+    ],
+    "addedAt": "2026-03-26"
+  },
+  {
+    "id": "c_1774552055758_1pye",
+    "anime": "Bleach",
+    "sceneType": "Action",
+    "character": "Yamamoto",
+    "name": "Yamamoto swings sword with fire",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/96.png?raw=true",
+    "discordLink": "https://cdn.discordapp.com/attachments/1105458244828278786/1486288334601851020/RUKIA.mov?ex=69c646e0&is=69c4f560&hm=e3e47fd8e20e2a2b9d61218a897ea13a621d83ad48335f316744149c97a17c97&",
+    "tags": [
+      "Sword",
+      "Fire"
+    ],
+    "addedAt": "2026-03-26"
+  },
+  {
+    "id": "c_1774552200389_0wpc",
+    "anime": "Chainsaw man",
+    "sceneType": "Action",
+    "character": "Reze",
+    "name": "Reze getting wrapped in chains and gets pulled",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/97.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/c900abbdd7cd11a945316a1503fdc0a6.mp4",
+    "tags": [
+      "Chain"
+    ],
+    "addedAt": "2026-03-26"
+  },
+  {
+    "id": "c_1774552261839_cxa1",
+    "anime": "Chainsaw man",
+    "sceneType": "Action",
+    "character": "Reze",
+    "name": "Reze drops down and kicks shark",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/98.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/841eb2266d69136587701a6dfea3eb4b.mp4",
+    "tags": [
+      "Falling",
+      "Kick"
+    ],
+    "addedAt": "2026-03-26"
+  },
+  {
+    "id": "c_1774552380756_nbp8",
+    "anime": "Chainsaw man",
+    "sceneType": "Action",
+    "character": "Denji",
+    "name": "Camera zooms on Denji's eye",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/99.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/63968a13d22e192a23c4899672dde6b3.mp4",
+    "tags": [
+      "Zoom",
+      "Camera"
+    ],
+    "addedAt": "2026-03-26"
+  },
+  {
+    "id": "c_1774552599996_klpo",
+    "anime": "Chainsaw man",
+    "sceneType": "Action",
+    "character": "Reze",
+    "name": "Reze dashes to Denji punching him",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/100.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/e074bde5167664478583abdca597031d.mp4",
+    "tags": [
+      "Punch",
+      "Dash"
+    ],
+    "addedAt": "2026-03-26"
   }
 ]
