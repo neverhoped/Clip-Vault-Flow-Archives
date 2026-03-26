@@ -23,17 +23,10 @@ All clip data lives in a single `data.json` file. Sakugabooru is used for the cl
 - One-click copy URL for editors who need the direct link
 
 **Clip Management**
-- Add, edit, and delete clips through the UI
-- Quick Mode — keeps anime/character/tags filled when adding multiple clips from the same series
-- Bulk JSON paste for importing many clips at once
-- Export/Import `data.json` for backups and updates
+- Everyone can add clips but it WONT be saved so DON'T.
+- If u wanna add clips you can message me on Discord.
+- Clips are added using the "Export" button after the clips are added.
 
-**Design**
-- Glassmorphism UI with frosted glass cards, mesh gradient background, and particle animation
-- Dark and light mode with saved preference
-- Smooth page transitions between folders
-- Folder cards show thumbnail previews from their clips
-- Fully responsive on mobile
 
 ## Setup
 
