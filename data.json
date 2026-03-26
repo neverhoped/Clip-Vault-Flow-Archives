@@ -1482,5 +1482,62 @@
       "Intro"
     ],
     "addedAt": "2026-03-26"
+  },
+  {
+    "id": "c_1774549405332_yoz2",
+    "anime": "Blades of the guardian",
+    "sceneType": "Action",
+    "character": "/",
+    "name": "Guy his hand getting cut",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/86.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/fb2ae312024a86b5155578669d51b259.mp4",
+    "tags": [
+      "Blood",
+      "Slash",
+      "Sword"
+    ],
+    "addedAt": "2026-03-26"
+  },
+  {
+    "id": "c_1774549620989_xo41",
+    "anime": "Blades of the guardian",
+    "sceneType": "Action",
+    "character": "/",
+    "name": "Kid puts hands on his face",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/88.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/53c9f49c8e771294332891c99dac21c9.mp4",
+    "tags": [
+      "Intro"
+    ],
+    "addedAt": "2026-03-26"
+  },
+  {
+    "id": "c_1774549960218_pg0c",
+    "anime": "Blades of the guardian",
+    "sceneType": "Action",
+    "character": "/",
+    "name": "Guy spinning sword with his hand",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/89.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/bb0798f1921990c21a1909df8da4a0af.mp4",
+    "tags": [
+      "Sword",
+      "Hand"
+    ],
+    "addedAt": "2026-03-26"
+  },
+  {
+    "id": "c_1774550051926_fikn",
+    "anime": "Blades of the guardian",
+    "sceneType": "Action",
+    "character": "/",
+    "name": "Girl going down and swinging sword",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/87.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/518c9e42f515954f69674e6a22490333.mp4",
+    "tags": [
+      "Sword",
+      "Flying",
+      "Dash"
+    ],
+    "addedAt": "2026-03-26"
   }
 ]
