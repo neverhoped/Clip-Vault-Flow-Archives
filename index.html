@@ -647,7 +647,10 @@ function clipCardHtml(c, showPath) {
 }
 
 function renderSearch(main) {
-  const q=searchQ.toLowerCase(), r=clips.filter(c=>(c.name||'').toLowerCase().includes(q)||(c.anime||'').toLowerCase().includes(q)||(c.character||'').toLowerCase().includes(q)||(c.sceneType||'').toLowerCase().includes(q)||(Array.isArray(c.tags)&&c.tags.some(t=>(t||'').toLowerCase().includes(q))));
+  const q=searchQ.toLowerCase(), words=q.split(' ').filter(w=>w), r=clips.filter(c=>{
+    const name=(c.name||'').toLowerCase(), anime=(c.anime||'').toLowerCase(), character=(c.character||'').toLowerCase(), sceneType=(c.sceneType||'').toLowerCase(), tags=Array.isArray(c.tags)?c.tags.map(t=>(t||'').toLowerCase()):'';
+    return words.every(word=>name.includes(word)||anime.includes(word)||character.includes(word)||sceneType.includes(word)||(Array.isArray(tags)&&tags.some(t=>t.includes(word))));
+  });
   if(!r.length){main.innerHTML=emptyHtml('No matches',`Nothing for "${esc(searchQ)}".`);return;}
   main.innerHTML=sectionLabel('Results',r.length)+`<div class="clip-grid">${r.map(c=>clipCardHtml(c,true)).join('')}</div>`; applyStagger();
 }
