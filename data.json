@@ -2,7 +2,7 @@
   {
     "id": "c_1774270580522_7727",
     "anime": "Fire force",
-    "sceneType": "Action, Shooting",
+    "sceneType": "Action",
     "character": "Shinra",
     "name": "Shinra shoots gun",
     "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/shinra.png?raw=true",
@@ -1692,5 +1692,104 @@
       "Dash"
     ],
     "addedAt": "2026-03-26"
+  },
+  {
+    "id": "c_1774618289947_5bh6",
+    "anime": "Fire force",
+    "sceneType": "Action",
+    "character": "Shinra",
+    "name": "Shinra kicking guy",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/101.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/6b5a69c28e3f63d2652883125fdc59ca.mp4",
+    "tags": [
+      "Kick",
+      "Fire"
+    ],
+    "addedAt": "2026-03-27"
+  },
+  {
+    "id": "c_1774618489786_jrtd",
+    "anime": "Fire force",
+    "sceneType": "Action",
+    "character": "Yuichiro",
+    "name": "Yuichiro dashing towards camera and charging attack with his hand",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/102.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/6085f25743ecedd4b2d6d2ddf987b3bf.mp4",
+    "tags": [
+      "Hand",
+      "Zoom"
+    ],
+    "addedAt": "2026-03-27"
+  },
+  {
+    "id": "c_1774618581655_v1c2",
+    "anime": "Fire force",
+    "sceneType": "Action",
+    "character": "Benimaru",
+    "name": "Benimaru eye zoom",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/103.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/ea57e44c011bd473b5f09e4cb47d36e7.mp4",
+    "tags": [
+      "Eye",
+      "Zoom"
+    ],
+    "addedAt": "2026-03-27"
+  },
+  {
+    "id": "c_1774618662331_fqev",
+    "anime": "Fire force",
+    "sceneType": "Action",
+    "character": "Shinra",
+    "name": "Shinra spinning with fire and kicking",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/104.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/eb096dae7701e011ceedc438b6806f98.mp4",
+    "tags": [
+      "Kick",
+      "Spinning",
+      "Fire"
+    ],
+    "addedAt": "2026-03-27"
+  },
+  {
+    "id": "c_1774618749760_nmg2",
+    "anime": "Fire force",
+    "sceneType": "Action",
+    "character": "Benimaru",
+    "name": "Benimaru spinning pole around with fire",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/105.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/841622e11a6a69a8c7cc1ec9fb77da2a.mp4",
+    "tags": [
+      "Pole",
+      "Fire",
+      "Intro",
+      "Spinning"
+    ],
+    "addedAt": "2026-03-27"
+  },
+  {
+    "id": "c_1774618807511_afr0",
+    "anime": "Fire force",
+    "sceneType": "Action",
+    "character": "Benimaru",
+    "name": "Benimaru blocking fire",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/106.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/d9209a120448eb7178e8d21615ceec16.mp4",
+    "tags": [
+      "Fire"
+    ],
+    "addedAt": "2026-03-27"
+  },
+  {
+    "id": "c_1774618930051_crop",
+    "anime": "Fire force",
+    "sceneType": "Action",
+    "character": "Joker",
+    "name": "Joker wrapping around another guy",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/107.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/ff8a08494969e45ca5b56907922d675c.mp4",
+    "tags": [
+      "Spinning"
+    ],
+    "addedAt": "2026-03-27"
   }
 ]
