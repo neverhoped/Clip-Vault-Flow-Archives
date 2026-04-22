@@ -654,7 +654,7 @@
     "character": "Itadori",
     "name": "Itadori fist zoom out and punching",
     "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/8.png?raw=true",
-    "discordLink": "https://cdn.discordapp.com/attachments/1406811750904369163/1425482182884982784/itadoripunch.mp4?ex=69c2983c&is=69c146bc&hm=a3840b1a5278e21a2eec6ab2650742ffd6f4be33596803938409431e080855c4&",
+    "discordLink": "https://www.sakugabooru.com/data/ac85a968d7d62c2a6a99868ba84d3e82.mp4",
     "tags": [
       "Punch",
       "Zoom"
@@ -1791,5 +1791,188 @@
       "Spinning"
     ],
     "addedAt": "2026-03-27"
+  },
+  {
+    "id": "c_1776879250643_70jv",
+    "anime": "Jujutsu Kaisen",
+    "sceneType": "Action",
+    "character": "Ryu Ishigori",
+    "name": "Jane, You're early",
+    "thumbnail": "https://www.sakugabooru.com/data/preview/c680ca9d11e9a661ae39c1fc3f9b446e.jpg",
+    "discordLink": "https://www.sakugabooru.com/data/c680ca9d11e9a661ae39c1fc3f9b446e.mp4",
+    "tags": [
+      "Intro",
+      "Magic"
+    ],
+    "addedAt": "2026-04-22"
+  },
+  {
+    "id": "c_1776879395529_tj3q",
+    "anime": "Jujutsu Kaisen",
+    "sceneType": "Action",
+    "character": "Ryu Ishigori",
+    "name": "Ryu hand clip punching Yuta",
+    "thumbnail": "https://www.sakugabooru.com/data/preview/2019592855210d5392dae457b1928556.jpg",
+    "discordLink": "https://www.sakugabooru.com/data/2019592855210d5392dae457b1928556.mp4",
+    "tags": [
+      "Hand",
+      "Punch"
+    ],
+    "addedAt": "2026-04-22"
+  },
+  {
+    "id": "c_1776879674152_7v5g",
+    "anime": "Re:zero",
+    "sceneType": "Action",
+    "character": "Reinhard",
+    "name": "Reinhard blocks sword with his own sword",
+    "thumbnail": "https://www.sakugabooru.com/data/preview/0f7a16c6329896a2fe578419369eea0a.jpg",
+    "discordLink": "https://www.sakugabooru.com/data/0f7a16c6329896a2fe578419369eea0a.mp4",
+    "tags": [
+      "Sword",
+      "Slash",
+      "Spinning"
+    ],
+    "addedAt": "2026-04-22"
+  },
+  {
+    "id": "c_1776879890081_fgxl",
+    "anime": "Fate",
+    "sceneType": "Action",
+    "character": "IDK",
+    "name": "Guy coming out of the fire grabbing axe",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/fatefire.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/119f9bbfb6e10f7f16b4195fcf9a7002.mp4",
+    "tags": [
+      "Fire",
+      "Intro"
+    ],
+    "addedAt": "2026-04-22"
+  },
+  {
+    "id": "c_1776879979863_cckw",
+    "anime": "Fate",
+    "sceneType": "Action",
+    "character": "Fate",
+    "name": "Fate her sword makes an explosion",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/fatesword.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/25f6c131a96aa0ca456832e4bf411830.mp4",
+    "tags": [
+      "Intro",
+      "Explosion",
+      "Sword"
+    ],
+    "addedAt": "2026-04-22"
+  },
+  {
+    "id": "c_1776880071268_vgyj",
+    "anime": "Fate",
+    "sceneType": "Action",
+    "character": "Shirou emiya",
+    "name": "Shirou emiya falling and dashing",
+    "thumbnail": "https://www.sakugabooru.com/data/preview/afa2814cc383d2bbfb241c52a0716ea8.jpg",
+    "discordLink": "https://www.sakugabooru.com/data/afa2814cc383d2bbfb241c52a0716ea8.mp4",
+    "tags": [
+      "Falling",
+      "Dashing"
+    ],
+    "addedAt": "2026-04-22"
+  },
+  {
+    "id": "c_1776880473470_ox19",
+    "anime": "Mob Psycho",
+    "sceneType": "Action",
+    "character": "Go asahi",
+    "name": "Go asahi falling from rocks",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/mobdrop.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/0e53a99e727d8377c098a144c9927087.mp4",
+    "tags": [
+      "Falling"
+    ],
+    "addedAt": "2026-04-22"
+  },
+  {
+    "id": "c_1776880610025_0s4p",
+    "anime": "Demon slayer",
+    "sceneType": "Action",
+    "character": "Akaza",
+    "name": "Akaza dropping/falling and dashing fighting rengoku",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/akazadrop.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/221f1b135af572159b696670e03ec5fc.mp4",
+    "tags": [
+      "Falling",
+      "Dashing"
+    ],
+    "addedAt": "2026-04-22"
+  },
+  {
+    "id": "c_1776880710117_b9mp",
+    "anime": "Demon slayer",
+    "sceneType": "Action",
+    "character": "Inosuke",
+    "name": "Inosuke slashing sword",
+    "thumbnail": "https://www.sakugabooru.com/data/preview/bd85e5c511956056d799c84adabf3b0e.jpg",
+    "discordLink": "https://www.sakugabooru.com/data/bd85e5c511956056d799c84adabf3b0e.mp4",
+    "tags": [
+      "Sword",
+      "Slashing"
+    ],
+    "addedAt": "2026-04-22"
+  },
+  {
+    "id": "c_1776880802338_gu2c",
+    "anime": "Demon slayer",
+    "sceneType": "Action",
+    "character": "Inosuke",
+    "name": "Akaza punching rengokus sword",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/akazapunchsworfd.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/914247b6cfefc67138b31bdc74303047.mp4",
+    "tags": [
+      "Hand",
+      "Punch"
+    ],
+    "addedAt": "2026-04-22"
+  },
+  {
+    "id": "c_1776880928767_jvu0",
+    "anime": "Demon slayer",
+    "sceneType": "Action",
+    "character": "Enmu",
+    "name": "Enmu makes tanjiro sleep with his hand",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/handhypnotize.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/3a4095b598314b7576ceeed91e3f5a81.mp4",
+    "tags": [
+      "Hand"
+    ],
+    "addedAt": "2026-04-22"
+  },
+  {
+    "id": "c_1776881028720_yd6q",
+    "anime": "Demon slayer",
+    "sceneType": "Action",
+    "character": "Rengoku",
+    "name": "Rengokus fire dragon",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/tanjirodragon.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/e6489143d16475d290087cc2ed874e74.mp4",
+    "tags": [
+      "Fire",
+      "Dragon"
+    ],
+    "addedAt": "2026-04-22"
+  },
+  {
+    "id": "c_1776881119441_mtv2",
+    "anime": "Demon slayer",
+    "sceneType": "Action",
+    "character": "Tanjiro",
+    "name": "Tanjiro sliding while slicing tentacles",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/tanjirosliding.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/ff33d84c46f8af15e48076f3273a43a2.mp4",
+    "tags": [
+      "Water",
+      "Sliding",
+      "Dashing"
+    ],
+    "addedAt": "2026-04-22"
   }
 ]
