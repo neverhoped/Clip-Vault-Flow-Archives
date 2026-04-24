@@ -2125,5 +2125,130 @@
       "Dashing"
     ],
     "addedAt": "2026-04-24"
+  },
+  {
+    "id": "c_1777041332468_5kzx",
+    "anime": "Blood-c",
+    "sceneType": "Action",
+    "character": "Saya",
+    "name": "Saya pulling out sword",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/sayasword.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/941f10f83a9611cefab271ad0805b43d.mp4",
+    "tags": [
+      "Sword",
+      "Hand"
+    ],
+    "addedAt": "2026-04-24"
+  },
+  {
+    "id": "c_1777041405742_p47n",
+    "anime": "Blood-c",
+    "sceneType": "Action",
+    "character": "Saya",
+    "name": "Saya closeup on face",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/sayafaceclosup.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/60b1f48343a05ea0e642bceb99905aa4.mp4",
+    "tags": [
+      "Intro"
+    ],
+    "addedAt": "2026-04-24"
+  },
+  {
+    "id": "c_1777041541937_v7k1",
+    "anime": "Blood-c",
+    "sceneType": "Action",
+    "character": "Saya",
+    "name": "Saya closeup on face 2",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/sayacloseupface2.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/f5fb5996bbb18821dc31a93194628843.mp4",
+    "tags": [
+      "Intro"
+    ],
+    "addedAt": "2026-04-24"
+  },
+  {
+    "id": "c_1777041674528_3zss",
+    "anime": "Blood-c",
+    "sceneType": "Action",
+    "character": "Saya",
+    "name": "Saya running towards camera and then to the right",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/sayadash.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/e200a6f190494602b3b7eab8a92c967d.mp4",
+    "tags": [
+      "Running",
+      "Dash"
+    ],
+    "addedAt": "2026-04-24"
+  },
+  {
+    "id": "c_1777041818436_kvhe",
+    "anime": "Bleach",
+    "sceneType": "Action",
+    "character": "Ichigo",
+    "name": "Ichigo lands and breaks ground",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/ichigo%20dropping.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/d4e5dd2a3ab2351799191b2a582a23b4.mp4",
+    "tags": [
+      "Falling",
+      "Dropping"
+    ],
+    "addedAt": "2026-04-24"
+  },
+  {
+    "id": "c_1777041936954_uypf",
+    "anime": "Bleach",
+    "sceneType": "Action",
+    "character": "Ichigo",
+    "name": "Ichigo swinging his sword upwards",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/ichigosword.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/ce92c2643ebeda9ecd8bd46925e735f2.mp4",
+    "tags": [
+      "Sword",
+      "Slicing"
+    ],
+    "addedAt": "2026-04-24"
+  },
+  {
+    "id": "c_1777042064396_38re",
+    "anime": "Bleach",
+    "sceneType": "Action",
+    "character": "Ichigo",
+    "name": "Ichigo falls and slides backwards",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/ichigohand.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/e19007833da2e61ac52d007a870e3d0a.mp4",
+    "tags": [
+      "Hand",
+      "Dashing",
+      "Falling"
+    ],
+    "addedAt": "2026-04-24"
+  },
+  {
+    "id": "c_1777042111267_impn",
+    "anime": "Bleach",
+    "sceneType": "Action",
+    "character": "Aizen",
+    "name": "Aizen mad and breaking stuff",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/aizenmad.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/e759cda2118dc025741c14c9f56dbef6.mp4",
+    "tags": [
+      "Intro"
+    ],
+    "addedAt": "2026-04-24"
+  },
+  {
+    "id": "c_1777042360271_bbgp",
+    "anime": "Bleach",
+    "sceneType": "Action",
+    "character": "Byakuya",
+    "name": "Byakuya slashing with sword and dashing",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/byakuya.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/08412aa2e9bc2436c82286a60bac8a0f.mp4",
+    "tags": [
+      "Sword",
+      "Slicing",
+      "Spinning"
+    ],
+    "addedAt": "2026-04-24"
   }
 ]
