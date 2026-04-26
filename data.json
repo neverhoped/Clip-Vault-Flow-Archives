@@ -2408,5 +2408,33 @@
       "Spinning"
     ],
     "addedAt": "2026-04-26"
+  },
+  {
+    "id": "c_1777206303518_5lsu",
+    "anime": "Wand and sword",
+    "sceneType": "Action",
+    "character": "Will",
+    "name": "Closeup Will eyes",
+    "thumbnail": "https://www.sakugabooru.com/data/preview/c243309ab7d1ddf386a35cf01bf7a8a7.jpg",
+    "discordLink": "https://www.sakugabooru.com/data/c243309ab7d1ddf386a35cf01bf7a8a7.mp4",
+    "tags": [
+      "Intro",
+      "Lightning"
+    ],
+    "addedAt": "2026-04-26"
+  },
+  {
+    "id": "c_1777206408091_3ksf",
+    "anime": "Wand and sword",
+    "sceneType": "Action",
+    "character": "Will",
+    "name": "Camera eye zoom Will",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/willeyezoom.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/d38710d54fe0cfee7042acdbfc36e6c5.mp4",
+    "tags": [
+      "Zoomin",
+      "Eyes"
+    ],
+    "addedAt": "2026-04-26"
   }
 ]
