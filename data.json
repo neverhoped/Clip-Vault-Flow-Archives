@@ -112,7 +112,7 @@
     "id": "c_1774273705192_0107",
     "anime": "Mob Psycho",
     "sceneType": "Action",
-    "character": "Teruki",
+    "character": "IDK",
     "name": "Guy falls/Lands/Drops from sky",
     "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/18.png?raw=true",
     "discordLink": "https://cdn.discordapp.com/attachments/1105458244828278786/1484958033778839674/Mob_Psycho_100_III_-_E04_4.mov?ex=69c218b0&is=69c0c730&hm=a2b1096e4c4bf52ee6e613c711311ba1b469efb1f4f847cb3dcda75219c60539&",
@@ -345,10 +345,10 @@
   {
     "id": "c_1774277889364_ftso",
     "anime": "Erased",
-    "sceneType": "Racing",
+    "sceneType": "Action",
     "character": "Satoru",
     "name": "Guy ice skating",
-    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/erased.png?raw=true",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/Satoruiceskating.png?raw=true",
     "discordLink": "https://www.sakugabooru.com/data/258d1061600e310c345e90e9edb5d515.mp4",
     "tags": [
       "Skating"
@@ -2688,87 +2688,6 @@
     "tags": [
       "Jumping",
       "Falling"
-    ],
-    "addedAt": "2026-04-27"
-  },
-  {
-    "id": "c_1777290579017_r2oi",
-    "anime": "Mob Psycho",
-    "sceneType": "Action",
-    "character": "Dimple",
-    "name": "Camera movement around Dimple",
-    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/dimple.png?raw=true",
-    "discordLink": "https://www.sakugabooru.com/data/2b953cb61e487c8c0084a7de2c5e1818.mp4",
-    "tags": [
-      "Zoomin"
-    ],
-    "addedAt": "2026-04-27"
-  },
-  {
-    "id": "c_1777290734778_8nii",
-    "anime": "Mob Psycho",
-    "sceneType": "Action",
-    "character": "Mob",
-    "name": "Mob blowing up guy",
-    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/mobblowingupguy.png?raw=true",
-    "discordLink": "https://www.sakugabooru.com/data/19931c9bdad17c891ce3e20187cdd0d2.mp4",
-    "tags": [
-      "Explosion",
-      "Fighting"
-    ],
-    "addedAt": "2026-04-27"
-  },
-  {
-    "id": "c_1777290846751_4ujt",
-    "anime": "Mob Psycho",
-    "sceneType": "Action",
-    "character": "Mob",
-    "name": "Mob in fire",
-    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/mobfire.png?raw=true",
-    "discordLink": "https://www.sakugabooru.com/data/d0ee773a7c33f88a6cce6c04ef281575.mp4",
-    "tags": [
-      "Fire"
-    ],
-    "addedAt": "2026-04-27"
-  },
-  {
-    "id": "c_1777290939491_payf",
-    "anime": "Mob Psycho",
-    "sceneType": "Action",
-    "character": "Ryo",
-    "name": "Fire going towards Ryo",
-    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/Ryofire.png?raw=true",
-    "discordLink": "https://www.sakugabooru.com/data/2e405d8ce502bb02daf2afb833624c37.mp4",
-    "tags": [
-      "Fire"
-    ],
-    "addedAt": "2026-04-27"
-  },
-  {
-    "id": "c_1777291042550_ox58",
-    "anime": "Mob Psycho",
-    "sceneType": "Action",
-    "character": "Mob",
-    "name": "Mob getting blown up",
-    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/mobexplosion.png?raw=true",
-    "discordLink": "https://www.sakugabooru.com/data/edcef4b9df46d0f1273da9fdf5e5e55d.mp4",
-    "tags": [
-      "Fire",
-      "Explosion"
-    ],
-    "addedAt": "2026-04-27"
-  },
-  {
-    "id": "c_1777291344698_qpqx",
-    "anime": "Mob Psycho",
-    "sceneType": "Action",
-    "character": "Teruki",
-    "name": "Teruki dashing around and slicing guy",
-    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/IDKdashing.png?raw=true",
-    "discordLink": "https://www.sakugabooru.com/data/ed6124da5199aaae8e0a882acb9b889b.mp4",
-    "tags": [
-      "Dashing",
-      "Slicing"
     ],
     "addedAt": "2026-04-27"
   }
