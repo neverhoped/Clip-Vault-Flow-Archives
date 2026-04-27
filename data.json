@@ -2436,5 +2436,119 @@
       "Eyes"
     ],
     "addedAt": "2026-04-26"
+  },
+  {
+    "id": "c_1777287716396_ftka",
+    "anime": "Death note",
+    "sceneType": "Action",
+    "character": "Light",
+    "name": "Light swinging hand while writing",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/lightwriting.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/198ba2e8279f1544c2cf438f0975b387.mp4",
+    "tags": [
+      "Writing",
+      "Hand"
+    ],
+    "addedAt": "2026-04-27"
+  },
+  {
+    "id": "c_1777287852688_prl4",
+    "anime": "Death note",
+    "sceneType": "Action",
+    "character": "Soichiro",
+    "name": "Soichiro eye zoom",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/soichiro.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/8f9851dc900478a0d6c7006a985b618b.mp4",
+    "tags": [
+      "Eye",
+      "Zoomin"
+    ],
+    "addedAt": "2026-04-27"
+  },
+  {
+    "id": "c_1777287936560_11td",
+    "anime": "Death note",
+    "sceneType": "Action",
+    "character": "Light",
+    "name": "Light eye zoomout to L eye zoomin",
+    "thumbnail": "https://www.sakugabooru.com/data/preview/93944610e1d6c190001cf2ccf3d5ca44.jpg",
+    "discordLink": "https://www.sakugabooru.com/data/93944610e1d6c190001cf2ccf3d5ca44.mp4",
+    "tags": [
+      "Eye",
+      "Zoomout",
+      "Zoomin"
+    ],
+    "addedAt": "2026-04-27"
+  },
+  {
+    "id": "c_1777288006398_n4wv",
+    "anime": "Death note",
+    "sceneType": "Action",
+    "character": "Light",
+    "name": "Light evil laughing",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/lightlaughing.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/64c6d75ed89aa4a21edbabcfd2337992.mp4",
+    "tags": [
+      "Intro",
+      "Laughing"
+    ],
+    "addedAt": "2026-04-27"
+  },
+  {
+    "id": "c_1777288098566_x2ox",
+    "anime": "Death note",
+    "sceneType": "Action",
+    "character": "Light",
+    "name": "Light in between cars",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/lightcar.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/904b49a0e995defcd47ea82c12a9aa61.mp4",
+    "tags": [
+      "Intro",
+      "Cars"
+    ],
+    "addedAt": "2026-04-27"
+  },
+  {
+    "id": "c_1777288335328_6f7h",
+    "anime": "Erased",
+    "sceneType": "Action",
+    "character": "Satoru",
+    "name": "Satoru jumping down and running",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/erased11.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/0ac7169ab6251d1abf4bc57b02491534.mp4",
+    "tags": [
+      "Falling",
+      "Running"
+    ],
+    "addedAt": "2026-04-27"
+  },
+  {
+    "id": "c_1777288575503_04bt",
+    "anime": "Chainsaw man",
+    "sceneType": "Action",
+    "character": "Kobeni",
+    "name": "Kobeni flipping and kicking a guy",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/kobeni.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/68d1a2ec258b93f62c686aca1ff5c45c.mp4",
+    "tags": [
+      "Kicking",
+      "Jumping"
+    ],
+    "addedAt": "2026-04-27"
+  },
+  {
+    "id": "c_1777288695073_q9pa",
+    "anime": "Chainsaw man",
+    "sceneType": "Action",
+    "character": "Aki",
+    "name": "Guy dropping on aki",
+    "thumbnail": "https://github.com/neverhoped/Clip-Vault-Flow-Archives/blob/main/images/Aki.png?raw=true",
+    "discordLink": "https://www.sakugabooru.com/data/c68e587fcb1d49dfbfcc7c69895ae3b3.mp4",
+    "tags": [
+      "Sword",
+      "Dropping",
+      "Falling"
+    ],
+    "addedAt": "2026-04-27"
   }
 ]
