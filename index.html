@@ -35,8 +35,8 @@
   --mesh-1: radial-gradient(ellipse 80% 60% at 10% 20%, rgba(123,164,247,0.08) 0%, transparent 60%);
   --mesh-2: radial-gradient(ellipse 60% 80% at 85% 75%, rgba(192,132,252,0.06) 0%, transparent 60%);
   --mesh-3: radial-gradient(ellipse 50% 50% at 50% 10%, rgba(52,211,153,0.04) 0%, transparent 50%);
-  --dot-color: rgba(123, 164, 247, 0.18);
-  --line-color: rgba(123, 164, 247, 0.04);
+  --dot-color: rgba(255, 255, 255, 0.8);
+  --line-color: rgba(255, 255, 255, 0.8);
 }
 
 [data-theme="light"] {
@@ -762,7 +762,7 @@ function heroHtml() {
   return `<div class="hero">
     <div class="hero-eyebrow">A curated anime clip archive</div>
     <h1 class="hero-title">Flow Archives</h1>
-    <p class="hero-tagline">Browse scenes by series, mood, or character — every clip handpicked for the ones that actually hit.</p>
+    <p class="hero-tagline">Browse scenes by series, mood, or character.</p>
     <div class="hero-meta">
       <span class="hero-chip"><span class="dot"></span><strong>${clips.length}</strong> clips archived</span>
       <span class="hero-chip"><strong>${ac}</strong> series</span>
